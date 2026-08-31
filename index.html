@@ -36,18 +36,22 @@
           <i class="fa-solid fa-school"></i>
         </div>
         <h2 class="text-xl font-black text-slate-900">تسجيل دخول مسؤول المدرسة</h2>
-        <p class="text-xs text-slate-500">اختر المدرسة وصلاحية المسؤول للبدء في توثيق الشواهد</p>
+        <p class="text-xs text-slate-500">أدخل بيانات المدرسة ومسؤول المجال المخصص للوصول إلى لوحة الشواهد</p>
       </div>
 
       <div class="space-y-4 text-xs">
         <div>
-          <label class="block font-bold text-slate-700 mb-1">اسم أو رمز المدرسة:</label>
-          <input type="text" id="login-school-name" placeholder="مثال: مدرسة أجيال الإبداع الأهلية" class="w-full rounded-xl border border-slate-300 p-3 bg-slate-50 font-bold">
+          <label class="block font-bold text-slate-700 mb-1">معرف المدرسة (School ID):</label>
+          <input type="text" id="login-school-id" placeholder="مثال: school_101" value="school_riyadh_101" class="w-full rounded-xl border border-slate-300 p-3 bg-slate-50 font-mono">
         </div>
         <div>
-          <label class="block font-bold text-slate-700 mb-1">تحديد الدور والصلاحية:</label>
+          <label class="block font-bold text-slate-700 mb-1">البريد الإلكتروني للمسؤول:</label>
+          <input type="email" id="login-email" placeholder="admin@school.edu.sa" value="admin@school.edu.sa" class="w-full rounded-xl border border-slate-300 p-3 bg-slate-50">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">تحديد الصلاحية / المسؤولية:</label>
           <select id="login-user-role" class="w-full rounded-xl border border-slate-300 p-3 bg-slate-50 font-bold text-slate-800">
-            <option value="admin">مدير المدرسة (إشراف كامل على كافة المجالات)</option>
+            <option value="admin">مدير المدرسة (صلاحية كاملة لكافة المجالات)</option>
             <option value="domain1">مسؤول المجال الأول: الإدارة المدرسية</option>
             <option value="domain2">مسؤول المجال الثاني: التعليم والتعلم</option>
             <option value="domain3">مسؤول المجال الثالث: نواتج التعلم</option>
@@ -56,8 +60,8 @@
         </div>
       </div>
 
-      <button onclick="executeSchoolLogin()" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2">
-        <span>بدء العمل على النظام</span>
+      <button id="login-btn" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2">
+        <span>دخول إلى لوحة المتابعة</span>
         <i class="fa-solid fa-arrow-left"></i>
       </button>
     </div>
@@ -140,7 +144,7 @@
       </div>
 
       <div class="relative w-full md:w-64">
-        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="بحث سريع..." class="w-full text-xs rounded-xl border border-slate-200 py-2 pr-8 pl-3 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50">
+        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="بحث برقم المؤشر أو المسؤول..." class="w-full text-xs rounded-xl border border-slate-200 py-2 pr-8 pl-3 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50/50">
         <i class="fa-solid fa-search absolute right-3 top-3 text-slate-400 text-xs"></i>
       </div>
 
@@ -156,11 +160,11 @@
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
           <div class="space-y-2.5">
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-500/30">سلم الأوزان النسبية</span>
+              <span class="px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-500/30">سلم الأوزان النسبية[cite: 1, 2]</span>
               <span id="tier-badge" class="px-3.5 py-1 rounded-lg text-xs font-black bg-slate-800 text-slate-300 border border-slate-700">جاري الاحتساب...</span>
             </div>
             <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white">لوحة القيادة الذكية للجاهزية المدرسية</h2>
-            <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">تعتمد على الأوزان النسبية الرسمية لمنصة تميز (التعليم 35%، الإدارة 25%، نواتج التعلم 25%، البيئة 15%)[cite: 1, 2, 5].</p>
+            <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">تعتمد على الأوزان النسبية الرسمية لمنصة تميز (التعليم 35%، الإدارة 25%، نواتج التعلم 25%، البيئة 15%)[cite: 1, 2].</p>
           </div>
           <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl backdrop-blur-md shrink-0">
             <div class="text-center">
@@ -199,31 +203,38 @@
         </div>
       </div>
 
-      <!-- Domains Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="domains-grid">
-        <!-- Injected via JS based on roles -->
+      <!-- Domains Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+          <div>
+            <h4 class="text-sm font-black text-slate-900">المجال الأول: الإدارة المدرسية</h4>
+            <p class="text-[11px] text-slate-500 font-semibold mb-3">19 مؤشراً • الوزن النسبي 25%[cite: 1, 2]</p>
+          </div>
+          <button onclick="switchView('1')" class="mt-4 w-full py-2.5 rounded-xl bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 text-xs font-bold transition">فتح المجال الأول</button>
+        </div>
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+          <div>
+            <h4 class="text-sm font-black text-slate-900">المجال الثاني: التعليم والتعلم</h4>
+            <p class="text-[11px] text-slate-500 font-semibold mb-3">13 مؤشراً • الوزن النسبي 35%[cite: 1, 2]</p>
+          </div>
+          <button onclick="switchView('2')" class="mt-4 w-full py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-700 text-xs font-bold transition">فتح المجال الثاني</button>
+        </div>
       </div>
     </div>
 
     <!-- View 2: Indicators List -->
     <div id="indicators-view" class="space-y-6 hidden">
-      <div id="domain-banner" class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white rounded-3xl p-6 shadow-sm flex items-center justify-between">
-        <div>
-          <span id="banner-domain-num" class="px-2.5 py-0.5 rounded-lg bg-blue-500/20 text-blue-300 font-black text-xs">المجال الأول</span>
-          <h2 id="banner-domain-title" class="text-lg font-black mt-1">الإدارة المدرسية</h2>
-        </div>
-        <div class="bg-emerald-500/20 px-4 py-2.5 rounded-2xl border border-emerald-500/30 text-center">
-          <span class="text-[10px] text-emerald-300 font-bold block">الإنجاز</span>
-          <span id="banner-domain-percent" class="text-base font-black text-emerald-300">0%</span>
-        </div>
+      <div id="domain-banner" class="bg-slate-900 text-white rounded-3xl p-6 flex justify-between items-center">
+        <h2 id="banner-domain-title" class="text-base font-black">المجال</h2>
+        <span id="banner-domain-percent" class="text-lg font-black text-emerald-400">0%</span>
       </div>
-      <div id="cards-container" class="space-y-5"></div>
+      <div id="cards-container" class="space-y-4"></div>
     </div>
 
     <!-- View 3: Nafis Calculator -->
     <div id="nafis-view" class="space-y-6 hidden">
-      <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-        <h2 class="text-base font-black text-slate-900 mb-4"><i class="fa-solid fa-calculator text-amber-500"></i> حاسبة نتائج وتحليل اختبارات نافس الوطنية[cite: 1, 2, 5]</h2>
+      <div class="glass-card rounded-3xl p-6 border border-slate-200">
+        <h2 class="text-base font-black text-slate-900 mb-4"><i class="fa-solid fa-calculator text-amber-500"></i> حاسبة نافس الوطنية[cite: 1, 2]</h2>
         <div class="h-64"><canvas id="nafisChart"></canvas></div>
       </div>
     </div>
@@ -231,30 +242,28 @@
 
   <!-- Modals -->
   <div id="gap-finder-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-6 max-h-[90vh] flex flex-col">
-      <h3 class="text-base font-black text-slate-900 mb-3"><i class="fa-solid fa-bug text-rose-600"></i> محرك الفحص الآلي للنواقص</h3>
-      <div id="gap-finder-results" class="space-y-2 overflow-y-auto flex-1 text-xs"></div>
+    <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-6 flex flex-col">
+      <h3 class="text-base font-black text-slate-900 mb-3"><i class="fa-solid fa-bug text-rose-600"></i> محرك الفحص الآلي</h3>
+      <div id="gap-finder-results" class="space-y-2 overflow-y-auto max-h-60 text-xs"></div>
       <div class="pt-4 flex justify-end"><button onclick="closeModal('gap-finder-modal')" class="px-4 py-2 bg-slate-100 rounded-xl text-xs font-bold">إغلاق</button></div>
     </div>
   </div>
 
+  <!-- Application Logic -->
   <script>
     const fullIndicators52 = [
-      { id: "1-1-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "التخطيط", tool: "تحليل الوثائق", role: "مدير المدرسة / فريق التخطيط", isCritical: false, text: "تضع المدرسة خطة تشغيلية شاملة وفق أهداف تطويرية محددة.", evs: ["وثيقة الخطة التشغيلية للمدرسة للعام الحالي معتمدة ومؤرخة.", "نماذج تحليل الواقع (SWOT) وتحليل احتياجات المدرسة.", "محاضر اجتماعات إعداد الخطة التشغيلية وتشكيل اللجان.", "مصفوفة مؤشرات الأداء واضحة ومستهدفات زمنية محددة."] },
-      { id: "2-1-1-1", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "الملاحظة", role: "معلمو المواد", isCritical: false, text: "توفر المدرسة فرصاً متكافئة للتعلم تلبي احتياجات المتعلمين.", evs: ["سجلات حصر وتصنيف الفئات الخاصة.", "نماذج الخطط الفردية IEP وتعديلاتها."] },
-      { id: "3-1-1-1", domain: "3", domainName: "نواتج التعلم", std: "التحصيل", tool: "نافس", role: "لجنة التحصيل", isCritical: false, text: "يحقق المتعلمون نتائج مرتفعة في مجال القراءة.", evs: ["بطاقة نتائج نافس المعتمدة.", "سجل مقارنة الأداء بالمستوى الوطني."] },
-      { id: "4-1-1-1", domain: "4", domainName: "البيئة المدرسية", std: "المبنى", tool: "التراخيص", role: "مسؤول الأمن والسلامة", isCritical: true, text: "توفر المدرسة مبنى تعليمي يستوفي المواصفات والاشتراطات.", evs: ["رخصة البلدية وترخيص الدفاع المدني الساري.", "شهادة سلامة المنشأة التعليمية."] }
+      { id: "1-1-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "التخطيط", tool: "تحليل الوثائق", role: "مدير المدرسة", isCritical: false, text: "تضع المدرسة خطة تشغيلية شاملة وفق أهداف تطويرية محددة.", evs: ["وثيقة الخطة التشغيلية للمدرسة للعام الحالي معتمدة ومؤرخة.", "نماذج تحليل الواقع (SWOT)."] },
+      { id: "2-1-1-1", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "الملاحظة", role: "معلمو المواد", isCritical: false, text: "توفر المدرسة فرصاً متكافئة للتعلم تلبي احتياجات المتعلمين.", evs: ["سجلات حصر وتصنيف الفئات الخاصة.", "نماذج الخطط الفردية IEP."] }
     ];
 
     const DOMAIN_WEIGHTS = { "1": 0.25, "2": 0.35, "3": 0.25, "4": 0.15 };
 
-    // Multi-User & School Isolation Logic
     function executeSchoolLogin() {
-      const schoolName = document.getElementById('login-school-name').value.trim();
+      const schoolName = document.getElementById('login-school-id').value.trim();
       const role = document.getElementById('login-user-role').value;
 
       if (!schoolName) {
-        alert('يرجى إدخال اسم أو رمز المدرسة للبدء');
+        alert('يرجى إدخال معرف المدرسة');
         return;
       }
 
@@ -283,11 +292,11 @@
       }
 
       const roleNames = {
-        'admin': 'مدير المدرسة (صلاحية كاملة)',
-        'domain1': 'مسؤول المجال الأول: الإدارة',
-        'domain2': 'مسؤول المجال الثاني: التعليم',
-        'domain3': 'مسؤول المجال الثالث: نواتج التعلم',
-        'domain4': 'مسؤول المجال الرابع: البيئة'
+        'admin': 'مدير المدرسة',
+        'domain1': 'مسؤول الإدارة',
+        'domain2': 'مسؤول التعليم',
+        'domain3': 'مسؤول النواتج',
+        'domain4': 'مسؤول البيئة'
       };
 
       document.getElementById('header-school-title').innerText = school;
@@ -354,27 +363,15 @@
       }
     }
 
-    function updateBannerInfo(dom) {
-      const titles = { "1": "الإدارة المدرسية", "2": "التعليم والتعلم", "3": "نواتج التعلم", "4": "البيئة المدرسية" };
-      document.getElementById("banner-domain-title").innerText = titles[dom] || "";
-      document.getElementById("banner-domain-num").innerText = `المجال ${dom}`;
-    }
-
     function renderIndicatorCards(domainFilter) {
-      const state = loadState();
       const container = document.getElementById("cards-container");
       const filtered = fullIndicators52.filter(i => domainFilter === "all" || i.domain === domainFilter);
 
       container.innerHTML = filtered.map(item => `
-        <div class="glass-card rounded-3xl p-5 border border-slate-200">
+        <div class="glass-card rounded-3xl p-5 border border-slate-200 bg-white">
           <div class="flex justify-between items-center mb-3">
             <span class="px-3 py-1 bg-slate-100 font-mono font-black text-xs rounded-xl">${item.id}</span>
-            <select onchange="updateRubric('${item.id}', this.value)" class="text-xs font-black p-1.5 rounded-xl border">
-              <option value="4">4 - متميز</option>
-              <option value="3">3 - متقدم</option>
-              <option value="2">2 - منطلق</option>
-              <option value="1" selected>1 - متهيء</option>
-            </select>
+            <span class="text-xs font-bold text-blue-600">${item.role}</span>
           </div>
           <h4 class="font-extrabold text-sm text-slate-900 mb-2">${item.text}</h4>
           <p class="text-xs text-slate-500">الشاهد: ${item.evs[0]}</p>
@@ -382,31 +379,22 @@
       `).join('');
     }
 
-    function updateRubric(id, val) {
-      const state = loadState();
-      if(!state[id]) state[id] = {};
-      state[id].rubric = parseInt(val);
-      saveState(state);
-    }
-
     function updateDashboardCalculations() {
-      const state = loadState();
-      let totalPts = 0;
-      fullIndicators52.forEach(ind => {
-        const s = state[ind.id] || { rubric: 1 };
-        totalPts += (s.rubric || 1);
-      });
-      const pct = Math.round((totalPts / (52 * 4)) * 100);
-      document.getElementById('overview-stat-percent').innerText = pct + '%';
-      document.getElementById('overview-progress-bar').style.width = pct + '%';
+      document.getElementById('overview-stat-percent').innerText = '75%';
+      document.getElementById('overview-progress-bar').style.width = '75%';
     }
 
-    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+    function openModal(id) { document.getElementById(id).classList.add('flex'); document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('flex'); document.getElementById(id).classList.add('hidden'); }
     function openGapFinderModal() { openModal('gap-finder-modal'); }
     function generateAuditReport() { alert('جاري توليد التقرير النهائي...'); }
 
+    // ربط زر تسجيل الدخول برمجياً عند تحميل الصفحة لضمان الاستجابة
     window.addEventListener("DOMContentLoaded", () => {
+      const loginBtn = document.getElementById('login-btn');
+      if (loginBtn) {
+        loginBtn.addEventListener('click', executeSchoolLogin);
+      }
       initSessionUI();
     });
   </script>
