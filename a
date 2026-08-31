@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منظومة إدارة شواهد التقويم الذاتي والاعتماد المدرسي</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background-color: #ffffff;
+            }
+            .card-print {
+                break-inside: avoid;
+                border: 1px solid #e2e8f0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-emerald-800 via-teal-700 to-cyan-800 text-white shadow-lg sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3.5">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-11 h-11 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/20">
+                        <i class="fa-solid fa-award text-2xl text-amber-300"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-extrabold tracking-tight">الدليل الإجرائي للتقويم الذاتي والاعتماد المدرسي</h1>
+                        <p class="text-xs text-teal-100 font-medium">نظام التوثيق وإدارة الشواهد والأدلة المدرسية</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="window.print()" class="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-900 text-xs font-bold rounded-lg shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-print"></i>
+                        <span>طباعة التقرير</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cloud Storage & Sync Status Banner -->
+        <div class="bg-slate-950/40 backdrop-blur-md border-t border-white/10 px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3 text-teal-100">
+            <div class="flex items-center gap-2">
+                <span id="syncStatusDot" class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+                <span id="syncStatusText" class="font-bold">جارٍ الاتصال بالسيرفر السحابي وتأمين الحساب...</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-lg border border-white/10">
+                <i class="fa-solid fa-user-shield text-amber-300"></i>
+                <span>معرف حسابك الخاص:</span>
+                <code id="displayUserId" class="font-mono bg-black/30 px-2 py-0.5 rounded text-amber-200 select-all">جارٍ التحميل...</code>
+                <button onclick="copyUserId()" class="text-teal-200 hover:text-white p-1 hover:bg-white/10 rounded transition" title="نسخ المعرف">
+                    <i class="fa-regular fa-copy"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs (المجالات والصفحات) -->
+        <div class="bg-slate-900/30 backdrop-blur-sm border-t border-white/10 overflow-x-auto">
+            <div class="max-w-7xl mx-auto px-4 flex gap-1 sm:gap-2 py-2">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-tab px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition bg-white text-teal-900 shadow">
+                    <i class="fa-solid fa-chart-pie text-teal-600"></i>
+                    <span>لوحة المتابعة العامة</span>
+                </button>
+                <button onclick="switchTab('domain-1')" id="nav-domain-1" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold text-slate-100 hover:bg-white/10 flex items-center gap-2 transition">
+                    <span class="w-6 h-6 rounded-full bg-emerald-600 text-xs flex items-center justify-center font-bold">1</span>
+                    <span>الإدارة المدرسية</span>
+                </button>
+                <button onclick="switchTab('domain-2')" id="nav-domain-2" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold text-slate-100 hover:bg-white/10 flex items-center gap-2 transition">
+                    <span class="w-6 h-6 rounded-full bg-blue-600 text-xs flex items-center justify-center font-bold">2</span>
+                    <span>التعليم والتعلم</span>
+                </button>
+                <button onclick="switchTab('domain-3')" id="nav-domain-3" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold text-slate-100 hover:bg-white/10 flex items-center gap-2 transition">
+                    <span class="w-6 h-6 rounded-full bg-purple-600 text-xs flex items-center justify-center font-bold">3</span>
+                    <span>نواتج التعلم</span>
+                </button>
+                <button onclick="switchTab('domain-4')" id="nav-domain-4" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold text-slate-100 hover:bg-white/10 flex items-center gap-2 transition">
+                    <span class="w-6 h-6 rounded-full bg-amber-600 text-xs flex items-center justify-center font-bold">4</span>
+                    <span>البيئة المدرسية</span>
+                </button>
+                <button onclick="switchTab('full-report')" id="nav-full-report" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold text-slate-100 hover:bg-white/10 flex items-center gap-2 transition">
+                    <i class="fa-solid fa-file-contract"></i>
+                    <span>الملف الشامل للشواهد</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Search and Filter Bar -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 mb-6 flex flex-col md:flex-row items-center justify-between gap-4 no-print">
+            <div class="relative w-full md:w-96">
+                <i class="fa-solid fa-search absolute right-3.5 top-3.5 text-slate-400 text-sm"></i>
+                <input type="text" id="searchInput" oninput="applyFilter()" placeholder="ابحث برقم المؤشر، المعيار، أو نص الشاهد..." class="w-full pr-10 pl-4 py-2 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white">
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end flex-wrap">
+                <div class="flex items-center gap-2 text-xs font-semibold text-slate-600">
+                    <i class="fa-solid fa-filter"></i> تصفية بحالة الشاهد:
+                </div>
+                <select id="statusFilter" onchange="applyFilter()" class="bg-slate-50 border border-slate-300 text-slate-700 text-xs font-semibold rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <option value="all">جميع الحالات</option>
+                    <option value="مكتمل">المكتملة (جاهزة)</option>
+                    <option value="قيد الإنجاز">قيد الإنجاز</option>
+                    <option value="غير مكتمل">غير مكتملة</option>
+                    <option value="غير منطبق">غير منطبق</option>
+                </select>
+                <button onclick="resetFilters()" class="text-xs text-teal-600 hover:text-teal-800 font-bold px-2 py-1">
+                    إعادة ضبط
+                </button>
+            </div>
+        </div>
+
+        <!-- 1. DASHBOARD PAGE -->
+        <section id="page-dashboard" class="page-content space-y-6">
+            <!-- Stats Overview Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-slate-500 mb-1">إجمالي المؤشرات</p>
+                            <h3 class="text-2xl font-black text-slate-800" id="totalIndicatorsCount">38</h3>
+                        </div>
+                        <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 text-xl font-bold">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs text-slate-500">
+                        <span>موزعة على 4 مجالات رئيسية</span>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50/70 p-5 rounded-2xl border border-emerald-200 shadow-sm relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-emerald-700 mb-1">الشواهد المكتملة</p>
+                            <h3 class="text-2xl font-black text-emerald-800" id="completedCount">0</h3>
+                        </div>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-700 text-xl font-bold">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs text-emerald-700 font-medium">
+                        <span id="completedPercentage">0%</span>&nbsp;من إجمالي المعايير
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 p-5 rounded-2xl border border-amber-200 shadow-sm relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-amber-700 mb-1">شواهد قيد الإنجاز</p>
+                            <h3 class="text-2xl font-black text-amber-800" id="inProgressCount">0</h3>
+                        </div>
+                        <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-700 text-xl font-bold">
+                            <i class="fa-solid fa-spinner"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs text-amber-700 font-medium">
+                        <span>تحتاج متابعة واستكمال</span>
+                    </div>
+                </div>
+
+                <div class="bg-rose-50/70 p-5 rounded-2xl border border-rose-200 shadow-sm relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-rose-700 mb-1">شواهد غير مكتملة</p>
+                            <h3 class="text-2xl font-black text-rose-800" id="pendingCount">38</h3>
+                        </div>
+                        <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center text-rose-700 text-xl font-bold">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs text-rose-700 font-medium">
+                        <span>تتطلب إعداد ورفع الوثائق</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domains Progress Breakdown Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Domain 1 Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">1</span>
+                                <div>
+                                    <h4 class="font-extrabold text-slate-800 text-base">مجال الإدارة المدرسية</h4>
+                                    <p class="text-xs text-slate-500">التخطيط، القيادة، المجتمع، التطوير، وحقوق المتعلم</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full" id="d1-progress-badge">0/17</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-3 mt-4 overflow-hidden">
+                            <div id="d1-progress-bar" class="bg-emerald-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between items-center border-t border-slate-100 pt-4">
+                        <span class="text-xs text-slate-500 font-medium">5 معايير فرعية (17 مؤشر)</span>
+                        <button onclick="switchTab('domain-1')" class="text-xs font-bold text-emerald-600 hover:text-emerald-800 flex items-center gap-1">
+                            فتح شواهد المجال <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Domain 2 Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm">2</span>
+                                <div>
+                                    <h4 class="font-extrabold text-slate-800 text-base">مجال التعليم والتعلم</h4>
+                                    <p class="text-xs text-slate-500">بناء خبرات التعلم وتقويم التعلم</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 bg-blue-100 text-blue-800 rounded-full" id="d2-progress-badge">0/13</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-3 mt-4 overflow-hidden">
+                            <div id="d2-progress-bar" class="bg-blue-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between items-center border-t border-slate-100 pt-4">
+                        <span class="text-xs text-slate-500 font-medium">معياران فرعيان (13 مؤشر)</span>
+                        <button onclick="switchTab('domain-2')" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                            فتح شواهد المجال <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Domain 3 Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold text-sm">3</span>
+                                <div>
+                                    <h4 class="font-extrabold text-slate-800 text-base">مجال نواتج التعلم</h4>
+                                    <p class="text-xs text-slate-500">التحصيل التعليمي والتطور الشخصي والصحي والاجتماعي</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 bg-purple-100 text-purple-800 rounded-full" id="d3-progress-badge">0/13</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-3 mt-4 overflow-hidden">
+                            <div id="d3-progress-bar" class="bg-purple-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between items-center border-t border-slate-100 pt-4">
+                        <span class="text-xs text-slate-500 font-medium">معياران فرعيان (13 مؤشر)</span>
+                        <button onclick="switchTab('domain-3')" class="text-xs font-bold text-purple-600 hover:text-purple-800 flex items-center gap-1">
+                            فتح شواهد المجال <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Domain 4 Card -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-amber-600 text-white flex items-center justify-center font-bold text-sm">4</span>
+                                <div>
+                                    <h4 class="font-extrabold text-slate-800 text-base">مجال البيئة المدرسية</h4>
+                                    <p class="text-xs text-slate-500">المبنى المدرسي، والأمن والسلامة والمرافق</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full" id="d4-progress-badge">0/7</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-3 mt-4 overflow-hidden">
+                            <div id="d4-progress-bar" class="bg-amber-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between items-center border-t border-slate-100 pt-4">
+                        <span class="text-xs text-slate-500 font-medium">معياران فرعيان (7 مؤشرات)</span>
+                        <button onclick="switchTab('domain-4')" class="text-xs font-bold text-amber-600 hover:text-amber-800 flex items-center gap-1">
+                            فتح شواهد المجال <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Instructions Box -->
+            <div class="bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-200 rounded-2xl p-6">
+                <h4 class="font-extrabold text-teal-900 text-base mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-teal-600"></i>
+                    إرشادات توثيق الشواهد والأدلة للتقويم الذاتي:
+                </h4>
+                <ul class="text-xs sm:text-sm text-teal-800 space-y-1.5 list-disc list-inside leading-relaxed">
+                    <li>قم بالتنقل بين صفحات المجالات الأربعة في الأعلى لتسجيل الشواهد لكل مؤشر.</li>
+                    <li>تم إدراج الشواهد والأدلة المقترحة المعتمدة رسمياً لكل مؤشر، ويمكنك تفعيل الشاهد المتوفر بوضع علامة عليه.</li>
+                    <li>يمكنك وضع رابط مباشر لمجلد الشواهد السحابي (مثل Google Drive أو OneDrive) أو كتابة أسماء الملفات وتدوين الملاحظات.</li>
+                    <li>تُحفظ كافة البيانات تلقائياً في متصفحك، ويمكنك تنزيل نسخة احتياطية أو طباعة التقرير الكامل في أي وقت.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- DOMAIN 1: الإدارة المدرسية -->
+        <section id="page-domain-1" class="page-content hidden space-y-6">
+            <div class="bg-white p-5 rounded-2xl border-r-4 border-r-emerald-600 border-slate-200 border shadow-sm">
+                <div class="flex items-center gap-3">
+                    <span class="p-2.5 bg-emerald-100 text-emerald-800 rounded-xl font-black text-lg">1</span>
+                    <div>
+                        <h2 class="text-lg font-black text-slate-900">المجال الأول: الإدارة المدرسية</h2>
+                        <p class="text-xs text-slate-500">يركز على عمليات التأثير الفاعل في المجتمع المدرسي، التخطيط، القيادة، التطوير المؤسسي، وحماية المتعلم.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="domain-1-container" class="space-y-6"></div>
+        </section>
+
+        <!-- DOMAIN 2: التعليم والتعلم -->
+        <section id="page-domain-2" class="page-content hidden space-y-6">
+            <div class="bg-white p-5 rounded-2xl border-r-4 border-r-blue-600 border-slate-200 border shadow-sm">
+                <div class="flex items-center gap-3">
+                    <span class="p-2.5 bg-blue-100 text-blue-800 rounded-xl font-black text-lg">2</span>
+                    <div>
+                        <h2 class="text-lg font-black text-slate-900">المجال الثاني: التعليم والتعلم</h2>
+                        <p class="text-xs text-slate-500">يركز على بيئة التعلم، تنوع استراتيجيات التدريس، المهارات الأساسية، والتقويم التكويني والختامي.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="domain-2-container" class="space-y-6"></div>
+        </section>
+
+        <!-- DOMAIN 3: نواتج التعلم -->
+        <section id="page-domain-3" class="page-content hidden space-y-6">
+            <div class="bg-white p-5 rounded-2xl border-r-4 border-r-purple-600 border-slate-200 border shadow-sm">
+                <div class="flex items-center gap-3">
+                    <span class="p-2.5 bg-purple-100 text-purple-800 rounded-xl font-black text-lg">3</span>
+                    <div>
+                        <h2 class="text-lg font-black text-slate-900">المجال الثالث: نواتج التعلم</h2>
+                        <p class="text-xs text-slate-500">يقيس التحصيل التعليمي في الاختبارات الوطنية والمدرسية، والتطور الشخصي والاجتماعي والصحي للمتعلمين.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="domain-3-container" class="space-y-6"></div>
+        </section>
+
+        <!-- DOMAIN 4: البيئة المدرسية -->
+        <section id="page-domain-4" class="page-content hidden space-y-6">
+            <div class="bg-white p-5 rounded-2xl border-r-4 border-r-amber-600 border-slate-200 border shadow-sm">
+                <div class="flex items-center gap-3">
+                    <span class="p-2.5 bg-amber-100 text-amber-800 rounded-xl font-black text-lg">4</span>
+                    <div>
+                        <h2 class="text-lg font-black text-slate-900">المجال الرابع: البيئة المدرسية</h2>
+                        <p class="text-xs text-slate-500">يتناول ملاءمة المبنى، الفصول والمعامل، التجهيزات المساندة، وتوافر شروط الأمن والسلامة والصيانة الدورية.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="domain-4-container" class="space-y-6"></div>
+        </section>
+
+        <!-- 5. FULL REPORT / PRINT VIEW -->
+        <section id="page-full-report" class="page-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm print:border-none print:shadow-none">
+                <div class="text-center border-b pb-4 mb-6">
+                    <h2 class="text-xl font-black text-slate-900">تقرير ملف الشواهد والأدلة للتقويم الذاتي والاعتماد المدرسي</h2>
+                    <p class="text-xs text-slate-500 mt-1">وثيقة جاهزة للتوثيق والمراجعة المعتمدة</p>
+                </div>
+                <div id="fullReportContent" class="space-y-6">
+                    <!-- Dynamic Full Table View for All Indicators and Evidences -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-5 mt-auto no-print border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center sm:flex sm:justify-between items-center">
+            <p>منظومة متابعة شواهد التقويم المدرسي الذاتي والاعتماد المدرسي - ملحق المعايير والمؤشرات</p>
+            <p class="mt-2 sm:mt-0 font-mono text-teal-400">تحديث تلقائي وحفظ محلي آمن</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-xl border border-slate-700 text-xs font-semibold flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toastMsg">تم حفظ التغييرات بنجاح</span>
+    </div>
+
+    <!-- Application Script with Cloud Integration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Cloud Credentials & Environment Setup
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'school-accreditation-app';
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+        let firestoreDocUnsubscribe = null;
+
+        // Initialize Firebase Backend
+        try {
+            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+                apiKey: "DEMO_KEY",
+                authDomain: "demo.firebaseapp.com",
+                projectId: "demo-project"
+            };
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+        } catch (err) {
+            console.warn("Cloud backend initialization running in fallback mode", err);
+        }
+
+        // Full standard indicators database based on the provided PDF
+        const standardsData = [
+            // Domain 1: الإدارة المدرسية
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التخطيط",
+                code: "1-1-1-1",
+                text: "تضع المدرسة خطة تشغيلية شاملة وفق أهداف تطويرية محددة.",
+                suggestedEvidences: [
+                    "وثيقة الخطة التشغيلية للمدرسة للعام الحالي معتمدة.",
+                    "نماذج تحليل الواقع (SWOT) وتحليل احتياجات المدرسة.",
+                    "محاضر اجتماعات إعداد الخطة التشغيلية وتشكيل اللجان وفرق العمل.",
+                    "مؤشرات أداء واضحة ومستهدفات زمنية لكل هدف تطويري."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التخطيط",
+                code: "1-1-1-2",
+                text: "تتابع المدرسة تنفيذ خطتها التشغيلية وتطورها بما يضمن تحقيق أهدافها.",
+                suggestedEvidences: [
+                    "تقارير المتابعة الدورية (ربع سنوية/فصلية) لنسب إنجاز الخطة.",
+                    "محاضر اجتماعات لجنة التميز والجودة لمراجعة وتقويم الخطة.",
+                    "سجلات التعديلات أو الخطط العلاجية والتصحيحية المنفذة أثناء العام.",
+                    "لوحات متابعة ومؤشرات إنجاز الأهداف والأنشطة التشغيلية."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "قيادة العملية التعليمية",
+                code: "1-2-1-1",
+                text: "تعزز المدرسة القيم الإسلامية، والهوية الوطنية.",
+                suggestedEvidences: [
+                    "خطة البرامج والأنشطة الخاصة بالقيم والهوية الوطنية (اليوم الوطني، يوم التأسيس، القيم الإسلامية).",
+                    "توثيق فعاليات الإذاعة المدرسية والمناسبات الوطنية والدينية.",
+                    "معارض وصور ومنتجات المتعلمين لتعزيز الانتماء الوطني والوسطية.",
+                    "استبانات أو تقارير قياس أثر تعزيز القيم لدى الطلاب."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "قيادة العملية التعليمية",
+                code: "1-2-1-2",
+                text: "تطبق المدرسة قيم مهنة التعليم وأخلاقياتها، وتتابع الالتزام بها.",
+                suggestedEvidences: [
+                    "ميثاق وأخلاقيات مهنة التعليم منشور وموقع من الكادر التعليمي والإداري.",
+                    "سجلات وورش عمل ولقاءات توعوية بأخلاقيات المهنة وحقوق وواجبات المعلم.",
+                    "آلية المتابعة ورصد الملاحظات ونماذج تقييم الالتزام المهني."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "قيادة العملية التعليمية",
+                code: "1-2-1-3",
+                text: "تطبق المدرسة إجراءات محددة لدعم الانضباط المدرسي، وتتابع الالتزام بها.",
+                suggestedEvidences: [
+                    "خطة تعزيز وتثبيت الانضباط المدرسي وقواعد السلوك والمواظبة.",
+                    "سجلات رصد الحضور والغياب اليومي ونظام الإشعار الفوري لأولياء الأمور.",
+                    "برامج تحفيز الطلاب والصفوف الأكثر انضباطاً وتكريماً.",
+                    "تقارير نسب الغياب في الأسابيع المستهدفة (قبل وبعد الإجازات)."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "قيادة العملية التعليمية",
+                code: "1-2-1-4",
+                text: "تنفذ المدرسة برامج وأنشطة تربوية داعمة للسلوك الإيجابي لدى المتعلمين، ومنهم ذوو الإعاقة والموهوبون، وتتابعها.",
+                suggestedEvidences: [
+                    "خطة التوجيه الطلابي لتعزيز السلوك الإيجابي وجلسات التوجيه.",
+                    "سجلات رعاية ذوي الإعاقة والموهوبين وتكييف البرامج لهم.",
+                    "نماذج تعزيز السلوك المتميز والشهادات والجوائز التحفيزية.",
+                    "محاضر دراسة الحالات السلوكية الفردية والمتابعة الإرشادية."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "قيادة العملية التعليمية",
+                code: "1-2-1-5",
+                text: "تنفذ المدرسة برامج وأنشطة إثرائية لتطوير مواهب المتعلمين، وتهيئهم للمستقبل، وتتابعها.",
+                suggestedEvidences: [
+                    "سجل حصر واكتشاف الموهوبين وخطة البرامج الإثرائية التخصصية.",
+                    "مشاركات الطلاب في المسابقات المحلية والوطنية (إبداع، بيبراس، الكانجارو، أولمبياد).",
+                    "فعاليات التهيئة للمستقبل والإرشاد المهني والجامعي والريادة.",
+                    "معارض المبتكرات والمواهب الطلابية وإنتاج النوادي المدرسية."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "المجتمع المدرسي",
+                code: "1-3-1-1",
+                text: "تعزز المدرسة بناء العلاقات الإيجابية والتعاون في المجتمع المدرسي.",
+                suggestedEvidences: [
+                    "خطة وبرامج العلاقات الإنسانية والتكريم لمنسوبي المدرسة والطلبة.",
+                    "محاضر المجالس المدرسية (مجلس المعلمين، المجلس الطلابي).",
+                    "استبانات الرضا الوظيفي ومناخ العمل وتحليل النتائج.",
+                    "المبادرات الاجتماعية والفعاليات المشتركة داخل المدرسة."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "المجتمع المدرسي",
+                code: "1-3-1-2",
+                text: "تعزز المدرسة مشاركة الأسرة في تعلم أبنائهم، والتحضير لمستقبلهم.",
+                suggestedEvidences: [
+                    "خطة الشراكة بين المدرسة والأسرة (ميثاق الشراكة، الجمعيات واللقاءات).",
+                    "محاضر اجتماعات الجمعية العمومية ومجلس أولياء الأمور.",
+                    "قنوات الاتصال المفعلة مع الأسرة (الرسائل، الاجتماعات الفردية، منصة مدرستي).",
+                    "برامج وورش عمل تثقيفية موجهة لأولياء الأمور لدعم تعلم الأبناء."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "المجتمع المدرسي",
+                code: "1-3-1-3",
+                text: "تعزز المدرسة الشراكة المجتمعية لدعم التعلم والتأثير الإيجابي في المجتمع.",
+                suggestedEvidences: [
+                    "عقود ومذكرات تفاهم وشراكات مجتمعية مع مؤسسات حكومية أو خاصة أو قطاع غير ربحي.",
+                    "مبادرات تطوعية وخدمية نفذتها المدرسة للمجتمع المحلي.",
+                    "تقارير استخدام مرافق المدرسة في خدمة المجتمع أو استضافة فعاليات خارجية.",
+                    "أثر الشراكات المجتمعية على دعم العملية التعليمية والمادية."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التطوير المؤسسي",
+                code: "1-4-1-1",
+                text: "(*) توفر المدرسة كادراً تعليمياً مكتملاً ومؤهلاً بما يتسق مع المهام الموكلة له. (خاص بالأهلية والعالمية)",
+                suggestedEvidences: [
+                    "سجل التشكيلات المدرسية وتوزيع الأنصبة والتخصصات المعتمدة.",
+                    "ملفات مسوغات التعيين والمؤهلات الأكاديمية للكادر التعليمي.",
+                    "عقود العمل وقرارات التكليف وفق التخصصات الدراسية."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التطوير المؤسسي",
+                code: "1-4-1-2",
+                text: "(*) توفر المدرسة كادراً إدارياً مكتملاً ومؤهلاً بما يتسق مع المهام الموكلة له. (خاص بالأهلية والعالمية)",
+                suggestedEvidences: [
+                    "الهيكل التنظيمي المعتمد للإدارة والوظائف المساندة (توجيه، صحة، حراسة، إدارة).",
+                    "ملفات السير الذاتية والمؤهلات والخبرات للكادر الإداري.",
+                    "التوصيف الوظيفي وقرارات توزيع المهام الإدارية."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التطوير المؤسسي",
+                code: "1-4-1-3",
+                text: "(*) تظهر المدرسة الملاءة والاستدامة المالية. (خاص بالأهلية والعالمية)",
+                suggestedEvidences: [
+                    "الميزانية التشغيلية والتقارير المالية المعتمدة.",
+                    "شهادات الالتزام المالي والتأمينات والشهادات الزكوية والضريبية السارية.",
+                    "خطة الاستدامة المالية وتوفير الموارد والمستلزمات التعليمية."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التطوير المؤسسي",
+                code: "1-4-1-4",
+                text: "تدعم المدرسة منسوبيها للحصول على الرخصة المهنية، وتتابعها.",
+                suggestedEvidences: [
+                    "قاعدة بيانات رصد حالة الرخص المهنية لجميع شاغلي الوظائف التعليمية.",
+                    "خطة الدعم والبرامج التدريبية المنفذة للتهيئة لاختبارات الرخصة المهنية.",
+                    "نسبة المعلمين الحاصلين على الرخصة المهنية (ممارس، متقدم، خبير).",
+                    "تكريم المعلمين الحاصلين على الرخصة المهنية ودعم المتقدمين الجدد."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التطوير المؤسسي",
+                code: "1-4-1-5",
+                text: "تدعم المدرسة التطوير المهني لمنسوبيها وفقاً لنتائج التقويم وتحليل احتياجاتهم.",
+                suggestedEvidences: [
+                    "استبانة أو أداة حصر وتحديد الاحتياجات التدريبية والتطويرية للمعلمين.",
+                    "خطة التطوير المهني الداخلي (مجتمعات التعلم المهنية PLC، ورش العمل، تبادل الزيارات).",
+                    "سجلات البرامج التدريبية وحضور منصات التطوير وساعات التطوير المهني.",
+                    "تقارير قياس أثر التطوير المهني على الأداء التدريسي والنتائج."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التطوير المؤسسي",
+                code: "1-4-1-6",
+                text: "تطبق المدرسة التقويم الذاتي المبني على المعايير المعتمدة من الهيئة بشكل مستمر.",
+                suggestedEvidences: [
+                    "قرار تشكيل فريق ولجنة التقويم الذاتي وتوزيع المهام.",
+                    "استمارة وتقرير التقويم الذاتي المعتمد على منصة هيئة تقويم التعليم (تميز).",
+                    "محاضر جمع وتحليل الشواهد والأدلة وفق المجالات الأربعة.",
+                    "استطلاعات رأي المستفيدين (الطلبة، المعلمون، أولياء الأمور) الخاصة بالتقويم الذاتي."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "التطوير المؤسسي",
+                code: "1-4-1-7",
+                text: "تنفذ المدرسة خطة التحسين بناء على نتائج التقويم المدرسي، وتتابعها.",
+                suggestedEvidences: [
+                    "وثيقة خطة التحسين والتطوير المدرسي الناتجة عن التقويم الذاتي/الخارجي.",
+                    "سجلات متابعة تنفيذ المبادرات والبرامج التحسينية لمعالجة نقاط الضعف.",
+                    "تقارير دورية تثبت التقدم المحرز في مؤشرات الأداء المستهدفة بالخطة.",
+                    "محاضر المراجعة والتعديل على خطة التحسين."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "حقوق المتعلم وحمايته",
+                code: "1-5-1-1",
+                text: "تلتزم المدرسة بالمحافظة على حقوق المتعلمين، وحمايتهم.",
+                suggestedEvidences: [
+                    "لائحة حقوق والتزامات الطالب معلنة ومطبقة وموثقة في أرجاء المدرسة.",
+                    "خطة لجنة الحماية من الإيذاء وتوثيق الحالات والتعامل السري معها.",
+                    "برامج توعية الطلاب بحقوقهم وآليات الإبلاغ وطلب المساعدة الآمنة.",
+                    "عدم وجود أي ممارسات عقاب بدني أو نفسي موثقة بسجلات المتابعة."
+                ]
+            },
+            {
+                domainId: "domain-1",
+                domainName: "الإدارة المدرسية",
+                standardName: "حقوق المتعلم وحمايته",
+                code: "1-5-1-2",
+                text: "توفر المدرسة مناخاً آمناً للتعلم والنمو نفسياً واجتماعياً.",
+                suggestedEvidences: [
+                    "برامج التوجيه الطلابي للوقاية من التنمر والتكيف النفسي والاجتماعي.",
+                    "بيئة مدرسية جاذبة وخالية من مهددات السلامة النفسية.",
+                    "نتائج استبانات الأمان والمناخ المدرسي للطلاب وأولياء الأمور.",
+                    "سجلات التدخل السريع للحالات الطارئة النفسية أو الاجتماعية."
+                ]
+            },
+
+            // Domain 2: التعليم والتعلم
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-1",
+                text: "توفر المدرسة فرصاً متكافئة للتعلم تلبي احتياجات المتعلمين، ومنهم ذوو الإعاقة والموهوبون.",
+                suggestedEvidences: [
+                    "خطط التدريس المتمايز داخل الفصول لمراعاة الفروق الفردية.",
+                    "الخطط التربوية الفردية لطلاب التربية الخاصة وصعوبات التعلم.",
+                    "البرامج الإثرائية الخاصة بالطلاب الموهوبين والمتفوقين.",
+                    "تكييف البيئة الصفية وأساليب التدريس لضمان وصول التعلم للجميع."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-2",
+                text: "تدعم المدرسة تنفيذ المناهج بما يحقق نواتج التعلم المستهدفة.",
+                suggestedEvidences: [
+                    "الخطة الدراسية وتوزيع المناهج وفق الجداول الزمنية للوزارة.",
+                    "سجلات التحضير وتخطيط الدروس المركز على نواتج التعلم في منصة مدرستي.",
+                    "سجلات الزيارات الإشرافية لمدير المدرسة والمشرفين لمتابعة تنفيذ المناهج.",
+                    "تقارير تغطية المناهج والمشاريع المنهجية التطبيقية."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-3",
+                text: "تنوع المدرسة في إستراتيجيات التعليم والتعلم لتلبية احتياجات المتعلمين، ودعم تعلمهم.",
+                suggestedEvidences: [
+                    "نماذج تحضير وخطط دروس تطبق استراتيجيات (التعلم النشط، حل المشكلات، الاستقصاء، التعلم التعاوني).",
+                    "توثيق مصور وفيديوهات لدروس تفاعلية متنوعة الاستراتيجيات.",
+                    "استمارات الملاحظة الصفية التي تؤكد تنوع الاستراتيجيات وفاعلية إشراك الطلاب.",
+                    "ملفات إنجاز المعلمين ونماذج تطبيقات الاستراتيجيات الحديثة."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-4",
+                text: "تفعل المدرسة التقنية الرقمية لدعم تعلم المتعلمين وتلبية احتياجاتهم.",
+                suggestedEvidences: [
+                    "مؤشرات استخدام وتفعيل منصة مدرستي (واجبات، اختبارات، إثراءات، دروس متزامنة).",
+                    "استخدام الشاشات التفاعلية، الأجهزة اللوحية، المعامل الرقمية في الحصص.",
+                    "تطبيقات الذكاء الاصطناعي والبرمجيات التعليمية التفاعلية المستخدمة.",
+                    "سجلات التدريب على الأدوات والمنصات الرقمية للطلاب والمعلمين."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-5",
+                text: "تنفذ المدرسة أنشطة تعلم تطبيقية ترتبط بحياة المتعلمين.",
+                suggestedEvidences: [
+                    "مشاريع طلابية وبحوث وتجارب عملية مرتبطة بالواقع والحياة اليومية.",
+                    "توثيق الزيارات الميدانية والرحلات العلمية والاستكشافية التطبيقية.",
+                    "معارض مشاريع الطلاب ونماذج حل المشكلات الواقعية.",
+                    "تقارير الأنشطة اللاصفية وربط المفاهيم النظرية بالتطبيق العملي."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-6",
+                text: "تنمي المدرسة المهارات القرائية والعددية الأساسية لدى المتعلمين.",
+                suggestedEvidences: [
+                    "البرامج والخطط الخاصة بتعزيز المهارات القرائية والكتابية (نادي القراءة، طلاقة القراءة).",
+                    "برامج وخطط تعزيز المهارات الحسابية والعددية واستراتيجيات الحساب الذهني.",
+                    "نتائج القياسات القبلية والبعدية للمهارات الأساسية للطلاب.",
+                    "سجلات وخطط الدعم والعلاج لفاقد المهارات الأساسية."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-7",
+                text: "تنمي المدرسة مهارات التفكير والبحث والابتكار لدى المتعلمين.",
+                suggestedEvidences: [
+                    "نماذج من أبحاث الطلاب ومشاريع التفكير الإبداعي ومهارات الاستقصاء.",
+                    "تفعيل نوادي العلوم والبحث والابتكار والذكاء الاصطناعي والروبوت.",
+                    "مشاركات الطلاب في المعارض العلمية والمسابقات الإبداعية.",
+                    "خطط الدروس المتضمنة أسئلة مهارات التفكير العليا (تحليل، تركيب، تقويم)."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-8",
+                text: "تنمي المدرسة المهارات العاطفية والاجتماعية لدى المتعلمين.",
+                suggestedEvidences: [
+                    "برامج تنمية الوعي الذاتي، وإدارة المشاعر، ومهارات العمل الجماعي والتواصل.",
+                    "أنشطة التعلم الاجتماعي العاطفي (SEL) المدمجة في الحصص والأنشطة.",
+                    "سجلات الأنشطة الجماعية والمسرح المدرسي والمبادرات الطلابية التعاونية.",
+                    "ملاحظات التقييم السلوكي والتفاعل الاجتماعي بين الطلاب."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "بناء خبرات التعلم",
+                code: "2-1-1-9",
+                text: "تعزز المدرسة دافعية المتعلمين للتعلم، والاستمتاع به.",
+                suggestedEvidences: [
+                    "لوحات التميز ومنظومات التعزيز والحوافز والجوائز الصفية والمدرسية.",
+                    "بيئات تعلم محفزة وتطبيق استراتيجيات التلعيب والتعلم باللعب.",
+                    "استطلاعات رأي الطلاب حول المتعة والجاذبية في بيئة التعلم.",
+                    "معارض وفعاليات الاحتفاء بنجاحات وإنجازات الطلاب الدورية."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "تقويم التعلم",
+                code: "2-2-1-1",
+                text: "تطبق المدرسة أساليب وأدوات تقويم متنوعة للكشف عن مستويات أداء المتعلمين المختلفة.",
+                suggestedEvidences: [
+                    "نماذج أدوات التقويم المتنوعة (التقويم التكويني، بطاقات الملاحظة، سلالم التقدير Rubrics، ملفات الإنجاز).",
+                    "سجلات رصد درجات أعمال السنة والاختبارات القصيرة والمشاريع.",
+                    "ملفات نماذج الأسئلة المتدرجة وفق مستويات الصعوبة.",
+                    "سجلات التقويم التشخيصي والقبلي في بداية الفصول والوحدات."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "تقويم التعلم",
+                code: "2-2-1-2",
+                text: "تطبق المدرسة أساليب وأدوات متنوعة لتقويم نواتج التعلم المستهدفة في مناهج التعليم.",
+                suggestedEvidences: [
+                    "جداول المواصفات للاختبارات ونماذج الإجابة وتوافقها مع نواتج التعلم.",
+                    "نماذج تقييم المهارات الأدائية والعملية والمشاريع المنهجية.",
+                    "سجلات تقويم نواتج التعلم المعرفية والمهارية والوجدانية في المواد الدراسية."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "تقويم التعلم",
+                code: "2-2-1-3",
+                text: "تحلل المدرسة نتائج التقويم، وتوظفها في تحسين عمليات التعليم والتعلم والتقويم.",
+                suggestedEvidences: [
+                    "تقارير التحليل الإحصائي لنتائج الاختبارات الفصلية والقصيرة.",
+                    "تحليل مستويات الطلاب وتحديد الفاقد التعليمي ونقاط الضعف والقوة.",
+                    "الخطط العلاجية للطلاب المتعثرين وخطط الإثراء للمتفوقين المبنية على التحليل.",
+                    "محاضر اجتماعات الأقسام والمجالس لمناقشة واستثمار نتائج التقويم."
+                ]
+            },
+            {
+                domainId: "domain-2",
+                domainName: "التعليم والتعلم",
+                standardName: "تقويم التعلم",
+                code: "2-2-1-4",
+                text: "تقدم المدرسة التغذية الراجعة للمتعلمين وأولياء أمورهم، وتتابع تقدمهم بشكل مستمر.",
+                suggestedEvidences: [
+                    "نماذج التغذية الراجعة الوصفية على واجبات واختبارات ودفاتر الطلاب.",
+                    "تقارير الإشعار الدوري للأسر بمستويات أبنائهم عبر منصة مدرستي أو نظام نور.",
+                    "سجلات اللقاءات الفردية مع أولياء الأمور لمناقشة الخطط العلاجية وتطور الأداء.",
+                    "سجلات متابعة التطور والتحسن في أداء الطلاب المستهدفين."
+                ]
+            },
+
+            // Domain 3: نواتج التعلم
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التحصيل التعليمي",
+                code: "3-1-1-1",
+                text: "يحقق المتعلمون نتائج مرتفعة في مجال القراءة وفقاً للاختبارات الوطنية (نافس).",
+                suggestedEvidences: [
+                    "بطاقة تقرير المدرسة في الاختبارات الوطنية (نافس) لمجال القراءة.",
+                    "مقارنة متوسط أداء المدرسة مع المتوسط العام لمكتب التعليم وعلى مستوى المملكة.",
+                    "قاعدة بيانات درجات ونتائج الطلاب في مهارات القراءة والاستيعاب القرائي."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التحصيل التعليمي",
+                code: "3-1-1-2",
+                text: "يحقق المتعلمون نتائج مرتفعة في مجال الرياضيات وفقاً للاختبارات الوطنية (نافس).",
+                suggestedEvidences: [
+                    "بطاقة تقرير المدرسة في الاختبارات الوطنية (نافس) لمجال الرياضيات.",
+                    "تحليل درجات الطلاب ونسب إتقان المعايير الرياضية المستهدفة.",
+                    "مقارنة أداء المدرسة بمتوسط المنطقة والمملكة."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التحصيل التعليمي",
+                code: "3-1-1-3",
+                text: "يحقق المتعلمون نتائج مرتفعة في مجال العلوم وفقاً للاختبارات الوطنية (نافس).",
+                suggestedEvidences: [
+                    "بطاقة تقرير المدرسة في الاختبارات الوطنية (نافس) لمجال العلوم.",
+                    "تحليل أداء الطلاب في مهارات الاستقصاء العلمي والمفاهيم العلمية.",
+                    "مقارنة مستوى المدرسة بالمتوسطات الوطنية."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التحصيل التعليمي",
+                code: "3-1-1-4",
+                text: "يحقق المتعلمون تقدماً في مجال القراءة قياساً على مستوى أداء المدرسة السابق في الاختبارات الوطنية.",
+                suggestedEvidences: [
+                    "جدول المقارنة الزمنية لأداء المدرسة في القراءة عبر الأعوام السابقة (نمو الأداء).",
+                    "تقرير قياس الأثر والتحسن بعد تطبيق البرامج العلاجية والقرائية.",
+                    "مؤشر نسبة التقدم الإيجابي في درجات نافس للقراءة."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التحصيل التعليمي",
+                code: "3-1-1-5",
+                text: "يحقق المتعلمون تقدماً في مجال الرياضيات قياساً على مستوى أداء المدرسة السابق في الاختبارات الوطنية.",
+                suggestedEvidences: [
+                    "جدول مقارنة نتائج الرياضيات عبر السنوات السابقة لإظهار التحسن المستمر.",
+                    "تقارير قياس أثر البرامج التدريبية والاختبارات التجريبية لنافس.",
+                    "نسبة الزيادة في درجات الطلاب المحققة للأداء المطلوب."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التحصيل التعليمي",
+                code: "3-1-1-6",
+                text: "يحقق المتعلمون تقدماً في مجال العلوم قياساً على مستوى أداء المدرسة السابق في الاختبارات الوطنية.",
+                suggestedEvidences: [
+                    "تحليل مقارن لنتائج العلوم للاختبارات الوطنية بين العام الحالي والأعوام السابقة.",
+                    "شواهد نمو المهارات العلمية لدى الطلاب وأثر التطبيقات المعملية.",
+                    "تقارير التحسن التصاعدي لمخرجات العلوم."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التطور الشخصي والصحي والاجتماعي",
+                code: "3-2-1-1",
+                text: "يظهر المتعلمون الاعتزاز بالقيم والهوية الوطنية.",
+                suggestedEvidences: [
+                    "سجلات المشاركة في الفعاليات الوطنية والمسابقات الثقافية والتراثية.",
+                    "استطلاعات وملاحظات التوجيه الطلابي لقياس مدى الالتزام والاعتزاز بالهوية.",
+                    "مبادرات الطلاب في إبراز التراث والثقافة السعودية داخل وخارج المدرسة."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التطور الشخصي والصحي والاجتماعي",
+                code: "3-2-1-2",
+                text: "يظهر المتعلمون اتجاهات إيجابية نحو ذواتهم والآخرين.",
+                suggestedEvidences: [
+                    "استبانات تقدير الذات والروح الإيجابية والعلاقات البناءة بين الأقران.",
+                    "تقارير المرشد الطلابي حول انخفاض النزاعات وزيادة التعاون بين الطلاب.",
+                    "مبادرات الدعم والمساندة الطلابية للأقران (برامج الطالب المساند)."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التطور الشخصي والصحي والاجتماعي",
+                code: "3-2-1-3",
+                text: "يظهر المتعلمون التزاماً بالممارسات الصحية السليمة.",
+                suggestedEvidences: [
+                    "تقارير المرشد الصحي والموجه الصحي المدرسي حول العادات الغذائية والصحية.",
+                    "التزام الطلاب بالاشتراطات الصحية للمقصف المدرسي والغذاء المتوازن.",
+                    "مشاركة الطلاب في برامج اللياقة البدنية، الفحص الدوري، والنشاط الرياضي.",
+                    "سجلات التثقيف الصحي وتفاعل الطلاب مع برامج الوقاية."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التطور الشخصي والصحي والاجتماعي",
+                code: "3-2-1-4",
+                text: "يشارك المتعلمون في الأنشطة المجتمعية والأعمال التطوعية.",
+                suggestedEvidences: [
+                    "سجلات النادي التطوعي بالمدرسة وساعات العمل التطوعي المعتمدة على المنصة الوطنية للعمل التطوعي.",
+                    "تقارير وتوثيق المبادرات المجتمعية التي شارك فيها الطلاب (نظافة، تشجير، خدمة مسنين، حملات توعية).",
+                    "شهادات الشكر والتقدير للطلاب المشاركين في الأنشطة التطوعية."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التطور الشخصي والصحي والاجتماعي",
+                code: "3-2-1-5",
+                text: "يلتزم المتعلمون بقواعد السلوك والانضباط المدرسي.",
+                suggestedEvidences: [
+                    "سجلات لجنة التوجيه الطلابي وقواعد السلوك والمواظبة (انخفاض المخالفات السلوكية).",
+                    "تقارير نسب الانضباط والالتزام بالمظهر العام والزي المدرسي والمواعيد.",
+                    "شهادات التكريم للطلاب والصفوف الأكثر انضباطاً وسلوكاً متميزاً."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التطور الشخصي والصحي والاجتماعي",
+                code: "3-2-1-6",
+                text: "يظهر المتعلمون الاستقلالية والقدرة على التعلم الذاتي.",
+                suggestedEvidences: [
+                    "سجلات تفعيل التعلم الذاتي عبر منصة مدرستي، والمهام والبحوث المستقلة.",
+                    "نماذج تخطيط الطلاب لتعلمهم وإدارة الوقت والمهام التعليمية بأنفسهم.",
+                    "سجلات استعارة الكتب وزيارة مركز مصادر التعلم والمكتبة."
+                ]
+            },
+            {
+                domainId: "domain-3",
+                domainName: "نواتج التعلم",
+                standardName: "التطور الشخصي والصحي والاجتماعي",
+                code: "3-2-1-7",
+                text: "يظهر المتعلمون اعتزازاً بثقافتهم واحتراماً للتنوع الثقافي في المجتمع.",
+                suggestedEvidences: [
+                    "توثيق الفعاليات الثقافية العالمية والمحلية ومعارض تبادل الثقافات.",
+                    "مؤشرات الاحترام والتعايش الإيجابي بين الطلاب من مختلف الخلفيات.",
+                    "أنشطة تعزيز التسامح والانفتاح الحضاري الواعي."
+                ]
+            },
+
+            // Domain 4: البيئة المدرسية
+            {
+                domainId: "domain-4",
+                domainName: "البيئة المدرسية",
+                standardName: "المبنى المدرسي",
+                code: "4-1-1-1",
+                text: "توفر المدرسة مبنى تعليمي يستوفي المواصفات والاشتراطات المعتمدة من حيث النوع والخدمات المساندة.",
+                suggestedEvidences: [
+                    "صك أو عقد إيجار المبنى أو قرار الاستلام الحكومي المعتمد للمبنى التعليمي.",
+                    "رخصة الدفاع المدني وشهادة إتمام البناء والاشتراطات البلدية المعتمدة.",
+                    "تقرير الطاقة الاستيعابية المعتمدة ومطابقتها للمعايير والاشتراطات الوزارية.",
+                    "مخطط المبنى ومرافقه والخدمات المساندة المعتمدة."
+                ]
+            },
+            {
+                domainId: "domain-4",
+                domainName: "البيئة المدرسية",
+                standardName: "المبنى المدرسي",
+                code: "4-1-1-2",
+                text: "تنظيم مبنى المدرسة ملائم لعدد المتعلمين وخصائص المرحلة العمرية، ومنهم ذوو الإعاقة.",
+                suggestedEvidences: [
+                    "توزيع الفصول والمراحل وفق المراحل العمرية بما يضمن سهولة الحركة والأمان.",
+                    "توفير الممرات والمنحدرات (Ramps) والمصاعد والمسارات المخصصة لذوي الإعاقة.",
+                    "لوحات إرشادية وتوجيهية واضحة ومناسبة للمرحلة في كافة أرجاء المبنى.",
+                    "ملاءمة الساحات والملاعب لعدد الطلاب وأنشطتهم الحركية."
+                ]
+            },
+            {
+                domainId: "domain-4",
+                domainName: "البيئة المدرسية",
+                standardName: "المبنى المدرسي",
+                code: "4-1-1-3",
+                text: "تتوافر فصول ومعامل ملائمة للعملية التعليمية تلبي احتياجات المتعلمين، ومنهم ذوو الإعاقة.",
+                suggestedEvidences: [
+                    "جاهزية الفصول الدراسية وتجهيزها بالإضاءة والتهوية والتكييف المناسب والسبورات الذكية.",
+                    "جاهزية المعامل والمختبرات (معامل علوم، معامل حاسب، مراكز مصادر تعلم) وملاءمتها للاستخدام.",
+                    "تجهيز غرف المصادر وفصول التربية الخاصة بما يلبي احتياجات ذوي الإعاقة.",
+                    "سجلات جدول إشغال المعامل واستخدامها التعليمي الفعلي."
+                ]
+            },
+            {
+                domainId: "domain-4",
+                domainName: "البيئة المدرسية",
+                standardName: "المبنى المدرسي",
+                code: "4-1-1-4",
+                text: "تلبي المرافق والتجهيزات والخدمات المساندة احتياجات المتعلمين، ومنهم ذوو الإعاقة.",
+                suggestedEvidences: [
+                    "ملاءمة ونظافة دورات المياه وتجهيز دورات مياه خاصة لذوي الإعاقة ومجهزة بالكامل.",
+                    "جاهزية العيادة المدرسية وتوفير مستلزمات الإسعافات الأولية والتجهيزات الصحية.",
+                    "المقصف المدرسي والصالات الرياضية والمكتبة وتجهيزاتها الملائمة.",
+                    "مواقف سيارات مخصصة ومداخل ميسرة ومجهزة."
+                ]
+            },
+            {
+                domainId: "domain-4",
+                domainName: "البيئة المدرسية",
+                standardName: "الأمن والسلامة",
+                code: "4-2-1-1",
+                text: "تتوافر في مبنى المدرسة ومرافقها جميع متطلبات الأمن والسلامة.",
+                suggestedEvidences: [
+                    "خطة الأمن والسلامة المدرسية وخطة الإخلاء المعتمدة وتشكيل لجنة السلامة والطوارئ.",
+                    "توثيق تنفيذ خطط الإخلاء الافتراضية الدورية للطلاب والمعلمين (صور، فيديوهات، توقيتات).",
+                    "صلاحية طفايات الحريق، خراطيم المياه، جرس الإنذار، ومخارج الطوارئ ومسارات الهروب الخالية من العوائق.",
+                    "كاميرات المراقبة الأمنية وبطاقات الزوار وسجلات أمن البوابات والحراسات."
+                ]
+            },
+            {
+                domainId: "domain-4",
+                domainName: "البيئة المدرسية",
+                standardName: "الأمن والسلامة",
+                code: "4-2-1-2",
+                text: "تتابع المدرسة صيانة المبنى وجميع مرافقه وتجهيزاته بشكل دوري.",
+                suggestedEvidences: [
+                    "خطة وسجلات الصيانة الدورية والوقائية (الكهرباء، التكييف، السباكة، المصاعد، أجهزة الإنذار).",
+                    "سجل بلاغات الصيانة ومتابعة الإغلاق الفوري عبر منصة صيانة المعتمدة.",
+                    "عقود الصيانة السارية للأنظمة والمعدات والشهادات الدورية للمقاولين.",
+                    "استمارات الفحص الدوري ومحاضر التفقد الصباحي لسلامة المبنى."
+                ]
+            },
+            {
+                domainId: "domain-4",
+                domainName: "البيئة المدرسية",
+                standardName: "الأمن والسلامة",
+                code: "4-2-1-3",
+                text: "تتابع المدرسة نظافة المبنى المدرسي وجميع مرافقه بشكل مستمر.",
+                suggestedEvidences: [
+                    "خطة وجدول النظافة اليومي والأسبوعي والشامل لجميع المرافق والفصول ودورات المياه.",
+                    "سجلات إشراف ومتابعة عمال النظافة وتوفير أدوات ومواد النظافة والتعقيم.",
+                    "برامج ومبادرات إشراك الطلاب في المحافظة على النظافة والبيئة المدرسية.",
+                    "استمارات التقييم والملاحظة اليومية لنظافة المقصف والفناء ودورات المياه."
+                ]
+            }
+        ];
+
+        // State Store
+        let userEvidenceData = {};
+        let isSaving = false;
+        let saveTimeout = null;
+
+        // Initialize default structure
+        function initializeDefaultStructure() {
+            standardsData.forEach(item => {
+                if (!userEvidenceData[item.code]) {
+                    userEvidenceData[item.code] = {
+                        status: 'غير مكتمل',
+                        checkedEvidences: [],
+                        customLink: '',
+                        fileNames: '',
+                        notes: ''
+                    };
+                }
+            });
+        }
+
+        // Setup Cloud Auth and Real-time listener
+        async function initCloudSync() {
+            const statusDot = document.getElementById('syncStatusDot');
+            const statusText = document.getElementById('syncStatusText');
+            const userIdDisplay = document.getElementById('displayUserId');
+
+            if (!auth || !db) {
+                if (statusText) statusText.innerText = "يعمل بدون اتصال بالخادم (حفظ محلي)";
+                if (statusDot) statusDot.className = "w-2.5 h-2.5 rounded-full bg-slate-400";
+                initializeDefaultStructure();
+                renderAllDomains();
+                updateStats();
+                renderFullReport();
+                return;
+            }
+
+            try {
+                // RULE 3: Auth Before Queries
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                currentUser = auth.currentUser;
+                const userId = currentUser ? currentUser.uid : 'anonymous_user';
+
+                if (userIdDisplay) userIdDisplay.innerText = userId;
+                if (statusText) statusText.innerText = "متصل بالسيرفر السحابي الخاص بك 🟢";
+                if (statusDot) statusDot.className = "w-2.5 h-2.5 rounded-full bg-emerald-400";
+
+                // RULE 1: Strict Paths for Private Data
+                const userDocRef = doc(db, 'artifacts', appId, 'users', userId, 'school_data', 'evidences_doc');
+
+                // Real-time Cloud Snapshot listener with mandatory error callback
+                if (firestoreDocUnsubscribe) firestoreDocUnsubscribe();
+                firestoreDocUnsubscribe = onSnapshot(userDocRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        const cloudData = docSnap.data();
+                        if (cloudData && cloudData.evidences) {
+                            userEvidenceData = cloudData.evidences;
+                        }
+                    }
+                    initializeDefaultStructure();
+                    renderAllDomains();
+                    updateStats();
+                    renderFullReport();
+                }, (error) => {
+                    console.error("Cloud sync snapshot error:", error);
+                    showToast("تنبيه: تعذر جلب التحديثات السحابية", true);
+                });
+
+            } catch (authErr) {
+                console.error("Cloud Authentication failed:", authErr);
+                if (statusText) statusText.innerText = "تعذر الاتصال بالسيرفر السحابي (وضع عدم الاتصال)";
+                if (statusDot) statusDot.className = "w-2.5 h-2.5 rounded-full bg-rose-400";
+                initializeDefaultStructure();
+                renderAllDomains();
+                updateStats();
+                renderFullReport();
+            }
+        }
+
+        // Save Data to Cloud Server
+        async function saveData() {
+            updateStats();
+            renderFullReport();
+
+            if (!db || !auth || !auth.currentUser) {
+                showToast("تم الحفظ في الذاكرة الحالية");
+                return;
+            }
+
+            const statusText = document.getElementById('syncStatusText');
+            const statusDot = document.getElementById('syncStatusDot');
+            if (statusDot) statusDot.className = "w-2.5 h-2.5 rounded-full bg-amber-400 animate-spin";
+            if (statusText) statusText.innerText = "جارٍ حفظ الشواهد على السيرفر...";
+
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(async () => {
+                try {
+                    const userId = auth.currentUser.uid;
+                    const userDocRef = doc(db, 'artifacts', appId, 'users', userId, 'school_data', 'evidences_doc');
+                    await setDoc(userDocRef, {
+                        evidences: userEvidenceData,
+                        updatedAt: new Date().toISOString(),
+                        totalIndicators: standardsData.length
+                    }, { merge: true });
+
+                    if (statusDot) statusDot.className = "w-2.5 h-2.5 rounded-full bg-emerald-400";
+                    if (statusText) statusText.innerText = "تم حفظ جميع التعديلات سحابياً بنجاح ✅";
+                    showToast("تم الحفظ السحابي بنجاح ☁️");
+                } catch (error) {
+                    console.error("Error saving data to cloud server:", error);
+                    if (statusDot) statusDot.className = "w-2.5 h-2.5 rounded-full bg-rose-500";
+                    if (statusText) statusText.innerText = "حدث خطأ أثناء الحفظ السحابي";
+                    showToast("تعذر الحفظ على السيرفر، يرجى التحقق من الاتصال", true);
+                }
+            }, 300);
+        }
+
+        // Switch Navigation Tabs
+        function switchTab(tabId) {
+            document.querySelectorAll('.page-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                el.classList.remove('bg-white', 'text-teal-900', 'shadow');
+                el.classList.add('text-slate-100');
+            });
+
+            const targetPage = document.getElementById(`page-${tabId}`);
+            const targetNav = document.getElementById(`nav-${tabId}`);
+
+            if (targetPage) targetPage.classList.remove('hidden');
+            if (targetNav) {
+                targetNav.classList.add('bg-white', 'text-teal-900', 'shadow');
+                targetNav.classList.remove('text-slate-100');
+            }
+
+            if (tabId === 'full-report') {
+                renderFullReport();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render Cards for each domain
+        function renderAllDomains() {
+            const domains = ['domain-1', 'domain-2', 'domain-3', 'domain-4'];
+            domains.forEach(dId => {
+                const container = document.getElementById(`${dId}-container`);
+                if (!container) return;
+
+                const items = standardsData.filter(i => i.domainId === dId);
+                
+                // Group by standardName
+                const grouped = {};
+                items.forEach(item => {
+                    if (!grouped[item.standardName]) grouped[item.standardName] = [];
+                    grouped[item.standardName].push(item);
+                });
+
+                let html = '';
+                for (const [standardName, indicators] of Object.entries(grouped)) {
+                    html += `
+                        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                            <div class="bg-slate-50/80 px-6 py-3.5 border-b border-slate-200 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-folder-open text-teal-700"></i>
+                                    <h3 class="font-extrabold text-slate-800 text-sm sm:text-base">معيار: ${standardName}</h3>
+                                </div>
+                                <span class="text-xs font-bold text-slate-500 bg-slate-200/70 px-2.5 py-1 rounded-full">${indicators.length} مؤشرات</span>
+                            </div>
+                            <div class="divide-y divide-slate-100">
+                                ${indicators.map(ind => renderIndicatorCard(ind)).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                container.innerHTML = html;
+            });
+        }
+
+        // Render Individual Indicator Card
+        function renderIndicatorCard(ind) {
+            const data = userEvidenceData[ind.code] || {
+                status: 'غير مكتمل',
+                checkedEvidences: [],
+                customLink: '',
+                fileNames: '',
+                notes: ''
+            };
+
+            const statusColors = {
+                'مكتمل': 'bg-emerald-50 text-emerald-800 border-emerald-300',
+                'قيد الإنجاز': 'bg-amber-50 text-amber-800 border-amber-300',
+                'غير مكتمل': 'bg-rose-50 text-rose-800 border-rose-300',
+                'غير منطبق': 'bg-slate-100 text-slate-700 border-slate-300'
+            };
+
+            return `
+                <div class="p-5 sm:p-6 indicator-item transition hover:bg-slate-50/50" data-code="${ind.code}" data-status="${data.status}" data-text="${ind.text} ${ind.standardName} ${ind.code}">
+                    <!-- Top Info -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-1 bg-teal-100 text-teal-900 rounded-lg text-xs font-black tracking-wider border border-teal-200">
+                                ${ind.code}
+                            </span>
+                            <span class="text-xs font-bold text-slate-500">${ind.standardName}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <label class="text-xs font-bold text-slate-600">حالة الشاهد:</label>
+                            <select onchange="window.updateIndicatorField('${ind.code}', 'status', this.value)" class="text-xs font-bold px-3 py-1.5 rounded-lg border focus:ring-2 focus:ring-teal-500 focus:outline-none transition ${statusColors[data.status]}">
+                                <option value="غير مكتمل" ${data.status === 'غير مكتمل' ? 'selected' : ''}>❌ غير مكتمل</option>
+                                <option value="قيد الإنجاز" ${data.status === 'قيد الإنجاز' ? 'selected' : ''}>⏳ قيد الإنجاز</option>
+                                <option value="مكتمل" ${data.status === 'مكتمل' ? 'selected' : ''}>✅ مكتمل وجاهز</option>
+                                <option value="غير منطبق" ${data.status === 'غير منطبق' ? 'selected' : ''}>⚪ غير منطبق</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Indicator Text -->
+                    <h4 class="font-extrabold text-slate-900 text-sm sm:text-base leading-relaxed mb-4">
+                        ${ind.text}
+                    </h4>
+
+                    <!-- Suggested Official Evidences Checklist -->
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 mb-4">
+                        <h5 class="text-xs font-extrabold text-slate-700 mb-2.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-list-check text-teal-600"></i>
+                            قائمة الشواهد والأدلة المقترحة المعتمدة للمؤشر:
+                        </h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            ${ind.suggestedEvidences.map((evText, idx) => {
+                                const isChecked = data.checkedEvidences && data.checkedEvidences.includes(idx);
+                                return `
+                                    <label class="flex items-start gap-2.5 text-xs text-slate-700 p-2 rounded-lg hover:bg-white transition cursor-pointer border border-transparent hover:border-slate-200">
+                                        <input type="checkbox" onchange="window.toggleSuggestedEvidence('${ind.code}', ${idx}, this.checked)" ${isChecked ? 'checked' : ''} class="mt-0.5 rounded text-teal-600 focus:ring-teal-500 h-4 w-4">
+                                        <span class="${isChecked ? 'font-bold text-teal-900' : ''}">${evText}</span>
+                                    </label>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Evidence Custom Inputs (Link + File names + Notes) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">
+                                <i class="fa-solid fa-link text-teal-600"></i> رابط مجلد الشواهد (Drive / Cloud):
+                            </label>
+                            <input type="url" placeholder="https://drive.google.com/..." value="${data.customLink || ''}" onchange="window.updateIndicatorField('${ind.code}', 'customLink', this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none text-slate-800 dir-ltr">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">
+                                <i class="fa-solid fa-file-pdf text-rose-600"></i> اسم الملف أو الوثيقة المرفقة:
+                            </label>
+                            <input type="text" placeholder="مثال: الخطة_التشغيلية_2026.pdf" value="${data.fileNames || ''}" onchange="window.updateIndicatorField('${ind.code}', 'fileNames', this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none text-slate-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">
+                                <i class="fa-solid fa-sticky-note text-amber-500"></i> ملاحظات فريق التقويم والجودة:
+                            </label>
+                            <input type="text" placeholder="اكتب أي ملاحظة أو تاريخ التحديث..." value="${data.notes || ''}" onchange="window.updateIndicatorField('${ind.code}', 'notes', this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none text-slate-800">
+                        </div>
+                    </div>
+
+                    <!-- Quick Cloud Link Open Button if exists -->
+                    ${data.customLink ? `
+                        <div class="mt-3 flex justify-end">
+                            <a href="${data.customLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 bg-teal-50 hover:bg-teal-100 px-3 py-1 rounded-lg border border-teal-200 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                فتح رابط الشاهد السحابي
+                            </a>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // Toggle Suggested Evidence
+        window.toggleSuggestedEvidence = function(code, idx, checked) {
+            if (!userEvidenceData[code]) return;
+            if (!userEvidenceData[code].checkedEvidences) userEvidenceData[code].checkedEvidences = [];
+
+            if (checked) {
+                if (!userEvidenceData[code].checkedEvidences.includes(idx)) {
+                    userEvidenceData[code].checkedEvidences.push(idx);
+                }
+            } else {
+                userEvidenceData[code].checkedEvidences = userEvidenceData[code].checkedEvidences.filter(i => i !== idx);
+            }
+
+            // Auto switch status to 'قيد الإنجاز' or 'مكتمل' if needed
+            if (userEvidenceData[code].checkedEvidences.length > 0 && userEvidenceData[code].status === 'غير مكتمل') {
+                userEvidenceData[code].status = 'قيد الإنجاز';
+            }
+
+            saveData();
+        };
+
+        // Update single field
+        window.updateIndicatorField = function(code, field, value) {
+            if (!userEvidenceData[code]) return;
+            userEvidenceData[code][field] = value;
+            saveData();
+            const item = standardsData.find(i => i.code === code);
+            if (item) {
+                renderAllDomains();
+            }
+        };
+
+        // Update Dashboard Statistics
+        function updateStats() {
+            let total = standardsData.length;
+            let completed = 0;
+            let inProgress = 0;
+            let pending = 0;
+
+            const domainCounts = {
+                'domain-1': { total: 0, completed: 0 },
+                'domain-2': { total: 0, completed: 0 },
+                'domain-3': { total: 0, completed: 0 },
+                'domain-4': { total: 0, completed: 0 }
+            };
+
+            standardsData.forEach(item => {
+                const data = userEvidenceData[item.code];
+                domainCounts[item.domainId].total++;
+
+                if (data) {
+                    if (data.status === 'مكتمل') {
+                        completed++;
+                        domainCounts[item.domainId].completed++;
+                    } else if (data.status === 'قيد الإنجاز') {
+                        inProgress++;
+                    } else if (data.status === 'غير منطبق') {
+                        // Counted as non-pending
+                    } else {
+                        pending++;
+                    }
+                } else {
+                    pending++;
+                }
+            });
+
+            // Set Global Counts
+            const totalEl = document.getElementById('totalIndicatorsCount');
+            const compEl = document.getElementById('completedCount');
+            const inProgEl = document.getElementById('inProgressCount');
+            const pendEl = document.getElementById('pendingCount');
+            const pctEl = document.getElementById('completedPercentage');
+
+            if (totalEl) totalEl.innerText = total;
+            if (compEl) compEl.innerText = completed;
+            if (inProgEl) inProgEl.innerText = inProgress;
+            if (pendEl) pendEl.innerText = pending;
+
+            const pct = Math.round((completed / total) * 100);
+            if (pctEl) pctEl.innerText = `${pct}%`;
+
+            // Update Domain Progress Bars
+            for (let i = 1; i <= 4; i++) {
+                const dId = `domain-${i}`;
+                const dTot = domainCounts[dId].total;
+                const dComp = domainCounts[dId].completed;
+                const dPct = dTot > 0 ? Math.round((dComp / dTot) * 100) : 0;
+
+                const badge = document.getElementById(`d${i}-progress-badge`);
+                const bar = document.getElementById(`d${i}-progress-bar`);
+
+                if (badge) badge.innerText = `${dComp}/${dTot} (${dPct}%)`;
+                if (bar) bar.style.width = `${dPct}%`;
+            }
+        }
+
+        // Filter and Search
+        window.applyFilter = function() {
+            const query = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+            const status = document.getElementById('statusFilter')?.value || 'all';
+
+            document.querySelectorAll('.indicator-item').forEach(el => {
+                const text = (el.getAttribute('data-text') || '').toLowerCase();
+                const itemStatus = el.getAttribute('data-status');
+
+                const matchesQuery = query === '' || text.includes(query);
+                const matchesStatus = status === 'all' || itemStatus === status;
+
+                if (matchesQuery && matchesStatus) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+        };
+
+        window.resetFilters = function() {
+            const searchInput = document.getElementById('searchInput');
+            const statusFilter = document.getElementById('statusFilter');
+            if (searchInput) searchInput.value = '';
+            if (statusFilter) statusFilter.value = 'all';
+            window.applyFilter();
+        };
+
+        // Render Comprehensive Full Report for Viewing/Printing
+        function renderFullReport() {
+            const container = document.getElementById('fullReportContent');
+            if (!container) return;
+
+            let html = '';
+
+            const domains = [
+                { id: 'domain-1', name: 'المجال الأول: الإدارة المدرسية' },
+                { id: 'domain-2', name: 'المجال الثاني: التعليم والتعلم' },
+                { id: 'domain-3', name: 'المجال الثالث: نواتج التعلم' },
+                { id: 'domain-4', name: 'المجال الرابع: البيئة المدرسية' }
+            ];
+
+            domains.forEach(d => {
+                const items = standardsData.filter(i => i.domainId === d.id);
+                html += `
+                    <div class="card-print bg-slate-50/50 rounded-xl p-4 border border-slate-200">
+                        <h3 class="text-base font-extrabold text-teal-900 border-b pb-2 mb-3">${d.name}</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right text-xs border-collapse border border-slate-200 bg-white">
+                                <thead>
+                                    <tr class="bg-slate-100 text-slate-700">
+                                        <th class="border p-2 w-20">الرمز</th>
+                                        <th class="border p-2 w-28">المعيار</th>
+                                        <th class="border p-2">المؤشر</th>
+                                        <th class="border p-2 w-48">الشواهد المحققة والمرفقات</th>
+                                        <th class="border p-2 w-24 text-center">الحالة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${items.map(ind => {
+                                        const data = userEvidenceData[ind.code] || {};
+                                        const checkedTexts = (data.checkedEvidences || []).map(idx => ind.suggestedEvidences[idx]).filter(Boolean);
+                                        
+                                        const statusBadgeClass = {
+                                            'مكتمل': 'bg-emerald-100 text-emerald-800',
+                                            'قيد الإنجاز': 'bg-amber-100 text-amber-800',
+                                            'غير مكتمل': 'bg-rose-100 text-rose-800',
+                                            'غير منطبق': 'bg-slate-200 text-slate-700'
+                                        }[data.status || 'غير مكتمل'];
+
+                                        return `
+                                            <tr class="hover:bg-slate-50">
+                                                <td class="border p-2 font-mono font-bold text-teal-800">${ind.code}</td>
+                                                <td class="border p-2 font-semibold text-slate-700">${ind.standardName}</td>
+                                                <td class="border p-2 leading-relaxed">${ind.text}</td>
+                                                <td class="border p-2 space-y-1">
+                                                    ${checkedTexts.length > 0 ? `
+                                                        <ul class="list-disc list-inside text-[11px] text-teal-950 font-medium">
+                                                            ${checkedTexts.map(t => `<li>${t}</li>`).join('')}
+                                                        </ul>
+                                                    ` : '<span class="text-slate-400 italic">لم تحدد شواهد</span>'}
+                                                    ${data.fileNames ? `<div class="text-[11px] text-slate-600 font-mono mt-1"><i class="fa-solid fa-file text-rose-500"></i> ${data.fileNames}</div>` : ''}
+                                                    ${data.customLink ? `<div class="text-[11px] font-mono text-teal-700 truncate max-w-xs"><i class="fa-solid fa-link"></i> ${data.customLink}</div>` : ''}
+                                                </td>
+                                                <td class="border p-2 text-center">
+                                                    <span class="px-2 py-0.5 rounded text-[11px] font-bold ${statusBadgeClass}">
+                                                        ${data.status || 'غير مكتمل'}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        `;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Export Data as JSON file
+        window.exportDataJSON = function() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(userEvidenceData, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `شواهد_التقويم_الذاتي_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            showToast("تم تصدير النسخة الاحتياطية بنجاح");
+        };
+
+        // Import Data from JSON file
+        window.importDataJSON = function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    userEvidenceData = { ...userEvidenceData, ...imported };
+                    saveData();
+                    renderAllDomains();
+                    showToast("تمت استعادة ورفع البيانات بنجاح");
+                } catch (err) {
+                    showToast("عذراً، الملف غير صالح أو تالف", true);
+                }
+            };
+            reader.readAsText(file);
+        };
+
+        // Copy User ID
+        window.copyUserId = function() {
+            const uid = document.getElementById('displayUserId')?.innerText;
+            if (uid && uid !== 'جارٍ التحميل...') {
+                const tempInput = document.createElement('input');
+                tempInput.value = uid;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showToast("تم نسخ معرفك الخاص بنجاح");
+            }
+        };
+
+        // Switch Tab Globally
+        window.switchTab = switchTab;
+
+        // Toast Helper
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            if (!toast || !toastMsg) return;
+            toastMsg.innerText = msg;
+            if (isError) {
+                toast.classList.remove('bg-slate-900');
+                toast.classList.add('bg-rose-900');
+            } else {
+                toast.classList.remove('bg-rose-900');
+                toast.classList.add('bg-slate-900');
+            }
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        // Initialize on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            initCloudSync();
+        });
+    </script>
+</body>
+</html>
