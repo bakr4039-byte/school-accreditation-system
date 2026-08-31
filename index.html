@@ -1,1 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام توثيق الشواهد المستقلة لكل مؤشر</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Cairo Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background-color: #ffffff; }
+      .card { break-inside: avoid; border: 1px solid #cbd5e1 !important; margin-bottom: 20px !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased flex flex-col min-h-screen">
 
+  <!-- Header -->
+  <header class="bg-teal-900 text-white shadow-lg sticky top-0 z-50 no-print">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-award text-3xl text-teal-400"></i>
+        <div>
+          <h1 class="text-xl font-black">الدليل الإجرائي للتقويم الذاتي والاعتماد المدرسي</h1>
+          <p class="text-xs text-teal-200">نظام توثيق وإدارة الشواهد والأدلة المدرسية (روابط مستقلة لكل شاهد)</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="window.print()" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-teal-950 font-bold text-xs rounded shadow">
+          <i class="fa-solid fa-print"></i> طباعة التقرير
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Domain Tabs Navigation -->
+  <nav class="bg-white border-b border-slate-200 sticky top-[68px] z-40 no-print">
+    <div class="max-w-7xl mx-auto px-4 py-2">
+      <div class="flex flex-wrap items-center justify-center gap-2 text-sm font-bold">
+        <button onclick="switchDomain('all')" id="tab-all" class="domain-tab px-4 py-2 rounded-lg bg-teal-800 text-white transition">لوحة المتابعة العامة</button>
+        <button onclick="switchDomain('1')" id="tab-1" class="domain-tab px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">1. الإدارة المدرسية</button>
+        <button onclick="switchDomain('2')" id="tab-2" class="domain-tab px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">2. التعليم والتعلم</button>
+        <button onclick="switchDomain('3')" id="tab-3" class="domain-tab px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">3. نواتج التعلم</button>
+        <button onclick="switchDomain('4')" id="tab-4" class="domain-tab px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">4. البيئة المدرسية</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+    <div id="indicators-container" class="space-y-6"></div>
+  </main>
+
+  <script>
+    const indicatorsData = [
+      { id: "1-1-1-1", domain: "1", std: "التخطيط", text: "تضع المدرسة خطة تشغيلية شاملة وفق أهداف تطويرية محددة.", evs: ["وثيقة الخطة التشغيلية للمدرسة للعام الحالي معتمدة.", "نماذج تحليل الواقع (SWOT) وتحليل احتياجات المدرسة.", "محاضر اجتماعات إعداد الخطة التشغيلية وتشكيل اللجان.", "مؤشرات أداء واضحة ومستهدفات زمنية لكل هدف تطويري."] },
+      { id: "1-1-1-2", domain: "1", std: "التخطيط", text: "تتابع المدرسة تنفيذ خطتها التشغيلية وتطورها بما يضمن تحقيق أهدافها.", evs: ["تقارير المتابعة الدورية ونسب الإنجاز.", "محاضر دراسة الفجوات والتحديات والتعديلات.", "لوحة متابعة مؤشرات الأداء (KPIs)."] },
+      { id: "1-2-1-1", domain: "1", std: "قيادة العملية التعليمية", text: "تعزز المدرسة القيم الإسلامية، والهوية الوطنية.", evs: ["خطة وتقارير فعاليات اليوم الوطني ويوم التأسيس.", "سجلات الإذاعة المدرسية المعززة للقيم.", "معارض وأنشطة الاحتفاء باللغة العربية والتراث."] },
+      { id: "1-2-1-2", domain: "1", std: "قيادة العملية التعليمية", text: "تطبق المدرسة قيم مهنة التعليم وأخلاقياتها، وتتابع الالتزام بها.", evs: ["ميثاق أخلاقيات مهنة التعليم الموقع.", "محاضر ورش العمل التوعوية باللوائح.", "سجلات المتابعة الإدارية للالتزام المهني."] },
+      { id: "1-2-1-3", domain: "1", std: "قيادة العملية التعليمية", text: "تطبق المدرسة إجراءات محددة لدعم الانضباط المدرسي، وتتابع الالتزام بها.", evs: ["سجلات رصد الحضور والغياب اليومي.", "خطة الحد من الغياب قبل وبعد الإجازات.", "سجلات تكريم الطلاب والفصول الأكثر التزاماً."] },
+      { id: "1-2-1-4", domain: "1", std: "قيادة العملية التعليمية", text: "تنفذ المدرسة برامج وأنشطة تربوية داعمة للسلوك الإيجابي لدى المتعلمين، وتتابعها.", evs: ["خطة وسجلات التوجيه الطلابي لتعزيز السلوك الإيجابي.", "محاضر لجنة التوجيه الطلابي لمعالجة الحالات السلوكية.", "برامج الدعم لذوي الإعاقة والموهوبين."] },
+      { id: "1-2-1-5", domain: "1", std: "قيادة العملية التعليمية", text: "تنفذ المدرسة برامج وأنشطة إثرائية لتطوير مواهب المتعلمين، وتهيئهم للمستقبل.", evs: ["خطة الأنشطة والبرامج الإثرائية والمسابقات.", "معارض الموهبة والابتكار ونماذج من مخرجات الطلاب.", "سجلات الإرشاد المهني والتهيئة للمسارات."] },
+      { id: "1-3-1-1", domain: "1", std: "المجتمع المدرسي", text: "تعزز المدرسة بناء العلاقات الإيجابية والتعاون في المجتمع المدرسي.", evs: ["محاضر اجتماعات الهيئة التعليمية والإدارية.", "استبانات المناخ المدرسي.", "توثيق فعاليات المناسبات الاجتماعية والترابط."] },
+      { id: "1-3-1-2", domain: "1", std: "المجتمع المدرسي", text: "تعزز المدرسة مشاركة الأسرة في تعلم أبنائهم، والتحضير لمستقبلهم.", evs: ["محاضر اجتماعات الجمعية العمومية ومجالس الآباء.", "سجلات إشعارات أولياء الأمور بنتائج أبنائهم.", "توثيق تفعيل الشراكة الأسرية في الأنشطة."] },
+      { id: "1-3-1-3", domain: "1", std: "المجتمع المدرسي", text: "تعزز المدرسة الشراكة المجتمعية لدعم التعلم والتأثير الإيجابي في المجتمع.", evs: ["عقود ومذكرات التفاهم والشراكة الموقعة.", "تقارير الزيارات الميدانية والفعاليات المتبادلة.", "توثيق أثر المبادرات المجتمعية."] },
+      { id: "1-4-1-1", domain: "1", std: "التطوير المؤسسي", text: "توفر المدرسة كادراً تعليمياً مكتملاً ومؤهلاً بما يتسق مع المهام الموكلة له.", evs: ["سجل التشكيلات المدرسية المعتمد.", "جداول توزيع الحصص والأنصبة.", "ملفات السير الذاتية والمؤهلات للكادر."] },
+      { id: "1-4-1-2", domain: "1", std: "التطوير المؤسسي", text: "توفر المدرسة كادراً إدارياً مكتملاً ومؤهلاً بما يتسق مع المهام الموكلة له.", evs: ["الهيكل التنظيمي المعتمد.", "بطاقات الوصف الوظيفي.", "تقارير تقييم الأداء الوظيفي."] },
+      { id: "1-4-1-3", domain: "1", std: "التطوير المؤسسي", text: "تظهر المدرسة الملاءة والاستدامة المالية.", evs: ["الميزانية التشغيلية السنوية.", "سجلات الإيرادات والمصروفات والعهد.", "خطة إدارة الموارد واستدامة الدعم."] },
+      { id: "1-4-1-4", domain: "1", std: "التطوير المؤسسي", text: "تدعم المدرسة منسوبيها للحصول على الرخصة المهنية، وتتابعها.", evs: ["قاعدة بيانات حصر الرخص المهنية للمعلمين.", "خطة دعم المعلمين لاجتياز اختبارات الرخصة.", "سجلات ورش العمل وبرامج التهيئة للرخصة."] },
+      { id: "1-4-1-5", domain: "1", std: "التطوير المؤسسي", text: "تدعم المدرسة التطوير المهني لمنسوبيها وفقاً لنتائج التقويم وتحليل احتياجاتهم.", evs: ["خطة التطوير المهني السنوية.", "حقائب البرامج التدريبية المنفذة وسجلات الحضور.", "تقارير تقييم أثر التدريب المهني."] },
+      { id: "1-4-1-6", domain: "1", std: "التطوير المؤسسي", text: "تطبق المدرسة التقويم الذاتي المبني على المعايير المعتمدة من الهيئة بشكل مستمر.", evs: ["قرار تشكيل فريق التميز والتقويم الذاتي.", "استمارات وبطاقات التقويم الذاتي المكتملة.", "التقرير الشامل لنتائج التقويم الذاتي."] },
+      { id: "1-4-1-7", domain: "1", std: "التطوير المؤسسي", text: "تنفذ المدرسة خطة التحسين بناءً على نتائج التقويم المدرسي، وتتابعها.", evs: ["خطة التحسين المعتمدة المعالجة لأولويات التطوير.", "تقارير المتابعة الدورية لمبادرات خطة التحسين.", "مقارنة قياس الأداء قبل وبعد تطبيق الخطة."] },
+      { id: "1-5-1-1", domain: "1", std: "حقوق المتعلم وحمايته", text: "تلتزم المدرسة بالمحافظة على حقوق المتعلمين، وحمايتهم.", evs: ["لائحة حقوق وواجبات الطالب المعلنة.", "سجلات صندوق مقترحات وشكاوى الطلاب وآلية التعامل معها.", "سياسة حماية الطفل المعتمدة."] },
+      { id: "1-5-1-2", domain: "1", std: "حقوق المتعلم وحمايته", text: "توفر المدرسة مناخاً آمناً للتعلم والنمو نفسياً واجتماعياً.", evs: ["برامج الوقاية من التنمر والتوعية بالأمان.", "سجلات الرعاية النفسية والاجتماعية الفردية.", "استبانات قياس أمان ورضا الطلاب في البيئة."] },
+
+      { id: "2-1-1-1", domain: "2", std: "بناء خبرات التعلم", text: "توفر المدرسة فرصاً متكافئة للتعلم تلبي احتياجات المتعلمين، ومنهم ذوو الإعاقة والموهوبون.", evs: ["سجلات حصر الفئات الخاصة.", "نماذج الخطط التعليمية الفردية (IEP).", "ملفات المساندة الصفية وتكافؤ فرص المشاركة."] },
+      { id: "2-1-1-2", domain: "2", std: "بناء خبرات التعلم", text: "تدعم المدرسة تنفيذ المناهج بما يحقق نواتج التعلم المستهدفة.", evs: ["خطط توزيع المقررات وتوافقها مع التقويم.", "تقارير الزيارات الإشرافية والصفية لمتابعة التنفيذ.", "نماذج من التحضير المعتمد وتغطية مخرجات التعلم."] },
+      { id: "2-1-1-3", domain: "2", std: "بناء خبرات التعلم", text: "تنوع المدرسة في إستراتيجيات التعليم والتعلم لتلبية احتياجات المتعلمين.", evs: ["نماذج خطط دروس تتضمن استراتيجيات التعلم النشط.", "بطاقات الملاحظة الصفية المشيدة بتنوع الأساليب.", "توثيق الممارسات التدريسية المتميزة وتبادل الزيارات."] },
+      { id: "2-1-1-4", domain: "2", std: "بناء خبرات التعلم", text: "تفعل المدرسة التقنية الرقمية لدعم تعلم المتعلمين وتلبية احتياجاتهم.", evs: ["إحصائيات تفعيل منصة مدرستي والشاشات التفاعلية.", "نماذج الأنشطة والتطبيقات الرقمية للطلاب.", "توثيق استخدام المعامل والبرمجيات التعليمية."] },
+      { id: "2-1-1-5", domain: "2", std: "بناء خبرات التعلم", text: "تنفذ المدرسة أنشطة تعلم تطبيقية ترتبط بحياة المتعلمين.", evs: ["مشاريع ومهام أدائية تربط المعارف بالواقع.", "تقارير الزيارات الميدانية والتجارب المعملية.", "أعمال الطلاب التطبيقية في خدمة المجتمع."] },
+      { id: "2-1-1-6", domain: "2", std: "بناء خبرات التعلم", text: "تنمي المدرسة المهارات القرائية والعددية الأساسية لدى المتعلمين.", evs: ["خطط وبرامج تعزيز مهارات الفهم القرائي والعمليات الحسابية.", "نتائج الاختبارات التشخيصية للمهارات الأساسية.", "نماذج مبادرات نوادي القراءة والرياضيات."] },
+      { id: "2-1-1-7", domain: "2", std: "بناء خبرات التعلم", text: "تنمي المدرسة مهارات التفكير والبحث والابتكار لدى المتعلمين.", evs: ["نماذج من البحوث الإجرائية والمشاريع العلمية.", "سجلات مشاركة الطلاب في أولمبياد إبداع والمعارض.", "خطط المعلمين المدمجة لمهارات التفكير الناقد."] },
+      { id: "2-1-1-8", domain: "2", std: "بناء خبرات التعلم", text: "تنمي المدرسة المهارات العاطفية والاجتماعية لدى المتعلمين.", evs: ["خطط الأنشطة المعززة للعمل الجماعي والقيادة.", "برامج الإرشاد الجمعي وورش مهارات التواصل.", "توثيق مشاريع العمل التشاركي بين الطلبة."] },
+      { id: "2-1-1-9", domain: "2", std: "بناء خبرات التعلم", text: "تعزز المدرسة دافعية المتعلمين للتعلم، والاستمتاع به.", evs: ["سجلات التحفيز والتكريم المستمر للتميز والإنجاز.", "تصميم بيئات صفية جاذبة ومحفزة.", "استبانات قياس دافعية الطلاب نحو التعلم."] },
+      { id: "2-2-1-1", domain: "2", std: "تقويم التعلم", text: "تطبق المدرسة أساليب وأدوات تقويم متنوعة للكشف عن مستويات أداء المتعلمين المختلفة.", evs: ["نماذج أدوات تقويم متنوعة (اختبارات، مهام أدائية).", "سلالم التقدير اللفظي (Rubrics) المعتمدة.", "ملفات إنجاز الطلاب الرقمية أو الورقية."] },
+      { id: "2-2-1-2", domain: "2", std: "تقويم التعلم", text: "تطبق المدرسة أساليب وأدوات متنوعة لتقويم نواتج التعلم المستهدفة في مناهج التعليم.", evs: ["جداول مواصفات الاختبارات وتوافقها مع المصفوفة.", "نماذج أسئلة تقيس المستويات المعرفية العليا.", "تقارير قياس ومواءمة أدوات التقويم مع النواتج."] },
+      { id: "2-2-1-3", domain: "2", std: "تقويم التعلم", text: "تحلل المدرسة نتائج التقويم، وتوظفها في تحسين عمليات التعليم والتعلم والتقويم.", evs: ["تقارير التحليل الإحصائي لنتائج الاختبارات الفصلية.", "الخطط العلاجية المنفذة لقياس أثر التطبيق.", "الخطط الإثرائية لرفع مستويات المتفوقين."] },
+      { id: "2-2-1-4", domain: "2", std: "تقويم التعلم", text: "قدم المدرسة التغذية الراجعة للمتعلمين وأولياء أمورهم، وتتابع تقدمهم بشكل مستمر.", evs: ["نماذج من الاختبارات والمهام المزودة بملاحظات تصحيحية بنائية.", "سجلات إشعار أولياء الأمور بمستويات التقدم الدراسي.", "محاضر اللقاءات الفردية بين المعلمين والطلاب."] },
+
+      { id: "3-1-1-1", domain: "3", std: "التحصيل التعليمي", text: "يحقق المتعلمون نتائج مرتفعة في مجال القراءة وفقاً للاختبارات الوطنية.", evs: ["بطاقة نتائج المدرسة المعتمدة في اختبارات (نافس) - قراءة.", "سجل مقارنة أداء المدرسة مع المتوسط الوطني.", "قوائم الطلاب المحققين لمستويات متقدمة في القراءة."] },
+      { id: "3-1-1-2", domain: "3", std: "التحصيل التعليمي", text: "يحقق المتعلمون نتائج مرتفعة في مجال الرياضيات وفقاً للاختبارات الوطنية.", evs: ["تقارير نتائج المدرسة في اختبارات (نافس) - رياضيات.", "تحليل أداء المعايير والمهارات الفرعية للرياضيات.", "سجلات الطلاب الحاصلين على درجات متفوقة."] },
+      { id: "3-1-1-3", domain: "3", std: "التحصيل التعليمي", text: "يحقق المتعلمون نتائج مرتفعة في مجال العلوم وفقاً للاختبارات الوطنية.", evs: ["بطاقات ونتائج المدرسة الرسمية في (نافس) - علوم.", "مقارنة متوسطات المدرسة بالمعايير المستهدفة في العلوم.", "شهادات تكريم الطلاب المحققين لنتائج متقدمة."] },
+      { id: "3-1-1-4", domain: "3", std: "التحصيل التعليمي", text: "يحقق المتعلمون تقدماً في مجال القراءة قياساً على مستوى أداء المدرسة السابق.", evs: ["تقرير المقارنة التطورية لنتائج اختبارات نافس في القراءة.", "رسوم بيانية توضح نسب النمو والتحسن.", "خطة الاستدامة للحفاظ على الأداء."] },
+      { id: "3-1-1-5", domain: "3", std: "التحصيل التعليمي", text: "يحقق المتعلمون تقدماً في مجال الرياضيات قياساً على أداء المدرسة السابق.", evs: ["تقرير المقارنة التطورية لنتائج الرياضيات عبر الأعوام.", "نسب التحسن المسجلة وانخفاض نسب دون المستوى.", "تقارير قياس أثر التدريب على اختبارات الرياضيات."] },
+      { id: "3-1-1-6", domain: "3", std: "التحصيل التعليمي", text: "يحقق المتعلمون تقدماً في مجال العلوم قياساً على مستوى أداء المدرسة السابق.", evs: ["تقرير المقارنة التطورية لنتائج العلوم في نافس مع الدورات السابقة.", "تحليل مؤشرات النمو المعرفي في المفاهيم العلمية.", "خطة التطوير المستمر لمناهج وتجارب العلوم."] },
+      { id: "3-2-1-1", domain: "3", std: "التطور الشخصي والصحي", text: "يظهر المتعلمون الاعتزاز بالقيم والهوية الوطنية.", evs: ["مشاركات الطلاب في الفعاليات الوطنية.", "مبادرات نشر الثقافة والتراث واللغة العربية.", "استبانات قياس وعي واعتزاز الطلاب بالهوية."] },
+      { id: "3-2-1-2", domain: "3", std: "التطور الشخصي والصحي", text: "يظهر المتعلمون اتجاهات إيجابية نحو ذواتهم والآخرين.", evs: ["تقارير الموجه الطلابي حول الممارسات والسلوك الإيجابي.", "نتائج مقاييس تقدير الذات والعلاقات الإيجابية.", "مبادرات ومشاريع التشاركية المعززة للاحترام المتبادل."] },
+      { id: "3-2-1-3", domain: "3", std: "التطور الشخصي والصحي", text: "يظهر المتعلمون التزاماً بالممارسات الصحية السليمة.", evs: ["سجلات العيادة المدرسية ومتابعة الحالات الصحية.", "الرقابة على المقصف المدرسي والوجبات.", "مشاركة الطلاب في أنشطة اللياقة البدنية والبرامج التوعوية."] },
+      { id: "3-2-1-4", domain: "3", std: "التطور الشخصي والصحي", text: "يشارك المتعلمون في الأنشطة المجتمعية والأعمال التطوعية.", evs: ["سجل حصر الساعات التطوعية المعتمدة للطلاب.", "توثيق المبادرات التطوعية والميدانية المنفذة من الطلاب.", "شهادات الشكر والتقدير المقدمة للطلاب."] },
+      { id: "3-2-1-5", domain: "3", std: "التطور الشخصي والصحي", text: "يلتزم المتعلمون بقواعد السلوك والانضباط المدرسي.", evs: ["التقارير الإحصائية لسجلات الغياب والمخالفات السلوكية.", "انخفاض معدلات التنمر والمخالفات وفق سجلات التوجيه.", "سجلات تكريم ذوي السلوك المثالي والانتظام."] },
+      { id: "3-2-1-6", domain: "3", std: "التطور الشخصي والصحي", text: "يظهر المتعلمون الاستقلالية والقدرة على التعلم الذاتي.", evs: ["مشاريع التعلم الذاتي والأبحاث الفردية للطلاب.", "ملفات الإنجاز الرقمية المستقلة وتقارير القراءة الحرة.", "اجتياز الطلاب لدورات تدريبية عبر المنصات التعليمية."] },
+      { id: "3-2-1-7", domain: "3", std: "التطور الشخصي والصحي", text: "يظهر المتعلمون اعتزازاً بثقافتهم واحتراماً للتنوع الثقافي في المجتمع.", evs: ["الأنشطة التوعوية المعززة للتسامح والتعايش.", "مشاركات الطلاب في الفعاليات الحوارية ونبذ التعصب.", "تقارير الممارسات الإيجابية المعبرة عن الاحترام المتبادل."] },
+
+      { id: "4-1-1-1", domain: "4", std: "المبنى المدرسي", text: "توفر المدرسة مبنى تعليمي يستوفي المواصفات والاشتراطات المعتمدة.", evs: ["صك الملكية أو عقد الإيجار ورخصة البلدية.", "شهادة إتمام البناء ومطابقة كود البناء السعودي.", "تراخيص الدفاع المدني وسلامة المنشأة التعليمية."] },
+      { id: "4-1-1-2", domain: "4", std: "المبنى المدرسي", text: "تنظيم مبنى المدرسة ملائم لعدد المتعلمين وخصائص المرحلة العمرية.", evs: ["المخطط الهندسي لتوزيع الفصول وتناسب الكثافة.", "توفر المنحدرات والممرات الخاصة لذوي الإعاقة.", "اللوحات الإرشادية والتحذيرية الملائمة."] },
+      { id: "4-1-1-3", domain: "4", std: "المبنى المدرسي", text: "تتوافر فصول ومعامل ملائمة للعملية التعليمية تلبي احتياجات المتعلمين.", evs: ["سجلات حصر وتجهيزات الفصول الدراسية والتكييف.", "جاهزية معامل العلوم والحاسب وتوفر أدوات السلامة.", "جداول إشغال المعامل والأنشطة العملية بها."] },
+      { id: "4-1-1-4", domain: "4", std: "المبنى المدرسي", text: "تلبي المرافق والتجهيزات والخدمات المساندة احتياجات المتعلمين.", evs: ["جاهزية الملاعب الرياضية، الساحات المغطاة والمصلى.", "دورات مياه مهيأة ومطابقة للاشتراطات ومناسبة لذوي الإعاقة.", "تجهيزات العيادة المدرسية والخدمات المساندة."] },
+      { id: "4-2-1-1", domain: "4", std: "الأمن والسلامة", text: "تتوافر في مبنى المدرسة ومرافقها جميع متطلبات الأمن والسلامة.", evs: ["سجلات فحص طفايات الحريق وخراطيم المياه وأجهزة الإنذار.", "مخططات مخارج الطوارئ ومسارات الإخلاء.", "توثيق تنفيذ خطط الإخلاء الافتراضية الدورية."] },
+      { id: "4-2-1-2", domain: "4", std: "الأمن والسلامة", text: "تتابع المدرسة صيانة المبنى وجميع مرافقه وتجهيزاته بشكل دوري.", evs: ["عقود الصيانة الدورية المعتمدة للمبنى والأجهزة.", "سجلات بلاغات الصيانة الطارئة والوقائية وسرعة المعالجة.", "تقارير لجان الصيانة والمتابعة الدورية."] },
+      { id: "4-2-1-3", domain: "4", std: "الأمن والسلامة", text: "تتابع المدرسة نظافة المبنى المدرسي وجميع مرافقه بشكل مستمر.", evs: ["خطة وجدول النظافة اليومية لجميع المرافق والساحات.", "سجلات الإشراف والمتابعة المستمرة لنظافة دورات المياه والعيادة.", "توفر أدوات ومواد النظافة والتعقيم المستمر وعمال النظافة."] }
+    ];
+
+    const STORAGE_KEY = "school_individual_links_v5";
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveState(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    let currentDomain = "all";
+
+    function switchDomain(dom) {
+      currentDomain = dom;
+      document.querySelectorAll(".domain-tab").forEach(tab => {
+        tab.className = "domain-tab px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+      });
+      const activeTab = document.getElementById("tab-" + dom);
+      if (activeTab) {
+        activeTab.className = "domain-tab px-4 py-2 rounded-lg bg-teal-800 text-white transition";
+      }
+      renderCards();
+    }
+
+    function renderCards() {
+      const state = loadState();
+      const container = document.getElementById("indicators-container");
+
+      const filtered = indicatorsData.filter(i => currentDomain === "all" || i.domain === currentDomain);
+
+      let html = "";
+      filtered.forEach(item => {
+        const indState = state[item.id] || { status: "notstarted", items: {}, note: "" };
+
+        let evidencesHtml = item.evs.map((evText, idx) => {
+          const evData = indState.items[idx] || { checked: false, url: "" };
+          return `
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded bg-slate-50 border border-slate-200">
+              <label class="flex items-start gap-2 cursor-pointer flex-1">
+                <input type="checkbox" onchange="updateEvidence('${item.id}', ${idx}, 'checked', this.checked)" ${evData.checked ? "checked" : ""} class="w-4 h-4 mt-1 text-teal-600 rounded border-slate-300 focus:ring-teal-500">
+                <span class="text-xs font-bold text-slate-700 leading-relaxed">${evText}</span>
+              </label>
+              <div class="flex items-center gap-2 w-full sm:w-auto mt-2 sm:mt-0 no-print">
+                <input type="url" placeholder="ضع رابط الملف لهذا الشاهد (Drive/Cloud)..." value="${evData.url || ''}" onchange="updateEvidence('${item.id}', ${idx}, 'url', this.value)" class="w-full sm:w-72 text-xs rounded border border-slate-300 py-1.5 px-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                ${evData.url ? `<a href="${evData.url}" target="_blank" class="px-2.5 py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded text-xs font-bold whitespace-nowrap"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح</a>` : ''}
+              </div>
+              <div class="print-only hidden text-xs text-slate-500 mr-8 mt-1">
+                الرابط: ${evData.url || "غير متوفر"}
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        html += `
+          <div class="card bg-white rounded-xl shadow-sm border border-slate-200 p-5 relative overflow-hidden" data-id="${item.id}">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 bg-teal-50 text-teal-800 font-black text-sm rounded border border-teal-200">${item.id}</span>
+                <span class="text-xs font-bold text-slate-600">معيار: ${item.std}</span>
+              </div>
+              <div class="flex items-center gap-2 no-print">
+                <label class="text-xs font-bold text-slate-500">حالة المؤشر:</label>
+                <select onchange="updateStatus('${item.id}', this.value)" class="text-xs font-bold py-1 px-2 rounded border focus:outline-none focus:ring-2 focus:ring-teal-500 
+                  ${indState.status === 'done' ? 'bg-green-100 text-green-800 border-green-300' : 
+                    indState.status === 'pending' ? 'bg-yellow-100 text-yellow-800 border-yellow-300' : 
+                    'bg-red-100 text-red-800 border-red-300'}">
+                  <option value="notstarted" ${indState.status === 'notstarted' ? 'selected' : ''}>❌ غير مكتمل</option>
+                  <option value="pending" ${indState.status === 'pending' ? 'selected' : ''}>⏳ قيد التجهيز</option>
+                  <option value="done" ${indState.status === 'done' ? 'selected' : ''}>✅ مكتمل بالكامل</option>
+                </select>
+              </div>
+            </div>
+
+            <h3 class="text-base font-bold text-slate-900 mb-4 leading-relaxed">${item.text}</h3>
+
+            <div class="mb-4">
+              <h4 class="text-xs font-black text-teal-900 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-list-check"></i> شواهد المؤشر (ضع الرابط السحابي الخاص بكل شاهد أمامه مباشرة):</h4>
+              <div class="space-y-2">
+                ${evidencesHtml}
+              </div>
+            </div>
+
+            <div class="no-print mt-4">
+              <input type="text" placeholder="📝 ملاحظات فريق الجودة والتطوير الخاصة بهذا المؤشر..." value="${indState.note || ''}" onchange="updateNote('${item.id}', this.value)" class="w-full text-xs rounded border border-slate-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-teal-500 bg-slate-50">
+            </div>
+            
+            <div class="print-only hidden text-xs text-slate-600 mt-2 font-bold">
+              ملاحظات: ${indState.note || 'لا توجد'}
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function updateEvidence(indId, evIndex, field, val) {
+      const state = loadState();
+      if (!state[indId]) state[indId] = { status: "notstarted", items: {}, note: "" };
+      if (!state[indId].items[evIndex]) state[indId].items[evIndex] = { checked: false, url: "" };
+      
+      state[indId].items[evIndex][field] = val;
+
+      if (field === 'url' && val && !state[indId].items[evIndex].checked) {
+        state[indId].items[evIndex].checked = true;
+      }
+
+      saveState(state);
+      renderCards();
+    }
+
+    function updateStatus(indId, val) {
+      const state = loadState();
+      if (!state[indId]) state[indId] = { items: {}, note: "" };
+      state[indId].status = val;
+      saveState(state);
+      renderCards();
+    }
+
+    function updateNote(indId, val) {
+      const state = loadState();
+      if (!state[indId]) state[indId] = { status: "notstarted", items: {} };
+      state[indId].note = val;
+      saveState(state);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      renderCards();
+    });
+  </script>
+</body>
+</html>
