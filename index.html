@@ -21,7 +21,7 @@
       body { background-color: #ffffff; }
       .card { break-inside: avoid; border: 1px solid #cbd5e1 !important; margin-bottom: 20px !important; box-shadow: none !important; }
     }
-    .custom-scrollbar::-webkit-scrollbar { height: 4px; width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar { height: 5px; width: 5px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
   </style>
@@ -30,54 +30,54 @@
 
   <!-- Executive Global Header -->
   <header class="bg-slate-950 text-white shadow-xl sticky top-0 z-50 no-print border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-3 sm:px-4 py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
-      <div class="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-start">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3.5 w-full lg:w-auto justify-between lg:justify-start">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-amber-500 via-indigo-600 to-blue-600 p-0.5 shadow-lg flex items-center justify-center shrink-0">
-            <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-amber-400 text-lg sm:text-xl">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 via-indigo-600 to-blue-600 p-0.5 shadow-lg flex items-center justify-center shrink-0">
+            <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-amber-400 text-lg">
               <i class="fa-solid fa-shield-halved"></i>
             </div>
           </div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
-              <h1 class="text-sm sm:text-base font-black tracking-tight text-white">منصة الاعتماد والتقويم</h1>
-              <span class="text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">52 مؤشراً</span>
+              <h1 class="text-sm sm:text-base font-black tracking-tight text-white">منصة الاعتماد والتقويم المؤسسي</h1>
+              <span class="text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/25">52 مؤشراً</span>
             </div>
             <p class="text-[10px] sm:text-xs text-slate-400">هيئة تقويم التعليم والتدريب</p>
           </div>
         </div>
       </div>
 
-      <!-- Responsive Action Ribbon -->
+      <!-- Action Buttons Ribbon -->
       <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center w-full lg:w-auto overflow-x-auto pb-1 lg:pb-0 custom-scrollbar">
-        <button onclick="openGapFinderModal()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-rose-600 text-white font-black text-[11px] sm:text-xs rounded-xl transition flex items-center gap-1 shadow-xs">
-          <i class="fa-solid fa-bug"></i> النواقص
+        <button onclick="openGapFinderModal()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-rose-600 hover:bg-rose-500 text-white font-black text-[11px] sm:text-xs rounded-xl transition flex items-center gap-1 shadow-xs">
+          <i class="fa-solid fa-bug text-amber-200"></i> النواقص
         </button>
-        <button onclick="generateAuditReport()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-amber-500 text-slate-950 font-black text-[11px] sm:text-xs rounded-xl transition flex items-center gap-1 shadow-xs">
+        <button onclick="generateAuditReport()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-[11px] sm:text-xs rounded-xl transition flex items-center gap-1 shadow-xs">
           <i class="fa-solid fa-file-signature"></i> القرار
         </button>
-        <button onclick="openModal('work-samples-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 text-blue-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
+        <button onclick="openModal('work-samples-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-blue-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
           <i class="fa-solid fa-book-open-reader"></i> عينات
         </button>
-        <button onclick="openModal('logistics-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 text-amber-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
+        <button onclick="openModal('logistics-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
           <i class="fa-solid fa-clipboard-check"></i> الجاهزية
         </button>
-        <button onclick="openModal('plc-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 text-teal-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
+        <button onclick="openModal('plc-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-teal-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
           <i class="fa-solid fa-chalkboard-user"></i> مجتمعات
         </button>
-        <button onclick="openModal('interviews-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 text-purple-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
+        <button onclick="openModal('interviews-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-purple-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
           <i class="fa-solid fa-comments"></i> المقابلات
         </button>
-        <button onclick="openModal('templates-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 text-indigo-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
+        <button onclick="openModal('templates-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-indigo-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
           <i class="fa-solid fa-folder-open"></i> النماذج
         </button>
-        <button onclick="openModal('committees-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 text-emerald-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
+        <button onclick="openModal('committees-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-emerald-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
           <i class="fa-solid fa-users-gear"></i> اللجان
         </button>
-        <button onclick="window.print()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 text-slate-300 text-xs rounded-xl border border-slate-700 transition" title="طباعة">
+        <button onclick="window.print()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs rounded-xl border border-slate-700 transition" title="طباعة">
           <i class="fa-solid fa-print"></i>
         </button>
-        <button onclick="exportJSON()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-blue-600 text-white text-xs rounded-xl transition" title="تصدير">
+        <button onclick="exportJSON()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs rounded-xl transition" title="تصدير">
           <i class="fa-solid fa-download"></i>
         </button>
       </div>
@@ -85,8 +85,8 @@
   </header>
 
   <!-- Navigation Bar -->
-  <nav class="bg-white border-b border-slate-200 sticky top-[61px] lg:top-[69px] z-40 no-print shadow-xs">
-    <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 flex flex-col md:flex-row items-center justify-between gap-3">
+  <nav class="bg-white border-b border-slate-200 sticky top-[61px] sm:top-[69px] z-40 no-print shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex flex-col md:flex-row items-center justify-between gap-3">
       
       <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs font-bold custom-scrollbar">
         <button onclick="switchView('overview')" id="tab-overview" class="nav-tab px-3.5 py-2 rounded-xl bg-blue-600 text-white shadow-md shadow-blue-500/20 transition flex items-center gap-1.5 whitespace-nowrap">
@@ -105,73 +105,73 @@
           <span class="w-2 h-2 rounded-full bg-amber-600"></span> 4. البيئة (15%)
         </button>
         <button onclick="switchView('nafis')" id="tab-nafis" class="nav-tab px-3.5 py-2 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 transition flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-calculator text-amber-600"></i> نافس
+          <i class="fa-solid fa-calculator text-amber-600"></i> حاسبة نافس
         </button>
       </div>
 
-      <div class="relative w-full md:w-60">
-        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="بحث سريع..." class="w-full text-xs rounded-xl border border-slate-200 py-2 pr-8 pl-3 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50/50">
-        <i class="fa-solid fa-search absolute right-3 top-2.5 text-slate-400 text-xs"></i>
+      <div class="relative w-full md:w-64">
+        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="بحث برقم المؤشر أو المسؤول..." class="w-full text-xs rounded-xl border border-slate-200 py-2 pr-8 pl-3 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50/50">
+        <i class="fa-solid fa-search absolute right-3 top-3 text-slate-400 text-xs"></i>
       </div>
 
     </div>
   </nav>
 
   <!-- Main Container -->
-  <main class="max-w-7xl mx-auto px-3 sm:px-4 py-6 flex-1 w-full space-y-5">
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full space-y-6">
     
     <!-- View 1: Executive Overview Dashboard -->
-    <div id="overview-view" class="space-y-5">
+    <div id="overview-view" class="space-y-6">
       
       <!-- Top Hero Card -->
-      <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-5 sm:p-8 shadow-2xl border border-slate-800 relative overflow-hidden">
+      <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-800 relative overflow-hidden">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
           
           <div class="space-y-2.5">
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="px-2.5 py-0.5 rounded-lg bg-blue-500/20 text-blue-300 text-[11px] font-bold border border-blue-500/30">
-                مصفوفة الاعتماد المؤسسي الموزونة
+              <span class="px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-500/30">
+                سلم الأوزان النسبية لهيئة تقويم التعليم والتدريب[cite: 1, 2, 5]
               </span>
-              <span id="tier-badge" class="px-3 py-0.5 rounded-lg text-[11px] font-black bg-slate-800 text-slate-300 border border-slate-700">
+              <span id="tier-badge" class="px-3.5 py-1 rounded-lg text-xs font-black bg-slate-800 text-slate-300 border border-slate-700">
                 مستوى التصنيف: جاري الاحتساب...
               </span>
             </div>
             <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white">لوحة القيادة الذكية للجاهزية المدرسية</h2>
             <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
-              تحتسب الدرجة الموزونة بدقة رياضية مطابقة لمنصة تميز (التعليم والتعلم 35%، الإدارة 25%، نواتج التعلم 25%، البيئة المدرسية 15%).
+              تحتسب الدرجة الموزونة بدقة رياضية مطابقة لمنصة تميز (التعليم والتعلم 35%، الإدارة 25%، نواتج التعلم 25%، البيئة المدرسية 15%)[cite: 1, 2, 5].
             </p>
           </div>
 
-          <div class="flex items-center gap-3 sm:gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-md self-stretch sm:self-auto justify-around shrink-0">
+          <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl backdrop-blur-md self-stretch sm:self-auto justify-around shrink-0">
             <div class="text-center">
-              <span class="text-[10px] text-slate-400 font-bold block mb-0.5">الدرجة الموزونة</span>
-              <span id="overview-stat-percent" class="text-2xl sm:text-3xl font-black text-amber-400">0%</span>
+              <span class="text-[10px] text-slate-400 font-bold block mb-1">الدرجة الموزونة</span>
+              <span id="overview-stat-percent" class="text-3xl font-black text-amber-400">0%</span>
             </div>
             <div class="h-10 w-px bg-white/10"></div>
             <div class="text-center">
-              <span class="text-[10px] text-slate-400 font-bold block mb-0.5">متوسط الروبك</span>
-              <span id="overview-rubric-score" class="text-2xl sm:text-3xl font-black text-emerald-400">0.0 <span class="text-xs font-normal text-slate-400">/ 4</span></span>
+              <span class="text-[10px] text-slate-400 font-bold block mb-1">متوسط الروبك</span>
+              <span id="overview-rubric-score" class="text-3xl font-black text-emerald-400">0.0 <span class="text-xs font-normal text-slate-400">/ 4</span></span>
             </div>
           </div>
 
         </div>
 
         <!-- Progress bar -->
-        <div class="mt-6 w-full bg-slate-800/80 rounded-full h-3 overflow-hidden border border-slate-700 p-0.5">
+        <div class="mt-6 w-full bg-slate-800/80 rounded-full h-3.5 overflow-hidden border border-slate-700 p-0.5">
           <div id="overview-progress-bar" class="bg-gradient-to-r from-rose-500 via-amber-500 to-emerald-500 h-full rounded-full transition-all duration-700" style="width: 0%"></div>
         </div>
       </div>
 
       <!-- Smart Readiness Audit Assistant Alert -->
-      <div id="audit-assistant-box" class="glass-card rounded-3xl p-4 sm:p-5 border border-slate-200 shadow-sm">
-        <div class="flex items-start gap-3.5">
-          <div class="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-base shrink-0 shadow-md">
+      <div id="audit-assistant-box" class="glass-card rounded-3xl p-5 border border-slate-200 shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-lg shrink-0 shadow-md">
             <i class="fa-solid fa-robot"></i>
           </div>
           <div class="flex-1">
-            <h3 class="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-2 flex-wrap">
+            <h3 class="text-sm font-black text-slate-900 flex items-center gap-2 flex-wrap">
               <span>المساعد الذكي لتشخيص جاهزية الاعتماد الخارجي</span>
-              <span class="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">تشخيص آلي فوري</span>
+              <span class="text-[10px] font-bold bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-full">تشخيص آلي فوري</span>
             </h3>
             <p id="audit-assistant-text" class="text-xs text-slate-600 mt-1 leading-relaxed">
               جاري تحليل بيانات الشواهد والتثليث المنهجي لتحديد أولويات التحسين المباشرة لمدرستكم...
@@ -181,157 +181,157 @@
       </div>
 
       <!-- Quick Metrics Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        <div class="glass-card border border-slate-200/80 rounded-2xl p-3.5 shadow-xs flex items-center justify-between">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="glass-card border border-slate-200/80 rounded-2xl p-4 shadow-xs flex items-center justify-between">
           <div>
-            <span class="text-[10px] text-slate-500 font-bold block">إجمالي المؤشرات</span>
-            <span class="text-xl sm:text-2xl font-black text-slate-900 mt-0.5 block">52</span>
+            <span class="text-[11px] text-slate-500 font-bold block">إجمالي المؤشرات</span>
+            <span class="text-2xl font-black text-slate-900 mt-0.5 block">52</span>
           </div>
-          <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-sm">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-base">
             <i class="fa-solid fa-list-check"></i>
           </div>
         </div>
 
-        <div class="glass-card border border-emerald-200/80 bg-emerald-50/30 rounded-2xl p-3.5 shadow-xs flex items-center justify-between">
+        <div class="glass-card border border-emerald-200/80 bg-emerald-50/30 rounded-2xl p-4 shadow-xs flex items-center justify-between">
           <div>
-            <span class="text-[10px] text-emerald-700 font-bold block">متحقق بتميز (4)</span>
-            <span id="metric-done4" class="text-xl sm:text-2xl font-black text-emerald-700 mt-0.5 block">0</span>
+            <span class="text-[11px] text-emerald-700 font-bold block">متحقق بتميز (درجة 4)</span>
+            <span id="metric-done4" class="text-2xl font-black text-emerald-700 mt-0.5 block">0</span>
           </div>
-          <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-base">
             <i class="fa-solid fa-circle-check"></i>
           </div>
         </div>
 
-        <div class="glass-card border border-amber-200/80 bg-amber-50/30 rounded-2xl p-3.5 shadow-xs flex items-center justify-between">
+        <div class="glass-card border border-amber-200/80 bg-amber-50/30 rounded-2xl p-4 shadow-xs flex items-center justify-between">
           <div>
-            <span class="text-[10px] text-amber-700 font-bold block">قيد المعالجة (1-3)</span>
-            <span id="metric-pending" class="text-xl sm:text-2xl font-black text-amber-700 mt-0.5 block">0</span>
+            <span class="text-[11px] text-amber-700 font-bold block">قيد المعالجة (1-3)</span>
+            <span id="metric-pending" class="text-2xl font-black text-amber-700 mt-0.5 block">0</span>
           </div>
-          <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-sm">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-base">
             <i class="fa-solid fa-hourglass-half"></i>
           </div>
         </div>
 
-        <div class="glass-card border border-blue-200/80 bg-blue-50/30 rounded-2xl p-3.5 shadow-xs flex items-center justify-between">
+        <div class="glass-card border border-blue-200/80 bg-blue-50/30 rounded-2xl p-4 shadow-xs flex items-center justify-between">
           <div>
-            <span class="text-[10px] text-blue-700 font-bold block">روابط صالحة</span>
-            <span id="overview-stat-links" class="text-xl sm:text-2xl font-black text-blue-700 mt-0.5 block">0</span>
+            <span class="text-[11px] text-blue-700 font-bold block">شواهد بروابط صالحة</span>
+            <span id="overview-stat-links" class="text-2xl font-black text-blue-700 mt-0.5 block">0</span>
           </div>
-          <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-sm">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-base">
             <i class="fa-solid fa-link"></i>
           </div>
         </div>
       </div>
 
       <!-- 4 Domains Breakdown Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <!-- Domain 1 Card -->
-        <div class="glass-card rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center text-sm font-black">1</div>
+                <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center text-base font-black">1</div>
                 <div>
-                  <h4 class="text-xs sm:text-sm font-black text-slate-900">المجال الأول: الإدارة المدرسية</h4>
-                  <p class="text-[10px] sm:text-[11px] text-slate-500 font-semibold">19 مؤشراً • الوزن النسبي 25%</p>
+                  <h4 class="text-sm font-black text-slate-900">المجال الأول: الإدارة المدرسية</h4>
+                  <p class="text-[11px] text-slate-500 font-semibold">19 مؤشراً • الوزن النسبي 25%[cite: 1, 2, 5]</p>
                 </div>
               </div>
-              <span id="d1-badge" class="text-xs font-black px-2.5 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-100">0%</span>
+              <span id="d1-badge" class="text-xs font-black px-3 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-100">0%</span>
             </div>
-            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-3">
+            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-4">
               <div id="d1-bar" class="bg-blue-600 h-full rounded-full transition-all" style="width: 0%"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-2.5 rounded-2xl border border-slate-100">
+            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100/80">
               <div>متوسط الروبك: <span id="d1-rubric" class="text-blue-700 font-black">1.0</span></div>
               <div>مكتمل: <span id="d1-done" class="text-emerald-600 font-black">0</span></div>
               <div>روابط: <span id="d1-links" class="text-blue-600 font-black">0</span></div>
             </div>
           </div>
-          <button onclick="switchView('1')" class="mt-4 w-full py-2.5 rounded-xl bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 text-xs font-bold transition flex items-center justify-center gap-1.5">
+          <button onclick="switchView('1')" class="mt-5 w-full py-3 rounded-xl bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 text-xs font-bold transition flex items-center justify-center gap-2">
             <span>فتح ومتابعة شواهد المجال الأول</span>
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
           </button>
         </div>
 
         <!-- Domain 2 Card -->
-        <div class="glass-card rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center text-sm font-black">2</div>
+                <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center text-base font-black">2</div>
                 <div>
-                  <h4 class="text-xs sm:text-sm font-black text-slate-900">المجال الثاني: التعليم والتعلم</h4>
-                  <p class="text-[10px] sm:text-[11px] text-slate-500 font-semibold">13 مؤشراً • الوزن النسبي 35% (الأعلى تأثيراً)</p>
+                  <h4 class="text-sm font-black text-slate-900">المجال الثاني: التعليم والتعلم</h4>
+                  <p class="text-[11px] text-slate-500 font-semibold">13 مؤشراً • الوزن النسبي 35% (الأعلى تأثيراً)[cite: 1, 2, 5]</p>
                 </div>
               </div>
-              <span id="d2-badge" class="text-xs font-black px-2.5 py-1 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">0%</span>
+              <span id="d2-badge" class="text-xs font-black px-3 py-1 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">0%</span>
             </div>
-            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-3">
+            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-4">
               <div id="d2-bar" class="bg-emerald-600 h-full rounded-full transition-all" style="width: 0%"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-2.5 rounded-2xl border border-slate-100">
+            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100/80">
               <div>متوسط الروبك: <span id="d2-rubric" class="text-emerald-700 font-black">1.0</span></div>
               <div>مكتمل: <span id="d2-done" class="text-emerald-600 font-black">0</span></div>
               <div>روابط: <span id="d2-links" class="text-emerald-600 font-black">0</span></div>
             </div>
           </div>
-          <button onclick="switchView('2')" class="mt-4 w-full py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-700 text-xs font-bold transition flex items-center justify-center gap-1.5">
+          <button onclick="switchView('2')" class="mt-5 w-full py-3 rounded-xl bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-700 text-xs font-bold transition flex items-center justify-center gap-2">
             <span>فتح ومتابعة شواهد المجال الثاني</span>
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
           </button>
         </div>
 
         <!-- Domain 3 Card -->
-        <div class="glass-card rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-2xl bg-purple-50 text-purple-600 border border-purple-100 flex items-center justify-center text-sm font-black">3</div>
+                <div class="w-10 h-10 rounded-2xl bg-purple-50 text-purple-600 border border-purple-100 flex items-center justify-center text-base font-black">3</div>
                 <div>
-                  <h4 class="text-xs sm:text-sm font-black text-slate-900">المجال الثالث: نواتج التعلم</h4>
-                  <p class="text-[10px] sm:text-[11px] text-slate-500 font-semibold">13 مؤشراً • الوزن النسبي 25% (نافس والتطور)</p>
+                  <h4 class="text-sm font-black text-slate-900">المجال الثالث: نواتج التعلم</h4>
+                  <p class="text-[11px] text-slate-500 font-semibold">13 مؤشراً • الوزن النسبي 25% (نافس والتطور)[cite: 1, 2, 5]</p>
                 </div>
               </div>
-              <span id="d3-badge" class="text-xs font-black px-2.5 py-1 rounded-xl bg-purple-50 text-purple-700 border border-purple-100">0%</span>
+              <span id="d3-badge" class="text-xs font-black px-3 py-1 rounded-xl bg-purple-50 text-purple-700 border border-purple-100">0%</span>
             </div>
-            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-3">
+            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-4">
               <div id="d3-bar" class="bg-purple-600 h-full rounded-full transition-all" style="width: 0%"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-2.5 rounded-2xl border border-slate-100">
+            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100/80">
               <div>متوسط الروبك: <span id="d3-rubric" class="text-purple-700 font-black">1.0</span></div>
               <div>مكتمل: <span id="d3-done" class="text-emerald-600 font-black">0</span></div>
               <div>روابط: <span id="d3-links" class="text-purple-600 font-black">0</span></div>
             </div>
           </div>
-          <button onclick="switchView('3')" class="mt-4 w-full py-2.5 rounded-xl bg-purple-50 hover:bg-purple-600 hover:text-white text-purple-700 text-xs font-bold transition flex items-center justify-center gap-1.5">
+          <button onclick="switchView('3')" class="mt-5 w-full py-3 rounded-xl bg-purple-50 hover:bg-purple-600 hover:text-white text-purple-700 text-xs font-bold transition flex items-center justify-center gap-2">
             <span>فتح ومتابعة شواهد المجال الثالث</span>
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
           </button>
         </div>
 
         <!-- Domain 4 Card -->
-        <div class="glass-card rounded-3xl p-5 sm:p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-2xl bg-amber-50 text-amber-600 border border-amber-100 flex items-center justify-center text-sm font-black">4</div>
+                <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 border border-amber-100 flex items-center justify-center text-base font-black">4</div>
                 <div>
-                  <h4 class="text-xs sm:text-sm font-black text-slate-900">المجال الرابع: البيئة المدرسية</h4>
-                  <p class="text-[10px] sm:text-[11px] text-slate-500 font-semibold">7 مؤشرات • الوزن النسبي 15% (الأمن والتراخيص)</p>
+                  <h4 class="text-sm font-black text-slate-900">المجال الرابع: البيئة المدرسية</h4>
+                  <p class="text-[11px] text-slate-500 font-semibold">7 مؤشرات • الوزن النسبي 15% (الأمن والتراخيص)[cite: 1, 2, 5]</p>
                 </div>
               </div>
-              <span id="d4-badge" class="text-xs font-black px-2.5 py-1 rounded-xl bg-amber-50 text-amber-700 border border-amber-100">0%</span>
+              <span id="d4-badge" class="text-xs font-black px-3 py-1 rounded-xl bg-amber-50 text-amber-700 border border-amber-100">0%</span>
             </div>
-            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-3">
+            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-4">
               <div id="d4-bar" class="bg-amber-600 h-full rounded-full transition-all" style="width: 0%"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-2.5 rounded-2xl border border-slate-100">
+            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100/80">
               <div>متوسط الروبك: <span id="d4-rubric" class="text-amber-700 font-black">1.0</span></div>
               <div>مكتمل: <span id="d4-done" class="text-emerald-600 font-black">0</span></div>
               <div>روابط: <span id="d4-links" class="text-amber-600 font-black">0</span></div>
             </div>
           </div>
-          <button onclick="switchView('4')" class="mt-4 w-full py-2.5 rounded-xl bg-amber-50 hover:bg-amber-600 hover:text-white text-amber-700 text-xs font-bold transition flex items-center justify-center gap-1.5">
+          <button onclick="switchView('4')" class="mt-5 w-full py-3 rounded-xl bg-amber-50 hover:bg-amber-600 hover:text-white text-amber-700 text-xs font-bold transition flex items-center justify-center gap-2">
             <span>فتح ومتابعة شواهد المجال الرابع</span>
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
           </button>
@@ -371,11 +371,11 @@
           <div>
             <h2 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2.5">
               <i class="fa-solid fa-calculator text-amber-500"></i>
-              حاسبة نتائج وتحليل اختبارات نافس الوطنية (3-1-1-1 إلى 3-1-1-6)
+              حاسبة نتائج وتحليل اختبارات نافس الوطنية (3-1-1-1 إلى 3-1-1-6)[cite: 1, 2, 5]
             </h2>
-            <p class="text-xs text-slate-500 mt-1">أدخل متوسط درجات المدرسة لحساب نسبة الفجوة الأكاديمية ومسار التقدم السنوي</p>
+            <p class="text-xs text-slate-500 mt-1">أدخل متوسط درجات المدرسة لحساب نسبة الفجوة الأكاديمية ومسار التقدم السنوي[cite: 4, 5]</p>
           </div>
-          <button onclick="saveNafisData()" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow-sm transition flex items-center gap-2">
+          <button onclick="saveNafisData()" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow-sm transition flex items-center gap-2">
             <i class="fa-solid fa-floppy-disk"></i> حفظ وتحليل النتائج
           </button>
         </div>
@@ -542,11 +542,11 @@
         </label>
         <label class="flex items-start gap-3 p-3.5 bg-slate-50 rounded-2xl border border-slate-200 cursor-pointer">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-amber-600 rounded">
-          <div><span class="font-black text-slate-900 block">اكتمال الملفات الورقية الأساسية والتراخيص الرسمية</span><span class="text-[11px] text-slate-600">صك الملكية، رخصة البلدية، ترخيص الدفاع المدني، والهيكل التنظيمي.</span></div>
+          <div><span class="font-black text-slate-900 block">اكتمال الملفات الورقية الأساسية والتراخيص الرسمية[cite: 1, 2, 5]</span><span class="text-[11px] text-slate-600">صك الملكية، رخصة البلدية، ترخيص الدفاع المدني، والهيكل التنظيمي[cite: 1, 2, 5].</span></div>
         </label>
         <label class="flex items-start gap-3 p-3.5 bg-slate-50 rounded-2xl border border-slate-200 cursor-pointer">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-amber-600 rounded">
-          <div><span class="font-black text-slate-900 block">جاهزية جداول الملاحظة الصفية ومعامل العلوم والتقنية</span><span class="text-[11px] text-slate-600">جداول الحصص الأسبوعية وتوزيع المعلمين وقوائم الطلاب.</span></div>
+          <div><span class="font-black text-slate-900 block">جاهزية جداول الملاحظة الصفية ومعامل العلوم والتقنية[cite: 1, 2, 5]</span><span class="text-[11px] text-slate-600">جداول الحصص الأسبوعية وتوزيع المعلمين وقوائم الطلاب[cite: 1, 2, 5].</span></div>
         </label>
       </div>
       <div class="pt-4 border-t border-slate-100 flex justify-end">
@@ -561,7 +561,7 @@
       <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
         <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
           <i class="fa-solid fa-chalkboard-user text-teal-600"></i>
-          <span>سجل مجتمعات التعلم المهنية (PLC) وتبادل الزيارات</span>
+          <span>سجل مجتمعات التعلم المهنية (PLC) وتبادل الزيارات[cite: 1, 2, 5]</span>
         </h3>
         <button onclick="closeModal('plc-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
           <i class="fa-solid fa-xmark"></i>
@@ -610,15 +610,15 @@
       </div>
       <div class="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1 text-xs">
         <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-          <div><span class="font-black text-slate-800 block">1. نموذج تحليل الواقع الرباعي (SWOT) والخطة التشغيلية</span><span class="text-[10px] text-slate-500">صيغة Word</span></div>
+          <div><span class="font-black text-slate-800 block">1. نموذج تحليل الواقع الرباعي (SWOT) والخطة التشغيلية[cite: 1, 2, 5]</span><span class="text-[10px] text-slate-500">صيغة Word[cite: 1, 2, 5]</span></div>
           <button onclick="downloadSampleDoc('SWOT.docx')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold">تحميل</button>
         </div>
         <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-          <div><span class="font-black text-slate-800 block">2. بطاقة الملاحظة الصفية وسلالم التقدير اللفظي (Rubrics)</span><span class="text-[10px] text-slate-500">صيغة Word</span></div>
+          <div><span class="font-black text-slate-800 block">2. بطاقة الملاحظة الصفية وسلالم التقدير اللفظي (Rubrics)[cite: 1, 2, 5]</span><span class="text-[10px] text-slate-500">صيغة Word[cite: 1, 2, 5]</span></div>
           <button onclick="downloadSampleDoc('Rubric.docx')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold">تحميل</button>
         </div>
         <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-          <div><span class="font-black text-slate-800 block">3. خطة التدخل العلاجي والتحسين الأكاديمي</span><span class="text-[10px] text-slate-500">صيغة Excel</span></div>
+          <div><span class="font-black text-slate-800 block">3. خطة التدخل العلاجي والتحسين الأكاديمي[cite: 1, 2, 5]</span><span class="text-[10px] text-slate-500">صيغة Excel[cite: 1, 2, 5]</span></div>
           <button onclick="downloadSampleDoc('Remedial.xlsx')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold">تحميل</button>
         </div>
       </div>
@@ -666,7 +666,7 @@
       <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
         <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
           <i class="fa-solid fa-comments text-purple-600"></i>
-          <span>بنك ومحاور المقابلات المقننة لفريق التقويم الخارجي</span>
+          <span>بنك ومحاور المقابلات المقننة لفريق التقويم الخارجي[cite: 1, 2, 5]</span>
         </h3>
         <button onclick="closeModal('interviews-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
           <i class="fa-solid fa-xmark"></i>
@@ -674,17 +674,17 @@
       </div>
       <div class="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1 text-xs">
         <div class="bg-purple-50/60 p-4 rounded-2xl border border-purple-200">
-          <h4 class="font-black text-purple-950 mb-2">1. محاور مقابلة عينة الطلاب:</h4>
+          <h4 class="font-black text-purple-950 mb-2">1. محاور مقابلة عينة الطلاب[cite: 1, 2, 5]:</h4>
           <ul class="space-y-1.5 text-slate-700 list-disc pr-4 font-medium leading-relaxed">
-            <li>هل تشعر بالأمان النفسي والاحترام داخل المدرسة؟ وكيف تتعامل الإدارة مع التنمر؟</li>
-            <li>كيف تستخدم التقنية والشاشات التفاعلية في فصول العلوم والرياضيات؟</li>
+            <li>هل تشعر بالأمان النفسي والاحترام داخل المدرسة؟ وكيف تتعامل الإدارة مع التنمر؟[cite: 1, 2, 5]</li>
+            <li>كيف تستخدم التقنية والشاشات التفاعلية في فصول العلوم والرياضيات؟[cite: 1, 2, 5]</li>
           </ul>
         </div>
         <div class="bg-blue-50/60 p-4 rounded-2xl border border-blue-200">
-          <h4 class="font-black text-blue-950 mb-2">2. محاور مقابلة المعلمين:</h4>
+          <h4 class="font-black text-blue-950 mb-2">2. محاور مقابلة المعلمين[cite: 1, 2, 5]:</h4>
           <ul class="space-y-1.5 text-slate-700 list-disc pr-4 font-medium leading-relaxed">
-            <li>كيف يتم تحديد احتياجاتكم في خطة التطوير المهني؟ وما أثرها في الأداء الصفي؟</li>
-            <li>كيف يتم تطبيق استراتيجيات التمايز وتقديم الدعم للطلاب الموهوبين والمتعثرين؟</li>
+            <li>كيف يتم تحديد احتياجاتكم في خطة التطوير المهني؟ وما أثرها في الأداء الصفي؟[cite: 1, 2, 5]</li>
+            <li>كيف يتم تطبيق استراتيجيات التمايز وتقديم الدعم للطلاب الموهوبين والمتعثرين؟[cite: 1, 2, 5]</li>
           </ul>
         </div>
       </div>
@@ -1194,11 +1194,11 @@
 
       const assistantText = document.getElementById("audit-assistant-text");
       if (criticalIncomplete > 0) {
-        assistantText.innerHTML = `🚨 <strong>تنبيه مقوم خارجي حرج:</strong> يوجد <strong>${criticalIncomplete} مؤشرات حرجة</strong> في متطلبات تراخيص المبنى والسلامة (4-1-1-1 أو 4-2-1-1) غير مكتملة التوثيق.`;
+        assistantText.innerHTML = `🚨 <strong>تنبيه مقوم خارجي حرج:</strong> يوجد <strong>${criticalIncomplete} مؤشرات حرجة</strong> في متطلبات تراخيص المبنى والسلامة (4-1-1-1 أو 4-2-1-1) غير مكتملة التوثيق[cite: 1, 2].`;
       } else if (weightedPercent >= 90) {
         assistantText.innerHTML = `🌟 <strong>جاهزية التميز مكتملة بالوزن النسبي (${weightedPercent}%):</strong> تم استيفاء الشواهد والتثليث المنهجي بنجاح.`;
       } else if (weightedPercent >= 75) {
-        assistantText.innerHTML = `📈 <strong>أداء متقدم (${weightedPercent}%):</strong> يفصل مدرستكم ${90 - weightedPercent}% لبلوغ التميز الذهبي.`;
+        assistantText.innerHTML = `📈 <strong>أداء متقدم (${weightedPercent}%):</strong> يفصل مدرستكم ${90 - weightedPercent}% لبلوغ التميز الذهبي[cite: 1, 2].`;
       } else {
         assistantText.innerHTML = `⚠️ <strong>توصية تحسين عاجلة (${weightedPercent}%):</strong> يوجد ${52 - totalCompleted} مؤشراً تتطلب استكمال الشواهد ورفع درجات الروبك.`;
       }
