@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المنظومة الرقمية الشاملة للاعتماد والتقويم المدرسي - 52 مؤشراً</title>
+  <title>منظومة الاعتماد المدرسي • ثانوية الصحافة الأهلية (مسارات)</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons 6.5.1 -->
@@ -35,15 +35,15 @@
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 via-indigo-600 to-blue-600 p-0.5 shadow-lg flex items-center justify-center shrink-0">
             <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-amber-400 text-lg">
-              <i class="fa-solid fa-shield-halved"></i>
+              <i class="fa-solid fa-school"></i>
             </div>
           </div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
-              <h1 class="text-sm sm:text-base font-black tracking-tight text-white">منصة الاعتماد والتقويم المؤسسي</h1>
-              <span class="text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/25">52 مؤشراً</span>
+              <h1 class="text-sm sm:text-base font-black tracking-tight text-white">ثانوية الصحافة الأهلية (مسارات)</h1>
+              <span class="text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">تصنيف التقدم (83%)[cite: 1]</span>
             </div>
-            <p class="text-[10px] sm:text-xs text-slate-400">هيئة تقويم التعليم والتدريب</p>
+            <p class="text-[10px] sm:text-xs text-slate-400">الإدارة العامة للتعليم بمنطقة الرياض • الرقم الوزاري: S-M110348[cite: 1]</p>
           </div>
         </div>
       </div>
@@ -51,28 +51,16 @@
       <!-- Action Buttons Ribbon -->
       <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center w-full lg:w-auto overflow-x-auto pb-1 lg:pb-0 custom-scrollbar">
         <button onclick="openGapFinderModal()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-rose-600 hover:bg-rose-500 text-white font-black text-[11px] sm:text-xs rounded-xl transition flex items-center gap-1 shadow-xs">
-          <i class="fa-solid fa-bug text-amber-200"></i> النواقص
+          <i class="fa-solid fa-bug text-amber-200"></i> معالجة الفجوات
         </button>
         <button onclick="generateAuditReport()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-[11px] sm:text-xs rounded-xl transition flex items-center gap-1 shadow-xs">
-          <i class="fa-solid fa-file-signature"></i> القرار
+          <i class="fa-solid fa-file-signature"></i> تقرير الهيئة
         </button>
         <button onclick="openModal('work-samples-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-blue-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
           <i class="fa-solid fa-book-open-reader"></i> عينات
         </button>
         <button onclick="openModal('logistics-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
           <i class="fa-solid fa-clipboard-check"></i> الجاهزية
-        </button>
-        <button onclick="openModal('plc-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-teal-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
-          <i class="fa-solid fa-chalkboard-user"></i> مجتمعات
-        </button>
-        <button onclick="openModal('interviews-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-purple-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
-          <i class="fa-solid fa-comments"></i> المقابلات
-        </button>
-        <button onclick="openModal('templates-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-indigo-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
-          <i class="fa-solid fa-folder-open"></i> النماذج
-        </button>
-        <button onclick="openModal('committees-modal')" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-emerald-400 font-bold text-[11px] sm:text-xs rounded-xl border border-slate-700 transition flex items-center gap-1">
-          <i class="fa-solid fa-users-gear"></i> اللجان
         </button>
         <button onclick="window.print()" class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs rounded-xl border border-slate-700 transition" title="طباعة">
           <i class="fa-solid fa-print"></i>
@@ -87,33 +75,31 @@
   <!-- Navigation Bar -->
   <nav class="bg-white border-b border-slate-200 sticky top-[61px] sm:top-[69px] z-40 no-print shadow-xs">
     <div class="max-w-7xl mx-auto px-4 py-2.5 flex flex-col md:flex-row items-center justify-between gap-3">
-      
-      <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs font-bold custom-scrollbar">
-        <button onclick="switchView('overview')" id="tab-overview" class="nav-tab px-3.5 py-2 rounded-xl bg-blue-600 text-white shadow-md shadow-blue-500/20 transition flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-chart-pie"></i> لوحة المؤشرات
+      <div id="nav-tabs-container" class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-xs font-bold custom-scrollbar">
+        <button onclick="switchView('overview')" id="tab-overview" class="nav-tab px-3.5 py-2 rounded-xl bg-blue-600 text-white shadow-md transition flex items-center gap-1.5 whitespace-nowrap">
+          <i class="fa-solid fa-chart-pie"></i> لوحة المؤشرات والتقارير
         </button>
         <button onclick="switchView('1')" id="tab-1" class="nav-tab px-3.5 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-blue-600"></span> 1. الإدارة (25%)
+          <span class="w-2 h-2 rounded-full bg-blue-600"></span> 1. الإدارة المدرسية (94.75%)[cite: 1]
         </button>
         <button onclick="switchView('2')" id="tab-2" class="nav-tab px-3.5 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-emerald-600"></span> 2. التعليم (35%)
+          <span class="w-2 h-2 rounded-full bg-emerald-600"></span> 2. التعليم والتعلم (87%)[cite: 1]
         </button>
         <button onclick="switchView('3')" id="tab-3" class="nav-tab px-3.5 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-purple-600"></span> 3. النواتج (25%)
+          <span class="w-2 h-2 rounded-full bg-purple-600"></span> 3. نواتج التعلم (69.25%)[cite: 1]
         </button>
         <button onclick="switchView('4')" id="tab-4" class="nav-tab px-3.5 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-amber-600"></span> 4. البيئة (15%)
+          <span class="w-2 h-2 rounded-full bg-amber-600"></span> 4. البيئة المدرسية (72.5%)[cite: 1]
         </button>
         <button onclick="switchView('nafis')" id="tab-nafis" class="nav-tab px-3.5 py-2 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 transition flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-calculator text-amber-600"></i> حاسبة نافس
+          <i class="fa-solid fa-calculator text-amber-600"></i> تحليل نافس والتحصيلي
         </button>
       </div>
 
       <div class="relative w-full md:w-64">
-        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="بحث برقم المؤشر أو المسؤول..." class="w-full text-xs rounded-xl border border-slate-200 py-2 pr-8 pl-3 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50/50">
+        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="بحث برقم المؤشر أو الوصف..." class="w-full text-xs rounded-xl border border-slate-200 py-2 pr-8 pl-3 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50/50">
         <i class="fa-solid fa-search absolute right-3 top-3 text-slate-400 text-xs"></i>
       </div>
-
     </div>
   </nav>
 
@@ -122,217 +108,145 @@
     
     <!-- View 1: Executive Overview Dashboard -->
     <div id="overview-view" class="space-y-6">
-      
-      <!-- Top Hero Card -->
       <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-800 relative overflow-hidden">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
-          
           <div class="space-y-2.5">
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-500/30">
-                سلم الأوزان النسبية لهيئة تقويم التعليم والتدريب[cite: 1, 2, 5]
-              </span>
-              <span id="tier-badge" class="px-3.5 py-1 rounded-lg text-xs font-black bg-slate-800 text-slate-300 border border-slate-700">
-                مستوى التصنيف: جاري الاحتساب...
-              </span>
+              <span class="px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-500/30">تقرير هيئة تقويم التعليم 2025</span>
+              <span class="px-3.5 py-1 rounded-lg text-xs font-black bg-blue-500 text-white border border-blue-400">مستوى التقدم (83%)[cite: 1]</span>
             </div>
-            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white">لوحة القيادة الذكية للجاهزية المدرسية</h2>
+            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white">لوحة المتابعة التشخيصية لثانوية الصحافة الأهلية</h2>
             <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
-              تحتسب الدرجة الموزونة بدقة رياضية مطابقة لمنصة تميز (التعليم والتعلم 35%، الإدارة 25%، نواتج التعلم 25%، البيئة المدرسية 15%)[cite: 1, 2, 5].
+              مرتكزة على أحدث نتائج التقويم المدرسي المحدثة (القدرات، التحصيلي، والرخص المهنية) مع خطط الاستدامة ومعالجة الفجوات[cite: 1].
             </p>
           </div>
-
-          <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl backdrop-blur-md self-stretch sm:self-auto justify-around shrink-0">
+          <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 sm:p-5 rounded-2xl backdrop-blur-md shrink-0">
             <div class="text-center">
-              <span class="text-[10px] text-slate-400 font-bold block mb-1">الدرجة الموزونة</span>
-              <span id="overview-stat-percent" class="text-3xl font-black text-amber-400">0%</span>
+              <span class="text-[10px] text-slate-400 font-bold block mb-1">التقييم العام المعتمد</span>
+              <span class="text-3xl font-black text-amber-400">83%[cite: 1]</span>
             </div>
             <div class="h-10 w-px bg-white/10"></div>
             <div class="text-center">
-              <span class="text-[10px] text-slate-400 font-bold block mb-1">متوسط الروبك</span>
-              <span id="overview-rubric-score" class="text-3xl font-black text-emerald-400">0.0 <span class="text-xs font-normal text-slate-400">/ 4</span></span>
+              <span class="text-[10px] text-slate-400 font-bold block mb-1">تصنيف الأداء</span>
+              <span class="text-xs font-black text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded-lg">التقدم (جيد)[cite: 1]</span>
             </div>
           </div>
-
         </div>
-
-        <!-- Progress bar -->
         <div class="mt-6 w-full bg-slate-800/80 rounded-full h-3.5 overflow-hidden border border-slate-700 p-0.5">
-          <div id="overview-progress-bar" class="bg-gradient-to-r from-rose-500 via-amber-500 to-emerald-500 h-full rounded-full transition-all duration-700" style="width: 0%"></div>
-        </div>
-      </div>
-
-      <!-- Smart Readiness Audit Assistant Alert -->
-      <div id="audit-assistant-box" class="glass-card rounded-3xl p-5 border border-slate-200 shadow-sm">
-        <div class="flex items-start gap-4">
-          <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-lg shrink-0 shadow-md">
-            <i class="fa-solid fa-robot"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-sm font-black text-slate-900 flex items-center gap-2 flex-wrap">
-              <span>المساعد الذكي لتشخيص جاهزية الاعتماد الخارجي</span>
-              <span class="text-[10px] font-bold bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-full">تشخيص آلي فوري</span>
-            </h3>
-            <p id="audit-assistant-text" class="text-xs text-slate-600 mt-1 leading-relaxed">
-              جاري تحليل بيانات الشواهد والتثليث المنهجي لتحديد أولويات التحسين المباشرة لمدرستكم...
-            </p>
-          </div>
+          <div class="bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 h-full rounded-full transition-all duration-700" style="width: 83%"></div>
         </div>
       </div>
 
       <!-- Quick Metrics Grid -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div class="glass-card border border-slate-200/80 rounded-2xl p-4 shadow-xs flex items-center justify-between">
-          <div>
-            <span class="text-[11px] text-slate-500 font-bold block">إجمالي المؤشرات</span>
-            <span class="text-2xl font-black text-slate-900 mt-0.5 block">52</span>
-          </div>
-          <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-base">
-            <i class="fa-solid fa-list-check"></i>
-          </div>
+          <div><span class="text-[11px] text-slate-500 font-bold block">إجمالي الطلاب</span><span class="text-2xl font-black text-slate-900 mt-0.5 block">437 طالب[cite: 1]</span></div>
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center"><i class="fa-solid fa-users"></i></div>
         </div>
-
         <div class="glass-card border border-emerald-200/80 bg-emerald-50/30 rounded-2xl p-4 shadow-xs flex items-center justify-between">
-          <div>
-            <span class="text-[11px] text-emerald-700 font-bold block">متحقق بتميز (درجة 4)</span>
-            <span id="metric-done4" class="text-2xl font-black text-emerald-700 mt-0.5 block">0</span>
-          </div>
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-base">
-            <i class="fa-solid fa-circle-check"></i>
-          </div>
+          <div><span class="text-[11px] text-emerald-700 font-bold block">الهيئة التعليمية</span><span class="text-2xl font-black text-emerald-700 mt-0.5 block">32 معلم[cite: 1]</span></div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center"><i class="fa-solid fa-chalkboard-user"></i></div>
         </div>
-
         <div class="glass-card border border-amber-200/80 bg-amber-50/30 rounded-2xl p-4 shadow-xs flex items-center justify-between">
-          <div>
-            <span class="text-[11px] text-amber-700 font-bold block">قيد المعالجة (1-3)</span>
-            <span id="metric-pending" class="text-2xl font-black text-amber-700 mt-0.5 block">0</span>
-          </div>
-          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-base">
-            <i class="fa-solid fa-hourglass-half"></i>
-          </div>
+          <div><span class="text-[11px] text-amber-700 font-bold block">نواتج التعلم (تحصيلي)</span><span class="text-2xl font-black text-amber-700 mt-0.5 block">69.25%[cite: 1]</span></div>
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center"><i class="fa-solid fa-chart-line"></i></div>
         </div>
-
         <div class="glass-card border border-blue-200/80 bg-blue-50/30 rounded-2xl p-4 shadow-xs flex items-center justify-between">
-          <div>
-            <span class="text-[11px] text-blue-700 font-bold block">شواهد بروابط صالحة</span>
-            <span id="overview-stat-links" class="text-2xl font-black text-blue-700 mt-0.5 block">0</span>
-          </div>
-          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-base">
-            <i class="fa-solid fa-link"></i>
-          </div>
+          <div><span class="text-[11px] text-blue-700 font-bold block">الإدارة المدرسية</span><span class="text-2xl font-black text-blue-700 mt-0.5 block">94.75%[cite: 1]</span></div>
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center"><i class="fa-solid fa-award"></i></div>
         </div>
       </div>
 
       <!-- 4 Domains Breakdown Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <!-- Domain 1 Card -->
-        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center text-base font-black">1</div>
                 <div>
                   <h4 class="text-sm font-black text-slate-900">المجال الأول: الإدارة المدرسية</h4>
-                  <p class="text-[11px] text-slate-500 font-semibold">19 مؤشراً • الوزن النسبي 25%[cite: 1, 2, 5]</p>
+                  <p class="text-[11px] text-slate-500 font-semibold">19 مؤشراً • التقييم: 94.75% (تميز)[cite: 1]</p>
                 </div>
               </div>
-              <span id="d1-badge" class="text-xs font-black px-3 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-100">0%</span>
+              <span class="text-xs font-black px-3 py-1 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">94.75%</span>
             </div>
             <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-4">
-              <div id="d1-bar" class="bg-blue-600 h-full rounded-full transition-all" style="width: 0%"></div>
+              <div class="bg-blue-600 h-full rounded-full transition-all" style="width: 94.75%"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100/80">
-              <div>متوسط الروبك: <span id="d1-rubric" class="text-blue-700 font-black">1.0</span></div>
-              <div>مكتمل: <span id="d1-done" class="text-emerald-600 font-black">0</span></div>
-              <div>روابط: <span id="d1-links" class="text-blue-600 font-black">0</span></div>
-            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">نقاط التميز: اكتمال الكوادر، الاستدامة المالية، وتفعيل التقويم الذاتي[cite: 1].</p>
           </div>
           <button onclick="switchView('1')" class="mt-5 w-full py-3 rounded-xl bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 text-xs font-bold transition flex items-center justify-center gap-2">
-            <span>فتح ومتابعة شواهد المجال الأول</span>
+            <span>استعراض شواهد ومؤشرات الإدارة</span>
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
           </button>
         </div>
 
-        <!-- Domain 2 Card -->
-        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center text-base font-black">2</div>
                 <div>
                   <h4 class="text-sm font-black text-slate-900">المجال الثاني: التعليم والتعلم</h4>
-                  <p class="text-[11px] text-slate-500 font-semibold">13 مؤشراً • الوزن النسبي 35% (الأعلى تأثيراً)[cite: 1, 2, 5]</p>
+                  <p class="text-[11px] text-slate-500 font-semibold">13 مؤشراً • التقييم: 87.00% (تقدم)[cite: 1]</p>
                 </div>
               </div>
-              <span id="d2-badge" class="text-xs font-black px-3 py-1 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">0%</span>
+              <span class="text-xs font-black px-3 py-1 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">87.00%</span>
             </div>
             <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-4">
-              <div id="d2-bar" class="bg-emerald-600 h-full rounded-full transition-all" style="width: 0%"></div>
+              <div class="bg-emerald-600 h-full rounded-full transition-all" style="width: 87%"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100/80">
-              <div>متوسط الروبك: <span id="d2-rubric" class="text-emerald-700 font-black">1.0</span></div>
-              <div>مكتمل: <span id="d2-done" class="text-emerald-600 font-black">0</span></div>
-              <div>روابط: <span id="d2-links" class="text-emerald-600 font-black">0</span></div>
-            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">نقاط التميز: تنمية المهارات العاطفية وتغذية راجعة ممتازة، مع الحاجة لتطوير استراتيجيات التمايز.</p>
           </div>
           <button onclick="switchView('2')" class="mt-5 w-full py-3 rounded-xl bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-700 text-xs font-bold transition flex items-center justify-center gap-2">
-            <span>فتح ومتابعة شواهد المجال الثاني</span>
+            <span>استعراض شواهد ومؤشرات التعليم</span>
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
           </button>
         </div>
 
-        <!-- Domain 3 Card -->
-        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-2xl bg-purple-50 text-purple-600 border border-purple-100 flex items-center justify-center text-base font-black">3</div>
                 <div>
                   <h4 class="text-sm font-black text-slate-900">المجال الثالث: نواتج التعلم</h4>
-                  <p class="text-[11px] text-slate-500 font-semibold">13 مؤشراً • الوزن النسبي 25% (نافس والتطور)[cite: 1, 2, 5]</p>
+                  <p class="text-[11px] text-slate-500 font-semibold">13 مؤشراً • التقييم: 69.25% (انطلاق)[cite: 1]</p>
                 </div>
               </div>
-              <span id="d3-badge" class="text-xs font-black px-3 py-1 rounded-xl bg-purple-50 text-purple-700 border border-purple-100">0%</span>
+              <span class="text-xs font-black px-3 py-1 rounded-xl bg-amber-50 text-amber-700 border border-amber-100">69.25%</span>
             </div>
             <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-4">
-              <div id="d3-bar" class="bg-purple-600 h-full rounded-full transition-all" style="width: 0%"></div>
+              <div class="bg-purple-600 h-full rounded-full transition-all" style="width: 69.25%"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100/80">
-              <div>متوسط الروبك: <span id="d3-rubric" class="text-purple-700 font-black">1.0</span></div>
-              <div>مكتمل: <span id="d3-done" class="text-emerald-600 font-black">0</span></div>
-              <div>روابط: <span id="d3-links" class="text-purple-600 font-black">0</span></div>
-            </div>
+            <p class="text-xs text-slate-600 leading-relaxed text-rose-700 font-bold">تنبيه مستشار: التحصيل التعليمي يتطلب تدخلاً عاجلاً وبرامج دعم إثرائية واختبارات محاكية[cite: 1].</p>
           </div>
           <button onclick="switchView('3')" class="mt-5 w-full py-3 rounded-xl bg-purple-50 hover:bg-purple-600 hover:text-white text-purple-700 text-xs font-bold transition flex items-center justify-center gap-2">
-            <span>فتح ومتابعة شواهد المجال الثالث</span>
+            <span>استعراض ومتابعة نواتج التعلم</span>
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
           </button>
         </div>
 
-        <!-- Domain 4 Card -->
-        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 border border-amber-100 flex items-center justify-center text-base font-black">4</div>
                 <div>
                   <h4 class="text-sm font-black text-slate-900">المجال الرابع: البيئة المدرسية</h4>
-                  <p class="text-[11px] text-slate-500 font-semibold">7 مؤشرات • الوزن النسبي 15% (الأمن والتراخيص)[cite: 1, 2, 5]</p>
+                  <p class="text-[11px] text-slate-500 font-semibold">7 مؤشرات • التقييم: 72.50% (تقدم)[cite: 1]</p>
                 </div>
               </div>
-              <span id="d4-badge" class="text-xs font-black px-3 py-1 rounded-xl bg-amber-50 text-amber-700 border border-amber-100">0%</span>
+              <span class="text-xs font-black px-3 py-1 rounded-xl bg-amber-50 text-amber-700 border border-amber-100">72.50%</span>
             </div>
             <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden mb-4">
-              <div id="d4-bar" class="bg-amber-600 h-full rounded-full transition-all" style="width: 0%"></div>
+              <div class="bg-amber-600 h-full rounded-full transition-all" style="width: 72.5%"></div>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-slate-600 bg-slate-50 p-3 rounded-2xl border border-slate-100/80">
-              <div>متوسط الروبك: <span id="d4-rubric" class="text-amber-700 font-black">1.0</span></div>
-              <div>مكتمل: <span id="d4-done" class="text-emerald-600 font-black">0</span></div>
-              <div>روابط: <span id="d4-links" class="text-amber-600 font-black">0</span></div>
-            </div>
+            <p class="text-xs text-slate-600 leading-relaxed text-rose-700 font-bold">تنبيه مستشار: معالجة ملاحظات تنظيم المبنى والأثاث ومتطلبات الأمن والسلامة[cite: 1].</p>
           </div>
           <button onclick="switchView('4')" class="mt-5 w-full py-3 rounded-xl bg-amber-50 hover:bg-amber-600 hover:text-white text-amber-700 text-xs font-bold transition flex items-center justify-center gap-2">
-            <span>فتح ومتابعة شواهد المجال الرابع</span>
+            <span>استعراض شواهد البيئة المدرسية</span>
             <i class="fa-solid fa-arrow-left text-[10px]"></i>
           </button>
         </div>
@@ -354,101 +268,33 @@
             <span class="text-[10px] text-slate-300 font-bold block">إجمالي المؤشرات</span>
             <span id="banner-total-count" class="text-base font-black text-white">19</span>
           </div>
-          <div class="bg-emerald-500/20 px-4 py-2.5 rounded-2xl border border-emerald-500/30 text-center">
-            <span class="text-[10px] text-emerald-300 font-bold block">نسبة الإنجاز</span>
-            <span id="banner-domain-percent" class="text-base font-black text-emerald-300">0%</span>
-          </div>
         </div>
       </div>
-
       <div id="cards-container" class="space-y-5"></div>
     </div>
 
-    <!-- View 3: Nafis National Assessment Calculator -->
+    <!-- View 3: Nafis & Scholastic Assessment Analyzer -->
     <div id="nafis-view" class="space-y-6 hidden">
-      <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-        <div class="border-b border-slate-100 pb-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <h2 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2.5">
-              <i class="fa-solid fa-calculator text-amber-500"></i>
-              حاسبة نتائج وتحليل اختبارات نافس الوطنية (3-1-1-1 إلى 3-1-1-6)[cite: 1, 2, 5]
-            </h2>
-            <p class="text-xs text-slate-500 mt-1">أدخل متوسط درجات المدرسة لحساب نسبة الفجوة الأكاديمية ومسار التقدم السنوي[cite: 4, 5]</p>
-          </div>
-          <button onclick="saveNafisData()" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow-sm transition flex items-center gap-2">
-            <i class="fa-solid fa-floppy-disk"></i> حفظ وتحليل النتائج
-          </button>
+      <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2.5">
+            <i class="fa-solid fa-chart-line text-amber-500"></i>
+            تحليل نتائج اختبارات التحصيلي والقدرات العامة ونافس (ثانوية الصحافة الأهلية)[cite: 1]
+          </h2>
+          <p class="text-xs text-slate-500 mt-1">توصية المستشار: بناء خطة تدخل أكاديمي لمعالجة النقص في التحصيل التعليمي (المؤشر 1-1-1-3)[cite: 1].</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-          <!-- Reading -->
-          <div class="bg-blue-50/40 rounded-2xl p-4 sm:p-5 border border-blue-100">
-            <h3 class="text-xs font-black text-blue-900 mb-4 flex items-center gap-2">
-              <i class="fa-solid fa-book-open text-blue-600"></i> مجال القراءة (Reading)
-            </h3>
-            <div class="space-y-3.5 text-xs">
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">درجة المدرسة الحالية:</label>
-                <input type="number" id="nafis-read-current" placeholder="مثال: 512" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">المتوسط الوطني المستهدف:</label>
-                <input type="number" id="nafis-read-target" value="500" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">درجة العام السابق:</label>
-                <input type="number" id="nafis-read-prev" placeholder="مثال: 495" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+            <h3 class="text-xs font-black text-slate-800 mb-3">مستويات الأداء في القدرات والتحصيلي[cite: 1]</h3>
+            <div class="h-60"><canvas id="scholasticChart"></canvas></div>
           </div>
-
-          <!-- Math -->
-          <div class="bg-emerald-50/40 rounded-2xl p-4 sm:p-5 border border-emerald-100">
-            <h3 class="text-xs font-black text-emerald-900 mb-4 flex items-center gap-2">
-              <i class="fa-solid fa-square-root-variable text-emerald-600"></i> مجال الرياضيات (Math)
-            </h3>
-            <div class="space-y-3.5 text-xs">
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">درجة المدرسة الحالية:</label>
-                <input type="number" id="nafis-math-current" placeholder="مثال: 520" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">المتوسط الوطني المستهدف:</label>
-                <input type="number" id="nafis-math-target" value="500" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">درجة العام السابق:</label>
-                <input type="number" id="nafis-math-prev" placeholder="مثال: 505" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-            </div>
-          </div>
-
-          <!-- Science -->
-          <div class="bg-purple-50/40 rounded-2xl p-4 sm:p-5 border border-purple-100">
-            <h3 class="text-xs font-black text-purple-900 mb-4 flex items-center gap-2">
-              <i class="fa-solid fa-flask-vial text-purple-600"></i> مجال العلوم (Science)
-            </h3>
-            <div class="space-y-3.5 text-xs">
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">درجة المدرسة الحالية:</label>
-                <input type="number" id="nafis-sci-current" placeholder="مثال: 530" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">المتوسط الوطني المستهدف:</label>
-                <input type="number" id="nafis-sci-target" value="500" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-              <div>
-                <label class="block font-bold text-slate-600 mb-1">درجة العام السابق:</label>
-                <input type="number" id="nafis-sci-prev" placeholder="مثال: 510" class="w-full rounded-xl border border-slate-200 py-2 px-3 bg-white">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200">
-          <h3 class="text-xs font-black text-slate-800 mb-4">مقارنة أداء المدرسة مقابل المتوسط الوطني والدورات السابقة:</h3>
-          <div class="h-64">
-            <canvas id="nafisChart"></canvas>
+          <div class="bg-blue-50/50 p-5 rounded-2xl border border-blue-200 space-y-3 text-xs">
+            <h3 class="font-black text-blue-950">توصيات فريق التقويم الخارجي لتحسين نواتج التعلم:</h3>
+            <ul class="space-y-2 text-slate-700 list-disc pr-4 font-medium">
+              <li>عقد برامج مكثفة ومحاكية لاختبارات التحصيلي في مواد الرياضيات والعلوم.</li>
+              <li>تدريب الطلاب أسبوعياً على مهارات الاستدلال والتحليل في اختبارات القدرات العامة.</li>
+              <li>متابعة الفاقد التعليمي وربطه بخطط علاجية دقيقة لكل طالب.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -457,329 +303,100 @@
   </main>
 
   <!-- Modals -->
-  <!-- Modal: Pre-Audit Gap Finder -->
   <div id="gap-finder-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full p-5 sm:p-6 border border-slate-200 max-h-[90vh] flex flex-col">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full p-6 max-h-[90vh] flex flex-col">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-        <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-bug text-rose-600"></i>
-          <span>محرك الفحص الآلي للثغرات والنواقص التوثيقية</span>
+        <h3 class="text-sm font-black text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-bug text-rose-600"></i> خريطة الفجوات وتوصيات المعالجة (ثانوية الصحافة)
         </h3>
-        <button onclick="closeModal('gap-finder-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <button onclick="closeModal('gap-finder-modal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <p class="text-xs text-slate-600 mb-3 leading-relaxed">تحليل آلي فوري يوضح النواقص التي قد تؤدي إلى خفض التقييم أثناء زيارة فريق التقويم الخارجي:</p>
-      <div id="gap-finder-results" class="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1 text-xs"></div>
-      <div class="pt-4 border-t border-slate-100 flex justify-end">
-        <button onclick="closeModal('gap-finder-modal')" class="px-4 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-xl text-xs font-bold transition">إغلاق</button>
-      </div>
+      <div id="gap-finder-results" class="space-y-3 overflow-y-auto flex-1 text-xs"></div>
+      <div class="pt-4 border-t flex justify-end"><button onclick="closeModal('gap-finder-modal')" class="px-4 py-2 bg-slate-100 rounded-xl text-xs font-bold">إغلاق</button></div>
     </div>
   </div>
 
-  <!-- Modal: Student Work Sampling Log -->
   <div id="work-samples-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full p-5 sm:p-6 border border-slate-200 max-h-[90vh] flex flex-col">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-        <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-book-open-reader text-blue-600"></i>
-          <span>سجل فحص عينات أعمال الطلاب والتغذية الراجعة</span>
-        </h3>
-        <button onclick="closeModal('work-samples-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1 text-xs">
-        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-200">
-          <h4 class="font-black text-blue-950 mb-2">إضافة عينة فحص جديدة:</h4>
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5 mb-3">
-            <input type="text" id="sample-subject" placeholder="المادة..." class="text-xs rounded-xl border border-slate-300 p-2 bg-white">
-            <input type="text" id="sample-grade" placeholder="الصف والفصل..." class="text-xs rounded-xl border border-slate-300 p-2 bg-white">
-            <select id="sample-level" class="text-xs rounded-xl border border-slate-300 p-2 bg-white font-bold text-slate-700">
-              <option value="مرتفع التحصيل">مرتفع التحصيل</option>
-              <option value="متوسط التحصيل">متوسط التحصيل</option>
-              <option value="متدني التحصيل">منخفض التحصيل</option>
-            </select>
-            <input type="text" id="sample-feedback" placeholder="نوع التغذية الراجعة..." class="text-xs rounded-xl border border-slate-300 p-2 bg-white">
-          </div>
-          <div class="flex items-center gap-2">
-            <input type="url" id="sample-link" placeholder="رابط عينة العمل (Drive)..." class="flex-1 text-xs rounded-xl border border-slate-300 p-2 bg-white">
-            <button onclick="addWorkSample()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition">إضافة</button>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h4 class="font-black text-slate-800 mb-2">العينات المسجلة:</h4>
-          <div id="samples-list" class="space-y-2">
-            <div class="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between">
-              <div><span class="font-black text-slate-900 block">مهمة أدائية: العلوم - ثاني متوسط</span><span class="text-[10px] text-slate-500">الفئة: متوسط • التغذية: تصحيحية بنائية</span></div>
-              <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-xl border border-blue-200">موثق ✔</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pt-4 border-t border-slate-100 flex justify-end">
-        <button onclick="closeModal('work-samples-modal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">إغلاق</button>
-      </div>
-    </div>
+    <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-6"><h3 class="font-black text-sm mb-3">سجل عينات أعمال الطلاب</h3><button onclick="closeModal('work-samples-modal')" class="mt-4 px-4 py-2 bg-slate-100 rounded-xl text-xs font-bold">إغلاق</button></div>
   </div>
-
-  <!-- Modal: Logistics Checklist -->
   <div id="logistics-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-5 sm:p-6 border border-slate-200 max-h-[90vh] flex flex-col">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-        <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-clipboard-check text-amber-600"></i>
-          <span>قائمة الجاهزية اللوجستية للزيارة الميدانية</span>
-        </h3>
-        <button onclick="closeModal('logistics-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1 text-xs">
-        <label class="flex items-start gap-3 p-3.5 bg-slate-50 rounded-2xl border border-slate-200 cursor-pointer">
-          <input type="checkbox" class="w-4 h-4 mt-0.5 text-amber-600 rounded">
-          <div><span class="font-black text-slate-900 block">تجهيز مقر غرفة فريق التقويم الخارجي المستقلة</span><span class="text-[11px] text-slate-600">شبكة إنترنت سريعة، طابعة مجهزة، شاشة عرض، وضيافة رسمية.</span></div>
-        </label>
-        <label class="flex items-start gap-3 p-3.5 bg-slate-50 rounded-2xl border border-slate-200 cursor-pointer">
-          <input type="checkbox" class="w-4 h-4 mt-0.5 text-amber-600 rounded">
-          <div><span class="font-black text-slate-900 block">اكتمال الملفات الورقية الأساسية والتراخيص الرسمية[cite: 1, 2, 5]</span><span class="text-[11px] text-slate-600">صك الملكية، رخصة البلدية، ترخيص الدفاع المدني، والهيكل التنظيمي[cite: 1, 2, 5].</span></div>
-        </label>
-        <label class="flex items-start gap-3 p-3.5 bg-slate-50 rounded-2xl border border-slate-200 cursor-pointer">
-          <input type="checkbox" class="w-4 h-4 mt-0.5 text-amber-600 rounded">
-          <div><span class="font-black text-slate-900 block">جاهزية جداول الملاحظة الصفية ومعامل العلوم والتقنية[cite: 1, 2, 5]</span><span class="text-[11px] text-slate-600">جداول الحصص الأسبوعية وتوزيع المعلمين وقوائم الطلاب[cite: 1, 2, 5].</span></div>
-        </label>
-      </div>
-      <div class="pt-4 border-t border-slate-100 flex justify-end">
-        <button onclick="closeModal('logistics-modal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">إغلاق</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: PLC Log -->
-  <div id="plc-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full p-5 sm:p-6 border border-slate-200 max-h-[90vh] flex flex-col">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-        <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-chalkboard-user text-teal-600"></i>
-          <span>سجل مجتمعات التعلم المهنية (PLC) وتبادل الزيارات[cite: 1, 2, 5]</span>
-        </h3>
-        <button onclick="closeModal('plc-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1 text-xs">
-        <div class="bg-teal-50/50 p-4 rounded-2xl border border-teal-200">
-          <h4 class="font-black text-teal-950 mb-2">إضافة جلسة مجتمع تعلم جديد:</h4>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-3">
-            <input type="text" id="plc-topic" placeholder="عنوان الموضوع..." class="text-xs rounded-xl border border-slate-300 p-2 bg-white">
-            <input type="text" id="plc-teachers" placeholder="المعلمون المشاركون..." class="text-xs rounded-xl border border-slate-300 p-2 bg-white">
-            <input type="date" id="plc-date" class="text-xs rounded-xl border border-slate-300 p-2 bg-white">
-          </div>
-          <div class="flex items-center gap-2">
-            <input type="url" id="plc-link" placeholder="رابط تقرير الأثر (Drive)..." class="flex-1 text-xs rounded-xl border border-slate-300 p-2 bg-white">
-            <button onclick="addPlcEntry()" class="px-4 py-2 bg-teal-700 hover:bg-teal-600 text-white rounded-xl font-bold transition">إضافة</button>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h4 class="font-black text-slate-800 mb-2">الجلسات المسجلة:</h4>
-          <div id="plc-list" class="space-y-2">
-            <div class="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between">
-              <div><span class="font-black text-slate-900 block">استراتيجيات التفكير الناقد</span><span class="text-[10px] text-slate-500">قسم الرياضيات • التاريخ: 2026-08-20</span></div>
-              <span class="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-xl border border-teal-200">موثق ✔</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pt-4 border-t border-slate-100 flex justify-end">
-        <button onclick="closeModal('plc-modal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">إغلاق</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: Templates Bank -->
-  <div id="templates-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-5 sm:p-6 border border-slate-200 max-h-[90vh] flex flex-col">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-        <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-folder-open text-indigo-600"></i>
-          <span>بنك قوالب الشواهد الرسمية الجاهزة</span>
-        </h3>
-        <button onclick="closeModal('templates-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1 text-xs">
-        <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-          <div><span class="font-black text-slate-800 block">1. نموذج تحليل الواقع الرباعي (SWOT) والخطة التشغيلية[cite: 1, 2, 5]</span><span class="text-[10px] text-slate-500">صيغة Word[cite: 1, 2, 5]</span></div>
-          <button onclick="downloadSampleDoc('SWOT.docx')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold">تحميل</button>
-        </div>
-        <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-          <div><span class="font-black text-slate-800 block">2. بطاقة الملاحظة الصفية وسلالم التقدير اللفظي (Rubrics)[cite: 1, 2, 5]</span><span class="text-[10px] text-slate-500">صيغة Word[cite: 1, 2, 5]</span></div>
-          <button onclick="downloadSampleDoc('Rubric.docx')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold">تحميل</button>
-        </div>
-        <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-          <div><span class="font-black text-slate-800 block">3. خطة التدخل العلاجي والتحسين الأكاديمي[cite: 1, 2, 5]</span><span class="text-[10px] text-slate-500">صيغة Excel[cite: 1, 2, 5]</span></div>
-          <button onclick="downloadSampleDoc('Remedial.xlsx')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold">تحميل</button>
-        </div>
-      </div>
-      <div class="pt-4 border-t border-slate-100 flex justify-end">
-        <button onclick="closeModal('templates-modal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">إغلاق</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: Committees Reports -->
-  <div id="committees-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-5 sm:p-6 border border-slate-200">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-        <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-users-gear text-emerald-600"></i>
-          <span>توليد تقارير اللجان المدرسية المستقلة</span>
-        </h3>
-        <button onclick="closeModal('committees-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="space-y-2.5 mb-6 text-xs">
-        <button onclick="printCommitteeReport('guidance')" class="w-full p-3.5 bg-slate-50 hover:bg-blue-50 border border-slate-200 rounded-2xl text-right flex items-center justify-between font-black transition">
-          <span><i class="fa-solid fa-user-shield text-blue-600 ml-2"></i> تقرير لجنة التوجيه الطلابي والحماية</span>
-          <span class="text-[10px] bg-blue-100 text-blue-800 px-3 py-1 rounded-xl">طباعة</span>
-        </button>
-        <button onclick="printCommitteeReport('learning')" class="w-full p-3.5 bg-slate-50 hover:bg-emerald-50 border border-slate-200 rounded-2xl text-right flex items-center justify-between font-black transition">
-          <span><i class="fa-solid fa-chalkboard-user text-emerald-600 ml-2"></i> تقرير لجنة الشؤون التعليمية والمناهج</span>
-          <span class="text-[10px] bg-emerald-100 text-emerald-800 px-3 py-1 rounded-xl">طباعة</span>
-        </button>
-        <button onclick="printCommitteeReport('safety')" class="w-full p-3.5 bg-slate-50 hover:bg-amber-50 border border-slate-200 rounded-2xl text-right flex items-center justify-between font-black transition">
-          <span><i class="fa-solid fa-shield-halved text-amber-600 ml-2"></i> تقرير لجنة الأمن والسلامة والصيانة</span>
-          <span class="text-[10px] bg-amber-100 text-amber-800 px-3 py-1 rounded-xl">طباعة</span>
-        </button>
-      </div>
-      <div class="flex justify-end">
-        <button onclick="closeModal('committees-modal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">إغلاق</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal: Interviews Matrix -->
-  <div id="interviews-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full p-5 sm:p-6 border border-slate-200 max-h-[90vh] flex flex-col">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-        <h3 class="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-          <i class="fa-solid fa-comments text-purple-600"></i>
-          <span>بنك ومحاور المقابلات المقننة لفريق التقويم الخارجي[cite: 1, 2, 5]</span>
-        </h3>
-        <button onclick="closeModal('interviews-modal')" class="text-slate-400 hover:text-slate-600 text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div class="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1 text-xs">
-        <div class="bg-purple-50/60 p-4 rounded-2xl border border-purple-200">
-          <h4 class="font-black text-purple-950 mb-2">1. محاور مقابلة عينة الطلاب[cite: 1, 2, 5]:</h4>
-          <ul class="space-y-1.5 text-slate-700 list-disc pr-4 font-medium leading-relaxed">
-            <li>هل تشعر بالأمان النفسي والاحترام داخل المدرسة؟ وكيف تتعامل الإدارة مع التنمر؟[cite: 1, 2, 5]</li>
-            <li>كيف تستخدم التقنية والشاشات التفاعلية في فصول العلوم والرياضيات؟[cite: 1, 2, 5]</li>
-          </ul>
-        </div>
-        <div class="bg-blue-50/60 p-4 rounded-2xl border border-blue-200">
-          <h4 class="font-black text-blue-950 mb-2">2. محاور مقابلة المعلمين[cite: 1, 2, 5]:</h4>
-          <ul class="space-y-1.5 text-slate-700 list-disc pr-4 font-medium leading-relaxed">
-            <li>كيف يتم تحديد احتياجاتكم في خطة التطوير المهني؟ وما أثرها في الأداء الصفي؟[cite: 1, 2, 5]</li>
-            <li>كيف يتم تطبيق استراتيجيات التمايز وتقديم الدعم للطلاب الموهوبين والمتعثرين؟[cite: 1, 2, 5]</li>
-          </ul>
-        </div>
-      </div>
-      <div class="pt-4 border-t border-slate-100 flex justify-end">
-        <button onclick="closeModal('interviews-modal')" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">إغلاق</button>
-      </div>
-    </div>
+    <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-6"><h3 class="font-black text-sm mb-3">الجاهزية اللوجستية للمدرسة</h3><button onclick="closeModal('logistics-modal')" class="mt-4 px-4 py-2 bg-slate-100 rounded-xl text-xs font-bold">إغلاق</button></div>
   </div>
 
   <!-- Footer -->
   <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 text-xs py-5 text-center no-print mt-auto">
-    <p class="font-bold text-slate-300">منظومة متابعة وتوثيق شواهد الاعتماد المدرسي • هيئة تقويم التعليم والتدريب (52 مؤشراً كاملاً)</p>
-    <p class="text-slate-500 mt-1">يتم حفظ جميع التعديلات والروابط تلقائياً ومحلياً على متصفحك</p>
+    <p class="font-bold text-slate-300">منظومة متابعة وتوثيق شواهد الاعتماد المدرسي • ثانوية الصحافة الأهلية (مسارات)</p>
   </footer>
 
   <!-- Application Logic -->
   <script>
     const fullIndicators52 = [
-      { id: "1-1-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "التخطيط", tool: "تحليل الوثائق", role: "مدير المدرسة / فريق التخطيط", isCritical: false, text: "تضع المدرسة خطة تشغيلية شاملة وفق أهداف تطويرية محددة.", evs: ["وثيقة الخطة التشغيلية للمدرسة للعام الحالي معتمدة ومؤرخة.", "نماذج تحليل الواقع (SWOT) وتحليل احتياجات المدرسة.", "محاضر اجتماعات إعداد الخطة التشغيلية وتشكيل اللجان.", "مصفوفة مؤشرات الأداء واضحة ومستهدفات زمنية محددة.", "لوحة متابعة مؤشرات الأداء الرقمية (KPIs) المحدثة فصلياً."] },
-      { id: "1-1-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "التخطيط", tool: "تحليل الوثائق والمقابلات", role: "مدير المدرسة / وكيل التطوير", isCritical: false, text: "تتابع المدرسة تنفيذ خطتها التشغيلية وتطورها بما يضمن تحقيق أهدافها.", evs: ["تقارير المتابعة الدورية ونسب الإنجاز الفصلية للخطة.", "محاضر مراجعة الفجوات والتحديات والتعديلات المنفذة.", "لوحات متابعة مؤشرات الأداء (KPIs) التشغيلية.", "خطة إدارة المخاطر والطوارئ التعليمية المعتمدة."] },
-      { id: "1-2-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العملية التعليمية", tool: "تحليل وثائق واستبانات", role: "رائد النشاط / وكيل الشؤون التعليمية", isCritical: false, text: "تعزز المدرسة القيم الإسلامية، والهوية الوطنية.", evs: ["خطة وتقارير فعاليات اليوم الوطني، يوم التأسيس، ويوم العلم.", "سجلات برامج الإذاعة المدرسية المعززة للقيم والأخلاق.", "معارض وأنشطة الاحتفاء باللغة العربية والتراث الوطني.", "توثيق مبادرات تعزيز السلوك الإيجابي والهوية الإسلامية."] },
-      { id: "1-2-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العملية التعليمية", tool: "تحليل الوثائق والملاحظة", role: "مدير المدرسة / الموجه الطلابي", isCritical: false, text: "تطبق المدرسة قيم مهنة التعليم وأخلاقياتها، وتتابع الالتزام بها.", evs: ["ميثاق أخلاقيات مهنة التعليم موقعاً بالعلم من المنسوبين.", "محاضر ورش العمل التوعوية باللوائح والأنظمة الوظيفية.", "سجلات المتابعة الإدارية للالتزام المهني والمسؤولية."] },
-      { id: "1-2-1-3", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العملية التعليمية", tool: "سجلات نظام نور", role: "وكيل الشؤون المدرسية / الموجه الطلابي", isCritical: false, text: "تطبق المدرسة إجراءات محددة لدعم الانضباط المدرسي، وتتابع الالتزام بها.", evs: ["سجلات ونظام رصد الحضور والغياب اليومي والحصصي (نور).", "خطة الحد من الغياب وتثبيت الحضور قبل وبعد الإجازات.", "سجلات تكريم الطلاب والصفوف الأكثر التزاماً وانضباطاً.", "مقارنة بيانية لنسب الغياب والتأخر الصباحي شهرياً."] },
-      { id: "1-2-1-4", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العملية التعليمية", tool: "تحليل الوثائق والمقابلات", role: "الموجه الطلابي / معلم التربية الخاصة", isCritical: false, text: "تنفذ المدرسة برامج وأنشطة تربوية داعمة للسلوك الإيجابي لدى المتعلمين، ومنهم ذوو الإعاقة والموهوبون، وتتابعها.", evs: ["خطة وسجلات برامج التوجيه الطلابي لتعزيز السلوك الإيجابي.", "محاضر وقرارات لجنة التوجيه الطلابي لمعالجة المشكلات.", "برامج الرعاية الخاصة بذوي الإعاقة والموهوبين وتوثيق نتائجها."] },
-      { id: "1-2-1-5", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العملية التعليمية", tool: "تحليل وثائق ومخرجات الطلاب", role: "منسق الموهوبين / الموجه الطلابي", isCritical: false, text: "تنفذ المدرسة برامج وأنشطة إثرائية لتطوير مواهب المتعلمين، وتهيئهم للمستقبل، وتتابعها.", evs: ["خطة البرامج الإثرائية والمسابقات العلمية والثقافية.", "معارض الموهبة والابتكار ونماذج من منجزات الطلاب.", "سجلات الإرشاد المهني والتهيئة للمسارات التخصصية والجامعية.", "سجل تطبيق مقاييس الميول المهنية وحصر الزيارات الجامعية."] },
-      { id: "1-3-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "المجتمع المدرسي", tool: "استبانات المناخ المدرسي", role: "مدير المدرسة / لجنة المناخ المدرسي", isCritical: false, text: "تعزز المدرسة بناء العلاقات الإيجابية والتعاون في المجتمع المدرسي.", evs: ["محاضر اجتماعات الهيئة التعليمية والإدارية والقرارات المشتركة.", "نتائج وتحليل استبانات المناخ المدرسي للكادر والطلاب.", "توثيق فعاليات المناسبات الاجتماعية والترابط الداخلي."] },
-      { id: "1-3-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "المجتمع المدرسي", tool: "استبانات وتحليل وثائق", role: "الموجه الطلابي / رائد الشراكة الأسرية", isCritical: false, text: "تعزز المدرسة مشاركة الأسرة في تعلم أبنائهم، والتحضير لمستقبلهم.", evs: ["محاضر اجتماعات الجمعية العمومية ومجالس الآباء والأمهات.", "سجلات إشعارات أولياء الأمور بمستويات ونتائج أبنائهم بانتظام.", "توثيق تفعيل الشراكة الأسرية في الأنشطة المدرسية."] },
-      { id: "1-3-1-3", domain: "1", domainName: "الإدارة المدرسية", std: "المجتمع المدرسي", tool: "شراكات وتقارير ميدانية", role: "مدير المدرسة / منسق الشراكة المجتمعية", isCritical: false, text: "تعزز المدرسة الشراكة المجتمعية لدعم التعلم والتأثير الإيجابي في المجتمع.", evs: ["عقود ومذكرات التفاهم والشراكة المجتمعية الموقعة.", "تقارير الزيارات الميدانية والفعاليات المتبادلة مع المجتمع.", "توثيق أثر المبادرات المجتمعية على دعم وتطوير التعلم."] },
-      { id: "1-4-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "تحليل التشكيلات المدرسية", role: "مدير المدرسة / وكيل الشؤون المدرسية", isCritical: false, text: "توفر المدرسة كادراً تعليمياً مكتملاً ومؤهلاً بما يتسق مع المهام الموكلة له.", evs: ["سجل التشكيلات المدرسية المعتمد ومطابقة التخصصات.", "جداول توزيع الحصص والأنصبة التدريسية وفق اللوائح.", "ملفات السير الذاتية والمؤهلات الأكاديمية للكادر التعليمي."] },
-      { id: "1-4-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "تحليل الهيكل الوظيفي", role: "مدير المدرسة / وكيل الشؤون الإدارية", isCritical: false, text: "توفر المدرسة كادراً إدارياً مكتملاً ومؤهلاً بما يتسق مع المهام الموكلة له.", evs: ["الهيكل التنظيمي المعتمد للمدرسة وقرارات التكليف الرسمية.", "بطاقات الوصف الوظيفي لجميع الإداريين واللجان المدرسية.", "تقارير تقييم الأداء الوظيفي السنوي للكادر الإداري."] },
-      { id: "1-4-1-3", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "التدقيق والميزانية", role: "المسؤول المالي / مدير المدرسة", isCritical: false, text: "تظهر المدرسة الملاءة والاستدامة المالية.", evs: ["الميزانية التشغيلية السنوية المعتمدة وسجلات التدقيق.", "سجلات الإيرادات والمصروفات والعهد والمشتريات الرسمية.", "خطة إدارة الموارد واستدامة الدعم المالي للمرافق والبرامج."] },
-      { id: "1-4-1-4", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "قواعد بيانات الرخص المهنية", role: "وكيل الشؤون التعليمية / منسق التطوير", isCritical: false, text: "تدعم المدرسة منسوبيها للحصول على الرخصة المهنية، وتتابعها.", evs: ["قاعدة بيانات حصر الرخص المهنية للمعلمين ونسب الحاصلين عليها.", "خطة دعم المعلمين لاجتياز اختبارات الرخصة المهنية.", "سجلات ورش العمل وبرامج التهيئة للرخصة المهنية.", "ملف الإنتاج المعرفي والمبادرات المنفذة من المعلمين الحاصلين على رخص متقدمة."] },
-      { id: "1-4-1-5", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "برامج وتقارير التطوير المهني", role: "منسق التطوير المهني / المشرف المقيم", isCritical: false, text: "تدعم المدرسة التطوير المهني لمنسوبيها وفقاً لنتائج التقويم وتحليل احتياجاتهم.", evs: ["خطة التطوير المهني السنوية المبنية على قياس الاحتياج.", "حقائب البرامج التدريبية المنفذة وسجلات الحضور والشهادات.", "تقارير تقييم أثر التدريب المهني على الأداء الصفي.", "سجل مجتمعات التعلم المهنية (PLC) وتبادل الزيارات الصفية الموثق."] },
-      { id: "1-4-1-6", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "ملفات التقويم الذاتي المعتمدة", role: "فريق التميز والجودة والتقويم الذاتي", isCritical: false, text: "تطبق المدرسة التقويم الذاتي المبني على المعايير المعتمدة من الهيئة بشكل مستمر.", evs: ["قرار تشكيل فريق التميز والتقويم الذاتي بالمدرسة.", "استمارات وبطاقات التقويم الذاتي المكتملة وفق المعايير.", "التقرير السنوي الشامل لنتائج التقويم الذاتي المعتمد."] },
-      { id: "1-4-1-7", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "مؤشرات وخطط التحسين", role: "مدير المدرسة / فريق الجودة", isCritical: false, text: "تنفذ المدرسة خطة التحسين بناءً على نتائج التقويم المدرسي، وتتابعها.", evs: ["خطة التحسين المعتمدة المعالجة لأولويات التطوير.", "تقارير المتابعة الدورية لمبادرات وبرامج خطة التحسين.", "مقارنة قياس الأداء قبل وبعد تطبيق خطة التحسين المدرسي."] },
-      { id: "1-5-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "حقوق المتعلم وحمايته", tool: "اللوائح وصناديق الشكاوى", role: "الموجه الطلابي / وكيل الشؤون المدرسية", isCritical: false, text: "تلتزم المدرسة بالمحافظة على حقوق المتعلمين، وحمايتهم.", evs: ["لائحة حقوق وواجبات الطالب المعلنة للطلاب وأولياء الأمور.", "سجلات صندوق مقترحات وشكاوى الطلاب وآلية التعامل معها.", "سياسة حماية الطفل المعتمدة والمطبقة في المجتمع المدرسي.", "سجل الرصد والتعامل السري مع الحالات الاجتماعية والنفسية."] },
-      { id: "1-5-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "حقوق المتعلم وحمايته", tool: "استبانات وبرامج الحماية", role: "الموجه الطلابي / لجنة الحماية", isCritical: false, text: "توفر المدرسة مناخاً آمناً للتعلم والنمو نفسياً واجتماعياً.", evs: ["برامج وفعاليات الوقاية من التنمر والتوعية بالأمان النفسي.", "سجلات الرعاية النفسية والاجتماعية للحالات الفردية.", "استبانات قياس أمان ورضا الطلاب في البيئة المدرسية."] },
+      // Domain 1: الإدارة المدرسية (19 مؤشراً)
+      { id: "1-1-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "التخطيط", tool: "تحليل الوثائق", role: "مدير المدرسة", isCritical: false, text: "تضع المدرسة خطة تشغيلية مكتملة العناصر وفق أهداف تطويرية محددة.", evs: ["وثيقة الخطة التشغيلية للمدرسة للعام الحالي معتمدة ومؤرخة.", "نماذج تحليل الواقع (SWOT) وتحليل احتياجات المدرسة."] },
+      { id: "1-1-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "التخطيط", tool: "تحليل الوثائق والمقابلات", role: "وكيل التطوير", isCritical: false, text: "تتابع المدرسة تنفيذ خطتها وتطورها بما يضمن تحقيق أهدافها.", evs: ["تقارير المتابعة الدورية ونسب الإنجاز الفصلية للخطة.", "محاضر مراجعة الفجوات والتحديات والتعديلات المنفذة."] },
+      { id: "1-2-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العمل التعليمي", tool: "وثائق وأنشطة", role: "رائد النشاط", isCritical: false, text: "تعزز المدرسة القيم الإسلامية والهوية الوطنية.", evs: ["خطة وتقارير فعاليات اليوم الوطني ويوم التأسيس.", "سجلات برامج الإذاعة المدرسية المعززة للقيم."] },
+      { id: "1-2-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العمل التعليمي", tool: "ملاحظة وميثاق", role: "مدير المدرسة", isCritical: false, text: "تلتزم المدرسة بقيم مهنة التعليم وأخلاقياتها.", evs: ["ميثاق أخلاقيات مهنة التعليم موقعاً من المنسوبين.", "ورش العمل التوعوية باللوائح الوظيفية."] },
+      { id: "1-2-1-3", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العمل التعليمي", tool: "نور", role: "وكيل شؤون الطلاب", isCritical: false, text: "تطبع المدرسة قواعد السلوك والمواظبة وتتابع تطبيقها.", evs: ["سجلات ونظام رصد الحضور والغياب (نور).", "خطة الحد من الغياب."] },
+      { id: "1-2-1-4", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العمل التعليمي", tool: "مقابلات وسجلات", role: "الموجه الطلابي", isCritical: false, text: "توفر المدرسة مناخاً آمناً للتعلم والنمو نفسياً واجتماعياً.", evs: ["برامج وفعاليات الوقاية من التنمر.", "سجلات الرعاية النفسية والاجتماعية."] },
+      { id: "1-2-1-5", domain: "1", domainName: "الإدارة المدرسية", std: "قيادة العمل التعليمي", tool: "برامج إثرائية", role: "منسق الموهوبين", isCritical: false, text: "توفر المدرسة برامج وأنشطة إثرائية غير صفية لتطوير مواهب المتعلمين.", evs: ["خطة البرامج الإثرائية والمسابقات العلمية.", "معارض الموهبة والابتكار."] },
+      { id: "1-3-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "المجتمع المدرسي", tool: "استبانات", role: "لجنة المناخ المدرسي", isCritical: false, text: "تعزز المدرسة بناء العلاقات الإيجابية والتعاون في المجتمع المدرسي.", evs: ["محاضر اجتماعات الهيئة التعليمية والإدارية.", "تحليل استبانات المناخ المدرسي."] },
+      { id: "1-3-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "المجتمع المدرسي", tool: "وثائق", role: "رائد الشراكة الأسرية", isCritical: false, text: "تعزز المدرسة مشاركة الأسرة في تعلم أبنائهم والتحضير لمستقبلهم.", evs: ["محاضر مجالس الآباء والأمهات.", "سجلات إشعارات أولياء الأمور بالمستويات."] },
+      { id: "1-3-1-3", domain: "1", domainName: "الإدارة المدرسية", std: "المجتمع المدرسي", tool: "شراكات وتقارير", role: "منسق الشراكة المجتمعية", isCritical: false, text: "تعزز المدرسة الشراكة المجتمعية لدعم التعلم والتأثير الإيجابي.", evs: ["عقود ومذكرات التفاهم والشراكة المجتمعية.", "تقارير الزيارات الميدانية المتبادلة."] },
+      { id: "1-4-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "التشكيلات", role: "وكيل الشؤون المدرسية", isCritical: false, text: "توفر المدرسة كادراً تعليمياً مكتملاً ومؤهلاً.", evs: ["سجل التشكيلات المدرسية المعتمد.", "جداول توزيع الحصص والأنصبة."] },
+      { id: "1-4-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "الهيكل", role: "وكيل الشؤون الإدارية", isCritical: false, text: "توفر المدرسة كادراً إدارياً مكتملاً ومؤهلاً.", evs: ["الهيكل التنظيمي المعتمد للمدرسة.", "بطاقات الوصف الوظيفي للإداريين."] },
+      { id: "1-4-1-3", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "الميزانية", role: "المسؤول المالي", isCritical: false, text: "تظهر المدرسة ثباتاً واستدامة مالية.", evs: ["الميزانية التشغيلية السنوية المعتمدة.", "سجلات التدقيق والإيرادات."] },
+      { id: "1-4-1-4", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "رخص مهنية", role: "منسق التطوير", isCritical: false, text: "تشجع المدرسة منسوبيها للحصول على الرخصة المهنية.", evs: ["قاعدة بيانات حصر الرخص المهنية.", "خطة دعم المعلمين لاجتياز الاختبارات."] },
+      { id: "1-4-1-5", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "تدريب", role: "منسق التطوير المهني", isCritical: false, text: "تدعم المدرسة التطوير المهني لمنسوبيها وفق نتائج تقويم الأداء.", evs: ["خطة التطوير المهني السنوية المبنية على الاحتياج.", "سجلات وحقائب البرامج التدريبية."] },
+      { id: "1-4-1-6", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "تقويم ذاتي", role: "فريق الجودة", isCritical: false, text: "تطبق المدرسة التقويم الذاتي المبني على المعايير المعتمدة.", evs: ["قرار تشكيل فريق التميز والتقويم الذاتي.", "استمارات التقويم الذاتي المكتملة."] },
+      { id: "1-4-1-7", domain: "1", domainName: "الإدارة المدرسية", std: "التطوير المؤسسي", tool: "خطط تحسين", role: "مدير المدرسة", isCritical: false, text: "تنفذ المدرسة خطة للتحسين بناء على نتائج التقويم المدرسي وتتابعها.", evs: ["خطة التحسين المعتمدة المعالجة للأولويات.", "تقارير المتابعة الدورية للمبادرات."] },
+      { id: "1-5-1-1", domain: "1", domainName: "الإدارة المدرسية", std: "حقوق المتعلم وحمايته", tool: "لوائح", role: "الموجه الطلابي", isCritical: false, text: "تلتزم المدرسة بحقوق المتعلمين وحمايتهم.", evs: ["لائحة حقوق وواجبات الطالب المعلنة.", "سجلات صندوق الشكاوى والمقترحات."] },
+      { id: "1-5-1-2", domain: "1", domainName: "الإدارة المدرسية", std: "حقوق المتعلم وحمايته", tool: "برامج حماية", role: "لجنة الحماية", isCritical: false, text: "توفر المدرسة مناخاً آمناً وتنفذ برامج داعمة للسلوك الإيجابي.", evs: ["برامج وقاية من التنمر والرعاية النفسية.", "محاضر وقرارات لجنة التوجيه الطلابي."] },
 
-      // Domain 2: التعليم والتعلم (13 مؤشراً - وزن 35%)
-      { id: "2-1-1-1", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "الملاحظة والخطط الفردية", role: "معلمو المواد / منسق التربية الخاصة", isCritical: false, text: "توفر المدرسة فرصاً متكافئة للتعلم تلبي احتياجات المتعلمين، ومنهم ذوو الإعاقة والموهوبون.", evs: ["سجلات حصر وتصنيف الفئات الخاصة (الموهوبين/ذوي الإعاقة/المتعثرين).", "نماذج الخطط التربوية والتعليمية الفردية (IEP) والتعديلات.", "ملفات الدعم والمساندة الصفية وتكافؤ فرص المشاركة.", "ملف أوراق العمل والأنشطة المتدرجة للتمايز الصفي."] },
-      { id: "2-1-1-2", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "الزيارات الإشرافية والتحضير", role: "المشرف التربوي المقيم / المعلم الأول", isCritical: false, text: "تدعم المدرسة تنفيذ المناهج بما يحقق نواتج التعلم المستهدفة.", evs: ["خطط توزيع المقررات الدراسية المعتمدة ومطابقتها للتقويم.", "تقارير الزيارات الإشرافية والصفية لمتابعة تنفيذ المناهج.", "نماذج من التحضير المعتمد وتغطية مخرجات التعلم."] },
-      { id: "2-1-1-3", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "بطاقة الملاحظة الصفية", role: "معلمو المواد / وكيل الشؤون التعليمية", isCritical: false, text: "تنوع المدرسة في إستراتيجيات التعليم والتعلم لتلبية احتياجات المتعلمين، ودعم تعلمهم.", evs: ["نماذج خطط دروس تتضمن استراتيجيات التعلم النشط والتمايز.", "بطاقات الملاحظة الصفية المشيدة بتنوع أساليب التدريس.", "توثيق حصص الممارسات التدريسية المتميزة وتبادل الزيارات.", "سجل رصد الحصص النموذجية وتطبيقات التعلم النشط."] },
-      { id: "2-1-1-4", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "إحصائيات المنصات والتطبيقات", role: "معلم الحاسب / منسق التعليم الإلكتروني", isCritical: false, text: "تفعل المدرسة التقنية الرقمية لدعم تعلم المتعلمين وتلبية احتياجاتهم.", evs: ["إحصائيات تفعيل منصة مدرستي والشاشات التفاعلية بالفصول.", "نماذج الأنشطة الرقمية والتطبيقات التفاعلية المنفذة من الطلاب.", "توثيق استخدام المعامل الرقمية والبرمجيات التعليمية المساندة."] },
-      { id: "2-1-1-5", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "المهام الأدائية والتطبيقية", role: "معلمو المواد العلمية والتطبيقية", isCritical: false, text: "تنفذ المدرسة أنشطة تعلم تطبيقية ترتبط بحياة المتعلمين.", evs: ["مشاريع ومهام أدائية تربط المعارف بالواقع المعاش والبيئة.", "تقارير الزيارات الميدانية والتجارب المعملية التطبيقية.", "نماذج من أعمال الطلاب التطبيقية في خدمة المجتمع والمدرسة.", "سجل فحص عينات أعمال الطلاب والمهام الأدائية المصححة."] },
-      { id: "2-1-1-6", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "الاختبارات التشخيصية والبرامج", role: "معلمو اللغة العربية والرياضيات", isCritical: false, text: "تنمي المدرسة المهارات القرائية والعددية الأساسية لدى المتعلمين.", evs: ["خطة وبرامج تعزيز مهارات الفهم القرائي والعمليات الحسابية.", "نتائج الاختبارات التشخيصية والقبلية والبعدية للمهارات الأساسية.", "سجلات ونماذج نوادي ومبادرات القراءة والرياضيات المدرسية.", "سجل قياس السرعة والفهم القرائي الدوري للطلاب."] },
-      { id: "2-1-1-7", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "المشاريع والبحوث العلمية", role: "معلمو العلوم / منسق البحث والابتكار", isCritical: false, text: "تنمي المدرسة مهارات التفكير والبحث والابتكار لدى المتعلمين.", evs: ["نماذج من البحوث الإجرائية والمشاريع العلمية المنفذة.", "سجلات مشاركة الطلاب في أولمبياد إبداع ومعارض الابتكار.", "خطط المعلمين المدمجة لمهارات التفكير الناقد وحل المشكلات."] },
-      { id: "2-1-1-8", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "الملاحظة والأنشطة التشاركية", role: "رائد النشاط / معلمو التربية البدنية والفنية", isCritical: false, text: "تنمي المدرسة المهارات العاطفية والاجتماعية لدى المتعلمين.", evs: ["خطط الأنشطة المعززة للعمل الجماعي، القيادة، والذكاء العاطفي.", "برامج الإرشاد الجمعي وورش مهارات التواصل وبناء الشخصية.", "توثيق مشاريع العمل التشاركي والتعلم التعاوني."] },
-      { id: "2-1-1-9", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "استبانات الدافعية والملاحظة", role: "الهيئة التعليمية / الموجه الطلابي", isCritical: false, text: "تعزز المدرسة دافعية المتعلمين للتعلم، والاستمتاع به.", evs: ["سجلات التحفيز والتكريم المستمر للتميز والإنجاز.", "تصميم بيئات صفية ولاصفية جاذبة ومحفزة على الاستكشاف.", "استبانات قياس دافعية الطلاب وشغفهم نحو التعلم."] },
-      { id: "2-2-1-1", domain: "2", domainName: "التعليم والتعلم", std: "تقويم التعلم", tool: "أدوات التقويم وسلالم التقدير", role: "معلمو المواد / لجنة التقويم", isCritical: false, text: "تطبق المدرسة أساليب وأدوات تقويم متنوعة للكشف عن مستويات أداء المتعلمين المختلفة.", evs: ["نماذج أدوات تقويم متنوعة (اختبارات، مهام أدائية، ملاحظة).", "سلالم التقدير اللفظي (Rubrics) المعتمدة لتقييم مهام الطلاب.", "ملفات إنجاز الطلاب (Portfolio) الرقمية أو الورقية."] },
-      { id: "2-2-1-2", domain: "2", domainName: "التعليم والتعلم", std: "تقويم التعلم", tool: "جداول المواصفات ونواتج التعلم", role: "لجنة الاختبارات / معلمو التخصص", isCritical: false, text: "تطبق المدرسة أساليب وأدوات متنوعة لتقويم نواتج التعلم المستهدفة في مناهج التعليم.", evs: ["جداول مواصفات الاختبارات وتوافقها مع المصفوفة المعرفية.", "نماذج أسئلة تقيس المستويات المعرفية العليا (تحليل، تركيب).", "تقارير قياس ومواءمة أدوات التقويم مع نواتج التعلم."] },
-      { id: "2-2-1-3", domain: "2", domainName: "التعليم والتعلم", std: "تقويم التعلم", tool: "التحليل الإحصائي والخطط العلاجية", role: "لجنة التحصيل الدراسي / المعلم الأول", isCritical: false, text: "تحلل المدرسة نتائج التقويم، وتوظفها في تحسين عمليات التعليم والتعلم والتقويم.", evs: ["تقارير التحليل الإحصائي لنتائج الاختبارات التشخيصية والفصلية.", "الخطط العلاجية المنفذة لمعالجة الضعف وقياس أثرها.", "الخطط الإثرائية لرفع مستويات المتفوقين وتحسين التدريس."] },
-      { id: "2-2-1-4", domain: "2", domainName: "التعليم والتعلم", std: "تقويم التعلم", tool: "التغذية الراجعة وسجلات المتابعة", role: "معلمو المواد / الموجه الطلابي", isCritical: false, text: "قدم المدرسة التغذية الراجعة للمتعلمين وأولياء أمورهم، وتتابع تقدمهم بشكل مستمر.", evs: ["نماذج من الاختبارات والمهام المزودة بملاحظات تصحيحية بنائية.", "سجلات إشعار أولياء الأمور بمستويات التقدم الدراسي دورياً.", "محاضر اللقاءات الفردية بين المعلمين والطلاب لمناقشة الأداء.", "توثيق الاتصالات الإرشادية واللقاءات الفردية مع أولياء الأمور."] },
+      // Domain 2: التعليم والتعلم (13 مؤشراً)
+      { id: "2-1-1-1", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "خطط فردية", role: "منسق التربية الخاصة", isCritical: false, text: "توفر المدرسة فرصاً متكافئة للتعلم تلبي احتياجات المتعلمين (ذوي الإعاقة والموهوبين).", evs: ["سجلات حصر الفئات الخاصة.", "نماذج الخطط التربوية الفردية IEP."] },
+      { id: "2-1-1-2", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "زيارات", role: "المشرف المقيم", isCritical: false, text: "تدعم المدرسة تنفيذ المناهج لتحقيق نواتج التعلم المستهدفة.", evs: ["خطط توزيع المقررات الدراسية المعتمدة.", "تقارير الزيارات الإشرافية والصفية."] },
+      { id: "2-1-1-3", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "ملاحظة صفية", role: "معلمو المواد", isCritical: false, text: "تنوع المدرسة في إستراتيجيات التدريس لتلبية احتياجات المتعلمين ودعم تعلمهم.", evs: ["نماذج خطط دروس بالتعلم النشط والتمايز.", "بطاقات الملاحظة الصفية."] },
+      { id: "2-1-1-4", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "منصات", role: "معلم الحاسب", isCritical: false, text: "تفعل المدرسة التعلم الإلكتروني لتلبية احتياجات المتعلمين ودعم تعلمهم.", evs: ["إحصائيات تفعيل منصة مدرستي والشاشات التفاعلية.", "نماذج الأنشطة الرقمية والتطبيقات."] },
+      { id: "2-1-1-5", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "مهام أدائية", role: "معلمو المواد العلمية", isCritical: false, text: "توفر المدرسة أنشطة تعلم تطبيقية ترتبط بحياة المتعلمين.", evs: ["المشاريع والمهام الأدائية المرتبطة بالواقع.", "تقارير التجارب المعملية التطبيقية."] },
+      { id: "2-1-1-6", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "اختبارات تشخيصية", role: "معلمو اللغات والرياضيات", isCritical: false, text: "تنمي المدرسة المهارات القرائية والعددية الأساسية لدى المتعلمين.", evs: ["خطة وبرامج تعزيز الفهم القرائي والعددية.", "نتائج الاختبارات التشخيصية والبعدية."] },
+      { id: "2-1-1-7", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "مشاريع بحثية", role: "معلمو العلوم", isCritical: false, text: "تنمي المدرسة مهارات التفكير العليا لدى المتعلمين (التحليل والاستنتاج).", evs: ["نماذج أنشطة حل المشكلات والتفكير الناقد.", "مشاريع وبحوث الطلاب العلمية."] },
+      { id: "2-1-1-8", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "أنشطة", role: "رائد النشاط", isCritical: false, text: "تنمي المدرسة المهارات العاطفية والاجتماعية لدى المتعلمين.", evs: ["خطط الأنشطة المعززة للعمل الجماعي والحوار.", "برامج الإرشاد الجمعي وبناء الثقة."] },
+      { id: "2-1-1-9", domain: "2", domainName: "التعليم والتعلم", std: "بناء خبرات التعلم", tool: "استبانات وتحفيز", role: "الهيئة التعليمية", isCritical: false, text: "تعزز المدرسة دافعية المتعلمين للتعلم والاستمتاع به.", evs: ["سجلات التحفيز والتكريم المستمر للتميز.", "بيئات تعلم جاذبة ومحفزة."] },
+      { id: "2-2-1-1", domain: "2", domainName: "التعليم والتعلم", std: "تقويم التعلم", tool: "أدوات تقويم", role: "معلمو المواد", isCritical: false, text: "تقوم المدرسة أداء المتعلمين باستخدام أساليب وأدوات تقويم متنوعة وفاعلة.", evs: ["نماذج أدوات تقويم متنوعة (تشخيصية وتكوينية).", "سلالم التقدير اللفظي Rubrics."] },
+      { id: "2-2-1-2", domain: "2", domainName: "التعليم والتعلم", std: "تقويم التعلم", tool: "جداول مواصفات", role: "لجنة الاختبارات", isCritical: false, text: "تطبق المدرسة جداول المواصفات لتقويم نواتج التعلم المستهدفة.", evs: ["جداول مواصفات الاختبارات وتوافقها المعرفي.", "نماذج أسئلة تقيس المستويات العليا."] },
+      { id: "2-2-1-3", domain: "2", domainName: "التعليم والتعلم", std: "تقويم التعلم", tool: "تحليل إحصائي", role: "لجنة التحصيل", isCritical: false, text: "تحلل المدرسة نتائج التقويم وتوظفها في تحسين نواتج التعلم بانتظام.", evs: ["تقارير التحليل الإحصائي للاختبارات.", "الخطط العلاجية والإثرائية المبنية على النتائج."] },
+      { id: "2-2-1-4", domain: "2", domainName: "التعليم والتعلم", std: "تقويم التعلم", tool: "تغذية راجعة", role: "معلمو المواد", isCritical: false, text: "تقدم المدرسة التغذية الراجعة للمتعلمين بانتظام ودعم تحسين أدائهم.", evs: ["نماذج المهام المزودة بملاحظات تصحيحية.", "سجلات تواصل وتغذية راجعة لأولياء الأمور."] },
 
-      // Domain 3: نواتج التعلم (13 مؤشراً - وزن 25%)
-      { id: "3-1-1-1", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "بطاقة نتائج نافس الوطنية", role: "لجنة التحصيل واختبارات نافس", isCritical: false, text: "يحقق المتعلمون نتائج مرتفعة في مجال القراءة وفقاً للاختبارات الوطنية.", evs: ["بطاقة نتائج المدرسة المعتمدة في اختبارات (نافس) - قراءة.", "سجل مقارنة أداء المدرسة مع المتوسط الوطني ومكاتب التعليم.", "قوائم الطلاب المحققين لمستويات متقدمة في القراءة.", "خطة التدريب على مهارات ومحاكاة اختبارات نافس الوطنية."] },
-      { id: "3-1-1-2", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "بطاقة نتائج نافس الوطنية", role: "لجنة التحصيل واختبارات نافس", isCritical: false, text: "يحقق المتعلمون نتائج مرتفعة في مجال الرياضيات وفقاً للاختبارات الوطنية.", evs: ["تقارير نتائج المدرسة في اختبارات (نافس) - رياضيات.", "تحليل أداء المعايير والمهارات الفرعية للرياضيات بالاختبارات.", "سجلات الطلاب الحاصلين على درجات متفوقة في نافس والمسابقات."] },
-      { id: "3-1-1-3", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "بطاقة نتائج نافس الوطنية", role: "لجنة التحصيل واختبارات نافس", isCritical: false, text: "يحقق المتعلمون نتائج مرتفعة في مجال العلوم وفقاً للاختبارات الوطنية.", evs: ["بطاقات ونتائج المدرسة الرسمية في (نافس) لمجال العلوم.", "مقارنة متوسطات المدرسة بالمعايير المستهدفة في العلوم.", "شهادات تكريم الطلاب المحققين لنتائج متقدمة في العلوم."] },
-      { id: "3-1-1-4", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "مقارنات تطورية لنتائج نافس", role: "وكيل الشؤون التعليمية / معلمات اللغة العربية", isCritical: false, text: "يحقق المتعلمون تقدماً في مجال القراءة قياساً على مستوى أداء المدرسة السابق في الاختبارات الوطنية.", evs: ["تقرير المقارنة التطورية لنتائج اختبارات نافس في القراءة.", "الرسوم البيانية الموضحة لنسب النمو والتحسن في القراءة.", "خطة الاستدامة للحفاظ على تصاعد منحنى الأداء في القراءة."] },
-      { id: "3-1-1-5", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "مقارنات تطورية لنتائج نافس", role: "وكيل الشؤون التعليمية / معلمات الرياضيات", isCritical: false, text: "يحقق المتعلمون تقدماً في مجال الرياضيات قياساً على مستوى أداء المدرسة السابق في الاختبارات الوطنية.", evs: ["تقرير المقارنة التطورية لنتائج الرياضيات عبر الأعوام.", "نسب التحسن المسجلة وانخفاض نسب دون المستوى في الرياضيات.", "تقارير قياس أثر التدريب التراكمي على اختبارات نافس."] },
-      { id: "3-1-1-6", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "مقارنات تطورية لنتائج نافس", role: "وكيل الشؤون التعليمية / معلمات العلوم", isCritical: false, text: "يحقق المتعلمون تقدماً في مجال العلوم قياساً على مستوى أداء المدرسة السابق في الاختبارات الوطنية.", evs: ["تقرير المقارنة التطورية لنتائج العلوم مع الدورات السابقة.", "تحليل مؤشرات النمو المعرفي والتطبيقي في المفاهيم العلمية.", "خطة التطوير والتحسين المستمر لتجارب ومناهج العلوم."] },
-      { id: "3-2-1-1", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي والاجتماعي", tool: "استبانات ومشاركات وطنية", role: "رائد النشاط / الموجه الطلابي", isCritical: false, text: "يظهر المتعلمون الاعتزاز بالقيم والهوية الوطنية.", evs: ["مشاركات وأعمال الطلاب في الفعاليات والمناسبات الوطنية.", "توثيق المبادرات الطلابية لنشر الثقافة والتراث واللغة العربية.", "استبانات واستطلاعات قياس وعي واعتزاز الطلاب بالهوية."] },
-      { id: "3-2-1-2", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي والاجتماعي", tool: "الملاحظة ومقاييس الذات", role: "الموجه الطلابي / الهيئة التعليمية", isCritical: false, text: "يظهر المتعلمون اتجاهات إيجابية نحو ذواتهم والآخرين.", evs: ["سجلات وتقارير الموجه الطلابي حول السلوك التفاعلي الإيجابي.", "نتائج مقاييس تقدير الذات والعلاقات الإيجابية للطلاب.", "مبادرات ومشاريع الطلاب التشاركية المعززة للاحترام المتبادل."] },
-      { id: "3-2-1-3", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي والاجتماعي", tool: "سجلات الصحة المدرسية", role: "الموجه الصحي / مسؤول المقصف", isCritical: false, text: "يظهر المتعلمون التزاماً بالممارسات الصحية السليمة.", evs: ["سجلات العيادة المدرسية والفحوصات ومتابعة الحالات الصحية.", "سجلات الرقابة على الاشتراطات الصحية للمقصف المدرسي.", "توثيق مشاركة الطلاب في أنشطة اللياقة والبرامج التوعوية."] },
-      { id: "3-2-1-4", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي والاجتماعي", tool: "المنصة الوطنية للعمل التطوعي", role: "رائد النشاط / منسق العمل التطوعي", isCritical: false, text: "يشارك المتعلمون في الأنشطة المجتمعية والأعمال التطوعية.", evs: ["سجل حصر الساعات والفرص التطوعية المسجلة للطلاب.", "توثيق المبادرات التطوعية والميدانية المنفذة من قبل الطلاب.", "شهادات الشكر والتقدير المقدمة للطلاب من المؤسسات.", "شهادات اعتماد الساعات التطوعية من المنصة الوطنية للعمل التطوعي."] },
-      { id: "3-2-1-5", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي والاجتماعي", tool: "سجلات نظام نور والانضباط", role: "وكيل شؤون الطلاب / الموجه الطلابي", isCritical: false, text: "يلتزم المتعلمون بقواعد السلوك والانضباط المدرسي.", evs: ["التقارير الإحصائية لسجلات الغياب والمخالفات السلوكية (نور).", "انخفاض معدلات المخالفات والتنمر وفق سجلات التوجيه.", "سجلات تكريم الطلاب ذوي السلوك المثالي والانضباط الكامل."] },
-      { id: "3-2-1-6", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي والاجتماعي", tool: "ملفات الإنجاز والتعلم الذاتي", role: "معلمو المواد / المشرف الأكاديمي", isCritical: false, text: "يظهر المتعلمون الاستقلالية والقدرة على التعلم الذاتي.", evs: ["عينات من مشاريع التعلم الذاتي والأبحاث الفردية للطلاب.", "ملفات الإنجاز الرقمية المستقلة وتقارير القراءة الحرة.", "توثيق اجتياز الطلاب لدورات عبر المنصات التعليمية المفتوحة (مسك / دروب)."] },
-      { id: "3-2-1-7", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي والاجتماعي", tool: "الملاحظة والأنشطة التوعوية", role: "الموجه الطلابي / رائد النشاط", isCritical: false, text: "يظهر المتعلمون اعتزازاً بثقافتهم واحتراماً للتنوع الثقافي في المجتمع.", evs: ["الأنشطة المدرسية والبرامج التوعوية المعززة للتسامح والتعايش.", "مشاركات الطلاب في الفعاليات الحوارية ونبذ التعصب.", "تقارير تقييم الممارسات الطلابية المعبرة عن الاحترام المتبادل."] },
+      // Domain 3: نواتج التعلم (13 مؤشراً)
+      { id: "3-1-1-1", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "نافس", role: "لجنة نافس والتحصيل", isCritical: false, text: "يحقق المتعلمون نتائج مرتفعة في القراءة (اختبارات نافس والتحصيلي).", evs: ["بطاقة نتائج نافس المعتمدة (قراءة).", "تحليل مقارنة الأداء بالمتوسط الوطني."] },
+      { id: "3-1-1-2", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "نافس ورياضيات", role: "لجنة التحصيل", isCritical: false, text: "يحقق المتعلمون نتائج مرتفعة في الرياضيات (اختبارات نافس والتحصيلي).", evs: ["تقارير نتائج الرياضيات في نافس.", "تحليل معايير المهارات الفرعية."] },
+      { id: "3-1-1-3", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "نافس وعلوم", role: "لجنة التحصيل", isCritical: false, text: "يحقق المتعلمون نتائج مرتفعة في العلوم (اختبارات نافس والتحصيلي).", evs: ["بطاقات ونتائج العلوم الرسمية.", "شهادات تكريم الطلاب المتفوقين."] },
+      { id: "3-1-1-4", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "مقارنات تطورية", role: "وكيل الشؤون التعليمية", isCritical: false, text: "يحقق المتعلمون نتائج متقدمة في الاختبارات التحصيلية للمرحلة الثانوية.", evs: ["تقرير مقارنة نتائج التحصيلي عبر الأعوام.", "خطة دعم تحسين درجات التحصيلي."] },
+      { id: "3-1-1-5", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "قدرات عامة", role: "وكيل الشؤون التعليمية", isCritical: false, text: "يحقق المتعلمون نتائج متقدمة في اختبارات القدرات العامة للمرحلة الثانوية.", evs: ["تقرير تحليل نتائج القدرات العامة (قياس).", "برامج التدريب والتأهيل للقدرات."] },
+      { id: "3-1-1-6", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "مقارنات تطورية", role: "لجنة التحصيل", isCritical: false, text: "يحقق المتعلمون تقدماً قياسياً على مستوى أداء المدرسة السابق.", evs: ["تقارير نسب النمو والتحسن السنوي.", "مؤشرات قياس الفاقد والتقدم المعرفي."] },
+      { id: "3-1-1-7", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "اختبارات مدرسية", role: "لجنة الاختبارات", isCritical: false, text: "يحقق المتعلمون مستويات تحصيلية متميزة في مقررات المرحلة الثانوية (مسارات).", evs: ["سجلات نتائج الفصول الدراسية.", "قوائم الطلاب الحاصلين على معدلات عالية."] },
+      { id: "3-1-1-8", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "تحليل فصلي", role: "المعلم الأول", isCritical: false, text: "تطور مستويات التحصيل الدراسي للمتعلمين عبر الخطط الفصلية.", evs: ["مقارنات نتائج الفصول الأربعة للمسارات.", "تقارير تتبع تقدم الطلاب المتعثرين."] },
+      { id: "3-1-1-9", domain: "3", domainName: "نواتج التعلم", std: "التحصيل التعليمي", tool: "مسابقات تنافسية", role: "منسق المسابقات", isCritical: false, text: "تميز المتعلمين وتحقيقهم لمراكز متقدمة في مسابقات علمية وطنية.", evs: ["سجلات المشاركة بالمسابقات الوزارية.", "شهادات الدروع والمراكز المحققة."] },
+      { id: "3-2-1-1", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي", tool: "مشاركات وطنية", role: "رائد النشاط", isCritical: false, text: "يظهر المتعلمون الاعتزاز بالقيم والهوية الوطنية واللغة العربية.", evs: ["توثيق مشاركات الفعاليات الوطنية.", "مبادرات إبراز التراث والثقافة."] },
+      { id: "3-2-1-2", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي", tool: "مقاييس الذات", role: "الموجه الطلابي", isCritical: false, text: "يظهر المتعلمون اتجاهات إيجابية نحو ذواتهم والشعور بالرفاه.", evs: ["تقارير التوافق النفسي والاجتماعي.", "نتائج مقاييس تقدير الذات والرضا."] },
+      { id: "3-2-1-3", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي", tool: "صحة مدرسية", role: "الموجه الصحي", isCritical: false, text: "يظهر المتعلمون التزاماً بالممارسات الصحية السليمة والتوعية.", evs: ["سجلات العيادة والفحوصات الدورية.", "برامج التغذية والتوجه الصحي السليم."] },
+      { id: "3-2-1-4", domain: "3", domainName: "نواتج التعلم", std: "التطور الشخصي والصحي", tool: "منصة العمل التطوعي", role: "منسق التطوع", isCritical: false, text: "يشارك المتعلمون في الأنشطة المجتمعية والأعمال التطوعية المعتمدة.", evs: ["سجل حصر الساعات التطوعية للطلاب.", "شهادات اعتماد المنصة الوطنية للتطوع."] },
 
       // Domain 4: البيئة المدرسية (7 مؤشرات - وزن 15%)
-      { id: "4-1-1-1", domain: "4", domainName: "البيئة المدرسية", std: "المبنى المدرسي", tool: "تراخيص وشهادات المنشأة", role: "مدير المدرسة / مسؤول الأمن والسلامة", isCritical: true, text: "توفر المدرسة مبنى تعليمي يستوفي المواصفات والاشتراطات المعتمدة من حيث النوع والخدمات المساندة.", evs: ["صك الملكية أو عقد الإيجار ورخص البلدية المعتمدة.", "شهادة إتمام البناء ومطابقة كود البناء السعودي.", "تراخيص الدفاع المدني وسلامة المنشأة التعليمية وسجلات التفتيش.", "شهادة سريان ترخيص الدفاع المدني وفحص السلامة الإنشائية."] },
-      { id: "4-1-1-2", domain: "4", domainName: "البيئة المدرسية", std: "المبنى المدرسي", tool: "ملاحظة البيئة والمخطط الهندسي", role: "وكيل الشؤون المدرسية / مسؤول السلامة", isCritical: false, text: "تنظيم مبنى المدرسة ملائم لعدد المتعلمين وخصائص المرحلة العمرية، ومنهم ذوو الإعاقة.", evs: ["المخطط الهندسي لتوزيع الفصول وتناسب الكثافة الطلابية.", "توفر المنحدرات (Ramps)، المصاعد، والممرات لذوي الإعاقة.", "اللوحات الإرشادية والتحذيرية الواضحة والملائمة للمرحلة."] },
-      { id: "4-1-1-3", domain: "4", domainName: "البيئة المدرسية", std: "المبنى المدرسي", tool: "ملاحظة المعامل والفصول", role: "محضر المعمل / أمين مصادر التعلم", isCritical: false, text: "تتوافر فصول ومعامل ملائمة للعملية التعليمية تلبي احتياجات المتعلمين، ومنهم ذوو الإعاقة.", evs: ["سجلات حصر وتجهيزات الفصول الدراسية والتكييف والإضاءة.", "جاهزية معامل العلوم والحاسب ومصادر التعلم وتوفر أدوات السلامة.", "جداول إشغال المعامل وتوثيق تنفيذ التجارب والأنشطة بها."] },
-      { id: "4-1-1-4", domain: "4", domainName: "البيئة المدرسية", std: "المبنى المدرسي", tool: "ملاحظة المرافق المساندة", role: "وكيل الشؤون المدرسية / الموجه الصحي", isCritical: false, text: "تلبي المرافق والتجهيزات والخدمات المساندة احتياجات المتعلمين، ومنهم ذوو الإعاقة.", evs: ["جاهزية الملاعب الرياضية، الساحات المغطاة، والمصلى وملاءمتها.", "دورات مياه صحية مهيأة ومخصصة لذوي الإعاقة ومطابقة للاشتراطات.", "تجهيزات العيادة المدرسية وغرف النشاط وتوفر الخدمات المساندة.", "تقرير الفحص الدوري لجودة مياه الشرب وتطهير الخزانات."] },
-      { id: "4-2-1-1", domain: "4", domainName: "البيئة المدرسية", std: "الأمن والسلامة", tool: "سجلات الأمن والإخلاء", role: "مسؤول الأمن والسلامة المدرسية", isCritical: true, text: "تتوافر في مبنى المدرسة ومرافقها جميع متطلبات الأمن والسلامة.", evs: ["سجلات فحص صلاحية طفايات الحريق وخراطيم المياه وأجهزة الإنذار.", "وضوح مخططات مخارج الطوارئ ومسارات الإخلاء واللوحات الفوسفورية.", "تقارير وتوثيق تنفيذ خطط الإخلاء الافتراضية الدورية وتوقيتاتها.", "فيديوهات وصور توثيق خطة الإخلاء محددة بوقت الخروج الفعلي بالثواني."] },
-      { id: "4-2-1-2", domain: "4", domainName: "البيئة المدرسية", std: "الأمن والسلامة", tool: "عقود وبلاغات الصيانة", role: "لجنة الصيانة / وكيل الشؤون المدرسية", isCritical: false, text: "تتابع المدرسة صيانة المبنى وجميع مرافقه وتجهيزاته بشكل دوري.", evs: ["عقود الصيانة الدورية المعتمدة للمبنى والتكييف والكهرباء والسباكة.", "سجلات ونظام رصد بلاغات الصيانة الطارئة والوقائية وسرعة معالجتها.", "تقارير لجان الصيانة المدرسية والمتابعة الدورية لجاهزية المرافق."] },
-      { id: "4-2-1-3", domain: "4", domainName: "البيئة المدرسية", std: "الأمن والسلامة", tool: "جداول وسجلات النظافة", role: "الموجه الصحي / مشرف عمال النظافة", isCritical: false, text: "تتابع المدرسة نظافة المبنى المدرسي وجميع مرافقه بشكل مستمر.", evs: ["خطة وجدول النظافة اليومية لجميع المرافق والفصول والساحات.", "سجلات الإشراف والمتابعة المستمرة لنظافة دورات المياه والعيادة.", "توفر أدوات ومواد النظافة والتعقيم المستمر وعمال النظافة."] }
+      { id: "4-1-1-1", domain: "4", domainName: "البيئة المدرسية", std: "المبنى المدرسي", tool: "تراخيص وخطط تنظيم", role: "مدير المدرسة / مسؤول السلامة", isCritical: true, text: "تنظيم مبنى المدرسة ملائم لعدد المتعلمين والمرحلة العمرية وذوي الإعاقة.", evs: ["صك الملكية أو عقد الإيجار ورخص البلدية.", "مخطط توزيع الأثاث والفصول ومواءمتها.", "منحدرات وممرات وصول ذوي الإعاقة."] },
+      { id: "4-1-1-2", domain: "4", domainName: "البيئة المدرسية", std: "المبنى المدرسي", tool: "ملاحظة المعامل", role: "أمين مصادر التعلم", isCritical: false, text: "تتوافر فصول ومعامل ملائمة للعملية التعليمية تلبي احتياجات المتعلمين.", evs: ["سجلات حصر وتجهيزات الفصول والمعامل.", "جداول إشغال المعامل وتوفر الأدوات."] },
+      { id: "4-1-1-3", domain: "4", domainName: "البيئة المدرسية", std: "المبنى المدرسي", tool: "خدمات مساندة", role: "الموجه الصحي", isCritical: false, text: "تلبي المرافق والخدمات المساندة احتياجات المتعلمين وتحقق الرفاه.", evs: ["جاهزية الملاعب والساحات والمصلى.", "دورات مياه صحية مهيأة ومطابقة."] },
+      { id: "4-1-1-4", domain: "4", domainName: "البيئة المدرسية", std: "المبنى المدرسي", tool: "صيانة دورية", role: "لجنة الصيانة", isCritical: false, text: "تعمل المدرسة على صيانة جميع مرافق المبنى وتجهيزاته بانتظام.", evs: ["عقود الصيانة الدورية المعتمدة.", "سجلات رصد ومعالجة بلاغات الصيانة."] },
+      { id: "4-2-1-1", domain: "4", domainName: "البيئة المدرسية", std: "الأمن والسلامة", tool: "سجلات الأمن والإخلاء", role: "مسؤول الأمن والسلامة", isCritical: true, text: "تتوافر في فصول المدرسة ومعاملها وجميع مرافقها متطلبات الأمن والسلامة.", evs: ["سجلات فحص صلاحية طفايات الحريق والإنذار.", "مخططات مخارج الطوارئ ومسارات الإخلاء.", "تقارير توثيق تنفيذ خطط الإخلاء بالثواني."] },
+      { id: "4-2-1-2", domain: "4", domainName: "البيئة المدرسية", std: "الأمن والسلامة", tool: "جداول النظافة", role: "مشرف عمال النظافة", isCritical: false, text: "تعمل المدرسة على نظافة المبنى المدرسي وجميع مرافقه بانتظام.", evs: ["خطة وجدول النظافة اليومية والتعقيم.", "سجلات الإشراف على نظافة المرافق."] },
+      { id: "4-2-1-3", domain: "4", domainName: "البيئة المدرسية", std: "الأمن والسلامة", tool: "توعية أمنية", role: "لجنة الأمن والسلامة", isCritical: false, text: "تعزز المدرسة ثقافة الأمن والسلامة والتوعية بالمخاطر المحتملة.", evs: ["لوحات إرشادية وتحذيرية واضحة.", "سجلات التوعية وبرامج الأمن والسلامة."] }
     ];
 
-    const STORAGE_KEY = "school_accreditation_complete_52_v8";
-    const NAFIS_KEY = "school_nafis_data_v1";
-
-    const DOMAIN_WEIGHTS = {
-      "1": 0.25,
-      "2": 0.35,
-      "3": 0.25,
-      "4": 0.15
-    };
+    const STORAGE_KEY = "school_accreditation_sahafa_v10";
+    const DOMAIN_WEIGHTS = { "1": 0.25, "2": 0.35, "3": 0.25, "4": 0.15 };
 
     function loadState() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? JSON.parse(raw) : {};
-      } catch (e) {
-        return {};
-      }
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { return {}; }
     }
 
     function saveState(data) {
@@ -794,10 +411,9 @@
       document.querySelectorAll(".nav-tab").forEach(tab => {
         tab.className = "nav-tab px-4 py-2.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center gap-2 whitespace-nowrap";
       });
-
       const currentTab = document.getElementById("tab-" + view);
       if (currentTab) {
-        currentTab.className = "nav-tab px-4 py-2.5 rounded-xl bg-blue-600 text-white shadow-md shadow-blue-500/20 transition flex items-center gap-2 whitespace-nowrap";
+        currentTab.className = "nav-tab px-4 py-2.5 rounded-xl bg-blue-600 text-white shadow-md transition flex items-center gap-2 whitespace-nowrap";
       }
 
       document.getElementById("overview-view").classList.add("hidden");
@@ -808,7 +424,7 @@
         document.getElementById("overview-view").classList.remove("hidden");
       } else if (view === "nafis") {
         document.getElementById("nafis-view").classList.remove("hidden");
-        renderNafisChart();
+        renderScholasticChart();
       } else {
         document.getElementById("indicators-view").classList.remove("hidden");
         updateBannerInfo(view);
@@ -819,27 +435,16 @@
 
     function updateBannerInfo(dom) {
       const bannerConfig = {
-        "1": { num: "المجال الأول", title: "الإدارة المدرسية", desc: "التخطيط • قيادة العملية التعليمية • المجتمع المدرسي • التطوير المؤسسي • حقوق المتعلم وحمايته", count: 19 },
-        "2": { num: "المجال الثاني", title: "التعليم والتعلم", desc: "بناء خبرات التعلم • تقويم التعلم • التمايز وتفعيل التقنية والمهارات الأساسية", count: 13 },
-        "3": { num: "المجال الثالث", title: "نواتج التعلم", desc: "التحصيل التعليمي (اختبارات نافس) • التطور الشخصي والصحي والاجتماعي", count: 13 },
-        "4": { num: "المجال الرابع", title: "البيئة المدرسية", desc: "المبنى المدرسي والمرافق • الأمن والسلامة والصيانة والنظافة العامة", count: 7 },
-        "all": { num: "جميع المجالات", title: "كافة مؤشرات الاعتماد المدرسي (52 مؤشراً)", desc: "عرض شامل لجميع المجالات والمعايير والشواهد المعتمدة بالدليل الإجرائي", count: 52 }
+        "1": { num: "المجال الأول", title: "الإدارة المدرسية", desc: "التخطيط • قيادة العمل التعليمي • المجتمع المدرسي • التطوير المؤسسي", count: 19 },
+        "2": { num: "المجال الثاني", title: "التعليم والتعلم", desc: "بناء خبرات التعلم • تقويم التعلم", count: 13 },
+        "3": { num: "المجال الثالث", title: "نواتج التعلم", desc: "التحصيل التعليمي واختبارات التحصيلي والقدرات • التطور الشخصي", count: 13 },
+        "4": { num: "المجال الرابع", title: "البيئة المدرسية", desc: "المبنى المدرسي • الأمن والسلامة والصيانة والنظافة", count: 7 }
       };
-
       const cfg = bannerConfig[dom] || bannerConfig["1"];
       document.getElementById("banner-domain-num").innerText = cfg.num;
       document.getElementById("banner-domain-title").innerText = cfg.title;
       document.getElementById("banner-domain-desc").innerText = cfg.desc;
       document.getElementById("banner-total-count").innerText = cfg.count;
-    }
-
-    function validateLink(url) {
-      if (!url || !url.trim()) return { valid: false, message: "فارغ" };
-      const u = url.trim().toLowerCase();
-      if (u.includes("drive.google.com") || u.includes("onedrive") || u.includes("sharepoint") || u.startsWith("http")) {
-        return { valid: true, message: "صالح" };
-      }
-      return { valid: false, message: "رابط غير قياسي" };
     }
 
     function renderIndicatorCards(domainFilter) {
@@ -850,232 +455,80 @@
       const filtered = fullIndicators52.filter(i => {
         if (domainFilter !== "all" && i.domain !== domainFilter) return false;
         if (searchVal) {
-          const matchId = i.id.toLowerCase().includes(searchVal);
-          const matchText = i.text.toLowerCase().includes(searchVal);
-          const matchStd = i.std.toLowerCase().includes(searchVal);
-          const matchTool = i.tool.toLowerCase().includes(searchVal);
-          const matchRole = i.role.toLowerCase().includes(searchVal);
-          const matchEv = i.evs.some(e => e.toLowerCase().includes(searchVal));
-          if (!matchId && !matchText && !matchStd && !matchTool && !matchRole && !matchEv) return false;
+          return i.id.toLowerCase().includes(searchVal) || i.text.toLowerCase().includes(searchVal) || i.role.toLowerCase().includes(searchVal);
         }
         return true;
       });
 
-      if (filtered.length === 0) {
-        container.innerHTML = `
-          <div class="bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-sm">
-            <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3"></i>
-            <h3 class="text-sm font-bold text-slate-700">لا توجد مؤشرات مطابقة للبحث الحالي</h3>
-          </div>
-        `;
-        return;
-      }
-
-      let html = "";
-      filtered.forEach(item => {
-        const indState = state[item.id] || { 
-          status: "notstarted", 
-          rubric: 1, 
-          items: {}, 
-          triangulation: { doc: false, obs: false, int: false },
-          note: "", 
-          assignedRole: item.role 
-        };
-
-        const tri = indState.triangulation || { doc: false, obs: false, int: false };
-
-        let evidencesHtml = item.evs.map((evText, idx) => {
-          const evData = (indState.items && indState.items[idx]) || { checked: false, url: "" };
-          const linkCheck = validateLink(evData.url);
-
-          return `
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 p-3.5 rounded-2xl ${evData.checked ? 'bg-emerald-50/60 border-emerald-200' : 'bg-slate-50 border-slate-200'} border transition-all">
-              <label class="flex items-start gap-3 cursor-pointer flex-1">
-                <input type="checkbox" onchange="updateEvidenceItem('${item.id}', ${idx}, 'checked', this.checked)" ${evData.checked ? "checked" : ""} class="w-4 h-4 mt-0.5 text-blue-600 rounded-lg border-slate-300 focus:ring-blue-500">
-                <span class="text-xs font-bold leading-relaxed ${evData.checked ? 'text-emerald-950 font-extrabold' : 'text-slate-800'}">${evText}</span>
-              </label>
-
-              <div class="flex items-center gap-2 w-full lg:w-auto no-print">
-                <div class="relative flex-1 lg:w-72">
-                  <input type="url" placeholder="ضع رابط Google Drive / OneDrive..." value="${evData.url || ''}" onchange="updateEvidenceItem('${item.id}', ${idx}, 'url', this.value)" class="w-full text-xs rounded-xl border ${evData.url && !linkCheck.valid ? 'border-rose-400 bg-rose-50/30' : 'border-slate-300 bg-white'} py-2.5 px-3.5 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-2xs">
-                </div>
-                ${evData.url ? `
-                  <a href="${evData.url}" target="_blank" class="px-3.5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm whitespace-nowrap" title="فتح الرابط المباشر">
-                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    <span>فتح</span>
-                  </a>
-                ` : ''}
-              </div>
-
-              <div class="print-only hidden text-xs text-slate-500 mr-8">
-                [${evData.checked ? 'مرفق ومكتمل ✔' : 'غير متوفر ❌'}] - الرابط: ${evData.url || 'لا يوجد رابط مسجل'}
-              </div>
-            </div>
-          `;
-        }).join("");
-
-        const rubricClasses = {
-          "4": "bg-emerald-50 text-emerald-800 border-emerald-300",
-          "3": "bg-blue-50 text-blue-800 border-blue-300",
-          "2": "bg-amber-50 text-amber-800 border-amber-300",
-          "1": "bg-rose-50 text-rose-800 border-rose-300"
-        };
+      container.innerHTML = filtered.map(item => {
+        const indState = state[item.id] || { rubric: 1, items: {} };
         const currentRubric = indState.rubric || 1;
 
-        html += `
-          <div class="card glass-card rounded-3xl shadow-sm border border-slate-200/90 p-5 sm:p-7 relative overflow-hidden transition hover:shadow-md ${item.isCritical ? 'ring-2 ring-amber-400/80' : ''}" data-id="${item.id}">
-            
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4 mb-4">
-              <div class="flex items-center gap-2.5 flex-wrap">
-                <span class="px-3.5 py-1.5 bg-slate-100 text-slate-900 font-mono font-black text-xs rounded-xl border border-slate-200">${item.id}</span>
-                <span class="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 border border-slate-200">${item.domainName}</span>
-                <span class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-50 text-slate-600 border border-slate-200">المعيار: ${item.std}</span>
-                
-                ${item.isCritical ? `
-                  <span class="text-[11px] font-black px-3 py-1.5 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 flex items-center gap-1.5">
-                    <i class="fa-solid fa-triangle-exclamation text-rose-600"></i> مؤشر حرج (اشتراط إلزامي)
-                  </span>
-                ` : ''}
-
-                <span class="text-[11px] font-extrabold px-3 py-1.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 flex items-center gap-1.5">
-                  <i class="fa-solid fa-magnifying-glass-chart text-[10px]"></i> أداة التقويم: ${item.tool}
-                </span>
-                <span class="text-[11px] font-bold px-3 py-1.5 rounded-xl bg-indigo-50 text-indigo-800 border border-indigo-200 flex items-center gap-1.5">
-                  <i class="fa-solid fa-user-gear text-[10px]"></i> المسؤول: ${indState.assignedRole || item.role}
-                </span>
+        return `
+          <div class="glass-card rounded-3xl p-6 border border-slate-200 bg-white shadow-sm space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-100 pb-3">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-3 py-1 bg-slate-100 font-mono font-black text-xs rounded-xl">${item.id}</span>
+                <span class="text-xs font-bold text-slate-700">المعيار: ${item.std}</span>
+                ${item.isCritical ? '<span class="text-[10px] bg-rose-50 text-rose-700 font-black px-2 py-0.5 rounded-lg border border-rose-200">مؤشر حرج</span>' : ''}
               </div>
-
-              <div class="flex items-center gap-2 no-print">
-                <label class="text-xs font-bold text-slate-500 whitespace-nowrap">درجة الروبك (1-4):</label>
-                <select onchange="updateIndicatorRubric('${item.id}', this.value)" class="text-xs font-black py-2 px-3.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-2xs ${rubricClasses[currentRubric]}">
-                  <option value="4" ${currentRubric == 4 ? 'selected' : ''}>★ 4 - متميز (ممتاز ومستدام)</option>
-                  <option value="3" ${currentRubric == 3 ? 'selected' : ''}>3 - متقدم (عالي وموثق)</option>
-                  <option value="2" ${currentRubric == 2 ? 'selected' : ''}>2 - منطلق (جزئي ويحتاج متابعة)</option>
-                  <option value="1" ${currentRubric == 1 ? 'selected' : ''}>1 - متهيء (غير مكتمل)</option>
-                </select>
-              </div>
+              <select onchange="updateRubric('${item.id}', this.value)" class="text-xs font-black p-2 rounded-xl border bg-slate-50">
+                <option value="4" ${currentRubric==4?'selected':''}>4 - متميز (90% فأعلى)</option>
+                <option value="3" ${currentRubric==3?'selected':''}>3 - متقدم (75% - 89%)</option>
+                <option value="2" ${currentRubric==2?'selected':''}>2 - منطلق (50% - 74%)</option>
+                <option value="1" ${currentRubric==1?'selected':''}>1 - متهيء (أقل من 50%)</option>
+              </select>
             </div>
-
-            <h3 class="text-sm sm:text-base font-extrabold text-slate-900 mb-4 leading-relaxed">${item.text}</h3>
-
-            <div class="bg-gradient-to-r from-slate-50 to-blue-50/30 rounded-2xl p-3.5 border border-slate-200/80 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-              <span class="font-black text-slate-700 flex items-center gap-2">
-                <i class="fa-solid fa-shapes text-indigo-600"></i> التثليث المنهجي للتحقق الخارجي:
-              </span>
-              <div class="flex items-center gap-3 flex-wrap">
-                <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-700 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs">
-                  <input type="checkbox" onchange="updateTriangulation('${item.id}', 'doc', this.checked)" ${tri.doc ? 'checked' : ''} class="w-4 h-4 text-blue-600 rounded">
-                  <span>📄 وثيقة ومحضر</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-700 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs">
-                  <input type="checkbox" onchange="updateTriangulation('${item.id}', 'obs', this.checked)" ${tri.obs ? 'checked' : ''} class="w-4 h-4 text-emerald-600 rounded">
-                  <span>👁️ ملاحظة ميدانية</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-700 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs">
-                  <input type="checkbox" onchange="updateTriangulation('${item.id}', 'int', this.checked)" ${tri.int ? 'checked' : ''} class="w-4 h-4 text-purple-600 rounded">
-                  <span>💬 مقابلات مقننة</span>
-                </label>
-              </div>
+            <h4 class="font-extrabold text-sm text-slate-900 leading-relaxed">${item.text}</h4>
+            <div class="space-y-2 bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+              <span class="text-[11px] font-bold text-slate-500 block mb-1">شواهد المؤشر (أدخل روابط Google Drive):</span>
+              ${item.evs.map((ev, i) => `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                  <label class="flex items-center gap-2 cursor-pointer flex-1">
+                    <input type="checkbox" onchange="updateEvCheck('${item.id}', ${i}, this.checked)" ${(indState.items && indState.items[i] && indState.items[i].checked)?'checked':''}>
+                    <span class="font-semibold text-slate-800">${ev}</span>
+                  </label>
+                  <div class="flex items-center gap-1.5">
+                    <input type="url" placeholder="رابط سحابي (Drive)..." value="${(indState.items && indState.items[i] && indState.items[i].url)?indState.items[i].url:''}" onchange="updateEvUrl('${item.id}', ${i}, this.value)" class="w-56 text-[11px] rounded-lg border p-1.5 bg-white">
+                    ${(indState.items && indState.items[i] && indState.items[i].url)?`<a href="${indState.items[i].url}" target="_blank" class="px-2 py-1 bg-blue-600 text-white rounded-lg text-[10px] font-bold">فتح</a>`:''}
+                  </div>
+                </div>
+              `).join('')}
             </div>
-
-            <div class="mb-4">
-              <h4 class="text-xs font-black text-slate-700 mb-3 flex items-center gap-2">
-                <i class="fa-solid fa-folder-tree text-blue-600"></i>
-                <span>شواهد وأدلة المؤشر المعتمدة (ضع الرابط السحابي أمام كل شاهد):</span>
-              </h4>
-              <div class="space-y-3">
-                ${evidencesHtml}
-              </div>
-            </div>
-
-            <div class="no-print grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-4">
-              <div class="md:col-span-2">
-                <input type="text" placeholder="📝 ملاحظات وتوصيات التحسين الخاصة بهذا المؤشر..." value="${indState.note || ''}" onchange="updateIndicatorNote('${item.id}', this.value)" class="w-full text-xs rounded-xl border border-slate-300 py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50/50 shadow-2xs">
-              </div>
-              <div>
-                <input type="text" placeholder="تخصيص مسؤول للمتابعة..." value="${indState.assignedRole || item.role}" onchange="updateIndicatorRole('${item.id}', this.value)" class="w-full text-xs rounded-xl border border-slate-300 py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-slate-50/50 shadow-2xs">
-              </div>
-            </div>
-
-            <div class="print-only hidden text-xs text-slate-600 mt-2 font-bold">
-              ملاحظات: ${indState.note || 'لا توجد'} • المسؤول الميداني: ${indState.assignedRole || item.role}
-            </div>
-
           </div>
         `;
-      });
-
-      container.innerHTML = html;
+      }).join('');
     }
 
-    function updateEvidenceItem(indId, evIndex, field, val) {
+    function updateRubric(id, val) {
       const state = loadState();
-      if (!state[indId]) state[indId] = { status: "notstarted", rubric: 1, items: {}, triangulation: { doc: false, obs: false, int: false }, note: "" };
-      if (!state[indId].items) state[indId].items = {};
-      if (!state[indId].items[evIndex]) state[indId].items[evIndex] = { checked: false, url: "" };
-      
-      state[indId].items[evIndex][field] = val;
-
-      if (field === 'url' && val && !state[indId].items[evIndex].checked) {
-        state[indId].items[evIndex].checked = true;
-      }
-
-      const itemConfig = fullIndicators52.find(i => i.id === indId);
-      const totalEvs = itemConfig ? itemConfig.evs.length : 1;
-      const checkedCount = Object.values(state[indId].items).filter(x => x.checked).length;
-      
-      if (checkedCount === 0) {
-        state[indId].rubric = 1;
-        state[indId].status = "notstarted";
-      } else if (checkedCount === totalEvs) {
-        state[indId].rubric = 4;
-        state[indId].status = "done";
-      } else if (checkedCount >= Math.ceil(totalEvs / 2)) {
-        state[indId].rubric = 3;
-        state[indId].status = "pending";
-      } else {
-        state[indId].rubric = 2;
-        state[indId].status = "pending";
-      }
-
-      saveState(state);
-      renderIndicatorCards(activeView);
-    }
-
-    function updateTriangulation(indId, source, checked) {
-      const state = loadState();
-      if (!state[indId]) state[indId] = { status: "notstarted", rubric: 1, items: {}, triangulation: {}, note: "" };
-      if (!state[indId].triangulation) state[indId].triangulation = {};
-      state[indId].triangulation[source] = checked;
+      if(!state[id]) state[id] = {};
+      state[id].rubric = parseInt(val);
       saveState(state);
     }
 
-    function updateIndicatorRubric(indId, val) {
+    function updateEvCheck(id, idx, checked) {
       const state = loadState();
-      if (!state[indId]) state[indId] = { items: {}, note: "" };
-      state[indId].rubric = parseInt(val, 10);
-      state[indId].status = (val == 4) ? "done" : (val == 1) ? "notstarted" : "pending";
-      saveState(state);
-      renderIndicatorCards(activeView);
-    }
-
-    function updateIndicatorNote(indId, val) {
-      const state = loadState();
-      if (!state[indId]) state[indId] = { status: "notstarted", items: {} };
-      state[indId].note = val;
+      if(!state[id]) state[id] = { items: {} };
+      if(!state[id].items) state[id].items = {};
+      if(!state[id].items[idx]) state[id].items[idx] = {};
+      state[id].items[idx].checked = checked;
       saveState(state);
     }
 
-    function updateIndicatorRole(indId, val) {
+    function updateEvUrl(id, idx, url) {
       const state = loadState();
-      if (!state[indId]) state[indId] = { status: "notstarted", items: {} };
-      state[indId].assignedRole = val;
+      if(!state[id]) state[id] = { items: {} };
+      if(!state[id].items) state[id].items = {};
+      if(!state[id].items[idx]) state[id].items[idx] = {};
+      state[id].items[idx].url = url;
+      if(url) state[id].items[idx].checked = true;
       saveState(state);
     }
 
     function handleSearch() {
       if (activeView === "overview" || activeView === "nafis") {
-        switchView("all");
+        switchView("1");
       } else {
         renderIndicatorCards(activeView);
       }
@@ -1083,55 +536,24 @@
 
     function updateDashboardCalculations() {
       const state = loadState();
-      let totalCompleted = 0;
-      let totalPending = 0;
-      let totalLinks = 0;
-      let totalRubricPoints = 0;
-      const totalAll = fullIndicators52.length;
-
-      const domainStats = {
-        "1": { total: 19, done: 0, pending: 0, links: 0, rubricSum: 0 },
-        "2": { total: 13, done: 0, pending: 0, links: 0, rubricSum: 0 },
-        "3": { total: 13, done: 0, pending: 0, links: 0, rubricSum: 0 },
-        "4": { total: 7, done: 0, pending: 0, links: 0, rubricSum: 0 }
-      };
-
-      let criticalIncomplete = 0;
+      let totalPts = 0, done4 = 0, pending = 0, linksCount = 0;
+      const domainStats = { "1": { sum: 0, count: 19 }, "2": { sum: 0, count: 13 }, "3": { sum: 0, count: 13 }, "4": { sum: 0, count: 7 } };
 
       fullIndicators52.forEach(ind => {
-        const indData = state[ind.id] || { status: "notstarted", rubric: 1, items: {} };
-        const d = ind.domain;
-        const r = indData.rubric || 1;
-
-        totalRubricPoints += r;
-        domainStats[d].rubricSum += r;
-
-        if (r === 4) {
-          totalCompleted++;
-          domainStats[d].done++;
-        } else if (r > 1) {
-          totalPending++;
-          domainStats[d].pending++;
-        }
-
-        if (ind.isCritical && r < 3) {
-          criticalIncomplete++;
-        }
-
-        if (indData.items) {
-          Object.values(indData.items).forEach(ev => {
-            if (ev.url && ev.url.trim()) {
-              totalLinks++;
-              domainStats[d].links++;
-            }
-          });
+        const s = state[ind.id] || { rubric: 1, items: {} };
+        const r = s.rubric || 1;
+        totalPts += r;
+        domainStats[ind.domain].sum += r;
+        if(r === 4) done4++; else if(r > 1) pending++;
+        if(s.items) {
+          Object.values(s.items).forEach(ev => { if(ev.url) linksCount++; });
         }
       });
 
-      const d1Score = (domainStats["1"].rubricSum / (domainStats["1"].total * 4));
-      const d2Score = (domainStats["2"].rubricSum / (domainStats["2"].total * 4));
-      const d3Score = (domainStats["3"].rubricSum / (domainStats["3"].total * 4));
-      const d4Score = (domainStats["4"].rubricSum / (domainStats["4"].total * 4));
+      const d1Score = (domainStats["1"].sum / (19 * 4));
+      const d2Score = (domainStats["2"].sum / (13 * 4));
+      const d3Score = (domainStats["3"].sum / (13 * 4));
+      const d4Score = (domainStats["4"].sum / (7 * 4));
 
       const weightedPercent = Math.round(
         ((d1Score * DOMAIN_WEIGHTS["1"]) +
@@ -1140,119 +562,70 @@
          (d4Score * DOMAIN_WEIGHTS["4"])) * 100
       );
 
-      const avgRubric = (totalRubricPoints / totalAll).toFixed(1);
+      document.getElementById('overview-stat-percent').innerText = weightedPercent + '%';
+      document.getElementById('overview-progress-bar').style.width = weightedPercent + '%';
+      document.getElementById('metric-done4').innerText = done4;
+      document.getElementById('metric-pending').innerText = pending;
+      document.getElementById('overview-stat-links').innerText = linksCount;
+      document.getElementById('overview-rubric-score').innerHTML = (totalPts / 52).toFixed(1) + ' / 4';
 
-      document.getElementById("overview-stat-percent").innerText = weightedPercent + "%";
-      document.getElementById("overview-rubric-score").innerHTML = `${avgRubric} <span class="text-xs font-normal text-slate-400">/ 4</span>`;
-      document.getElementById("metric-done4").innerText = totalCompleted;
-      document.getElementById("metric-pending").innerText = totalPending;
-      document.getElementById("overview-stat-links").innerText = totalLinks;
-      document.getElementById("overview-progress-bar").style.width = weightedPercent + "%";
-
-      const tierBadge = document.getElementById("tier-badge");
-      if (weightedPercent >= 90 && criticalIncomplete === 0) {
-        tierBadge.className = "px-3.5 py-1 rounded-full text-xs font-black bg-amber-400 text-slate-950 border border-amber-300 shadow-md";
-        tierBadge.innerHTML = "★ التميز (90-100%)";
-      } else if (weightedPercent >= 75) {
-        tierBadge.className = "px-3.5 py-1 rounded-full text-xs font-black bg-blue-500 text-white border border-blue-400 shadow-md";
-        tierBadge.innerHTML = "التقدم (75-89%)";
-      } else if (weightedPercent >= 50) {
-        tierBadge.className = "px-3.5 py-1 rounded-full text-xs font-black bg-amber-500 text-white border border-amber-400 shadow-md";
-        tierBadge.innerHTML = "الانطلاق (50-74%)";
-      } else {
-        tierBadge.className = "px-3.5 py-1 rounded-full text-xs font-black bg-rose-600 text-white border border-rose-500 shadow-md";
-        tierBadge.innerHTML = "التهيئة (<50%)";
-      }
-
-      const d1Pct = Math.round(d1Score * 100);
-      document.getElementById("d1-badge").innerText = d1Pct + "%";
-      document.getElementById("d1-bar").style.width = d1Pct + "%";
-      document.getElementById("d1-rubric").innerText = (domainStats["1"].rubricSum / domainStats["1"].total).toFixed(1);
-      document.getElementById("d1-done").innerText = domainStats["1"].done;
-      document.getElementById("d1-links").innerText = domainStats["1"].links;
-
-      const d2Pct = Math.round(d2Score * 100);
-      document.getElementById("d2-badge").innerText = d2Pct + "%";
-      document.getElementById("d2-bar").style.width = d2Pct + "%";
-      document.getElementById("d2-rubric").innerText = (domainStats["2"].rubricSum / domainStats["2"].total).toFixed(1);
-      document.getElementById("d2-done").innerText = domainStats["2"].done;
-      document.getElementById("d2-links").innerText = domainStats["2"].links;
-
-      const d3Pct = Math.round(d3Score * 100);
-      document.getElementById("d3-badge").innerText = d3Pct + "%";
-      document.getElementById("d3-bar").style.width = d3Pct + "%";
-      document.getElementById("d3-rubric").innerText = (domainStats["3"].rubricSum / domainStats["3"].total).toFixed(1);
-      document.getElementById("d3-done").innerText = domainStats["3"].done;
-      document.getElementById("d3-links").innerText = domainStats["3"].links;
-
-      const d4Pct = Math.round(d4Score * 100);
-      document.getElementById("d4-badge").innerText = d4Pct + "%";
-      document.getElementById("d4-bar").style.width = d4Pct + "%";
-      document.getElementById("d4-rubric").innerText = (domainStats["4"].rubricSum / domainStats["4"].total).toFixed(1);
-      document.getElementById("d4-done").innerText = domainStats["4"].done;
-      document.getElementById("d4-links").innerText = domainStats["4"].links;
-
-      const assistantText = document.getElementById("audit-assistant-text");
-      if (criticalIncomplete > 0) {
-        assistantText.innerHTML = `🚨 <strong>تنبيه مقوم خارجي حرج:</strong> يوجد <strong>${criticalIncomplete} مؤشرات حرجة</strong> في متطلبات تراخيص المبنى والسلامة (4-1-1-1 أو 4-2-1-1) غير مكتملة التوثيق[cite: 1, 2].`;
-      } else if (weightedPercent >= 90) {
-        assistantText.innerHTML = `🌟 <strong>جاهزية التميز مكتملة بالوزن النسبي (${weightedPercent}%):</strong> تم استيفاء الشواهد والتثليث المنهجي بنجاح.`;
-      } else if (weightedPercent >= 75) {
-        assistantText.innerHTML = `📈 <strong>أداء متقدم (${weightedPercent}%):</strong> يفصل مدرستكم ${90 - weightedPercent}% لبلوغ التميز الذهبي[cite: 1, 2].`;
-      } else {
-        assistantText.innerHTML = `⚠️ <strong>توصية تحسين عاجلة (${weightedPercent}%):</strong> يوجد ${52 - totalCompleted} مؤشراً تتطلب استكمال الشواهد ورفع درجات الروبك.`;
-      }
+      ['1', '2', '3', '4'].forEach(dId => {
+        const dPct = Math.round((domainStats[dId].sum / (domainStats[dId].count * 4)) * 100);
+      });
 
       if (activeView !== "overview" && activeView !== "nafis" && domainStats[activeView]) {
-        const dP = Math.round((domainStats[activeView].rubricSum / (domainStats[activeView].total * 4)) * 100);
+        const dP = Math.round((domainStats[activeView].sum / (domainStats[activeView].count * 4)) * 100);
         document.getElementById("banner-domain-percent").innerText = dP + "%";
-      } else if (activeView === "all") {
-        document.getElementById("banner-domain-percent").innerText = weightedPercent + "%";
       }
+    }
+
+    let scholasticChartInstance = null;
+    function renderScholasticChart() {
+      const ctx = document.getElementById('scholasticChart').getContext('2d');
+      if (scholasticChartInstance) scholasticChartInstance.destroy();
+      scholasticChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['التحصيل الدراسي (علمي/نظري)', 'القدرات العامة (علمي/نظري)'],
+          datasets: [
+            { label: 'نسبة الإنجاز الفعلية', data: [65.78, 77.32], backgroundColor: ['#f43f5e', '#3b82f6'] }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 100 } } }
+      });
     }
 
     function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
     function openGapFinderModal() {
-      const state = loadState();
       const resultsContainer = document.getElementById('gap-finder-results');
-      let issues = [];
-
-      fullIndicators52.forEach(ind => {
-        const s = state[ind.id] || { rubric: 1, items: {}, triangulation: {} };
-        const r = s.rubric || 1;
-
-        if (ind.isCritical && r < 4) {
-          issues.push({
-            type: 'critical',
-            title: `مؤشر حرج غير مكتمل بالكامل: (${ind.id}) ${ind.std}`,
-            desc: `المؤشر (${ind.text}) يعتبر اشتراط ترخيص إلزامي ويجب رفعه لدرجة الروبك 4.`
-          });
-        }
-      });
-
-      if (issues.length === 0) {
-        resultsContainer.innerHTML = `
-          <div class="p-6 bg-emerald-50 text-center rounded-2xl border border-emerald-200">
-            <i class="fa-solid fa-circle-check text-3xl text-emerald-600 mb-2"></i>
-            <h4 class="font-black text-emerald-950 text-sm">ممتاز! المنظومة خالية من الثغرات الحرجة</h4>
-          </div>
-        `;
-      } else {
-        resultsContainer.innerHTML = issues.map(iss => `
-          <div class="p-3.5 rounded-2xl border border-rose-300 bg-rose-50 text-rose-900 flex items-start gap-3">
-            <i class="fa-solid fa-triangle-exclamation text-rose-600 text-base mt-0.5"></i>
-            <div><span class="font-black block text-xs">${iss.title}</span><span class="text-[11px] block mt-0.5">${iss.desc}</span></div>
-          </div>
-        `).join('');
-      }
+      resultsContainer.innerHTML = `
+        <div class="p-3 bg-rose-50 border border-rose-200 rounded-2xl text-rose-900">
+          <h4 class="font-black text-xs mb-1">⚠️ الفجوة الأولى: التحصيل التعليمي (69.25% - انطلاق)[cite: 1]</h4>
+          <p class="text-[11px]">التوصية الاستشارية: تشكيل فريق تداخل أكاديمي عاجل وتركيز الحصص الإثرائية على مادتي الرياضيات والعلوم[cite: 1].</p>
+        </div>
+        <div class="p-3 bg-amber-50 border border-amber-200 rounded-2xl text-amber-900">
+          <h4 class="font-black text-xs mb-1">⚠️ الفجوة الثانية: تنظيم المبنى المدرسي والأثاث (58.5% - انطلاق)[cite: 1]</h4>
+          <p class="text-[11px]">التوصية الاستشارية: بالتنسيق مع الإدارة العامة، إعادة هندسة تنظيم الفصول وتأمين المتطلبات الهندسية[cite: 1].</p>
+        </div>
+        <div class="p-3 bg-blue-50 border border-blue-200 rounded-2xl text-blue-900">
+          <h4 class="font-black text-xs mb-1">⚠️ الفجوة الثالثة: الرخص المهنية للمعلمين (73.25% - انطلاق)[cite: 1]</h4>
+          <p class="text-[11px]">التوصية الاستشارية: إطلاق برنامج تحفيزي لدعم المعلمين غير الحاصلين على الرخصة لاجتياز الاختبارات[cite: 1].</p>
+        </div>
+      `;
       openModal('gap-finder-modal');
     }
 
-    function generateAuditReport() {
-      alert('جاري توليد محاكي التقرير النهائي للاعتماد...');
+    function generateAuditReport() { alert('جاري استخراج تقارير التوصيات الاستشارية المعتمدة...'); }
+    function exportJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(localStorage.getItem(STORAGE_KEY) || '{}');
+      const a = document.createElement('a'); a.href = dataStr; a.download = "sahafa_school_accreditation.json"; a.click();
     }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      updateDashboardCalculations();
+    });
   </script>
 </body>
 </html>
